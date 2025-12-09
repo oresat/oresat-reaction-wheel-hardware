@@ -1,0 +1,4 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "rev-8-symbols")(type "KiCad")(uri "/home/solomon/code/oresat/oresat-rw-board-rev8/rev-8-symbols.kicad_sym")(options "")(descr ""))
+)
