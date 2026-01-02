@@ -2684,6 +2684,17 @@
 		)
 		(uuid "09c600f4-221f-49cb-9889-562e55a6a171")
 	)
+	(text "I hope I don't need this\ndifferential filter!"
+		(exclude_from_sim no)
+		(at 168.402 68.58 0)
+		(effects
+			(font
+				(size 0.625 0.625)
+			)
+			(justify left)
+		)
+		(uuid "0e700b7f-d099-4caf-8f76-9429597e8ab4")
+	)
 	(text "On PGND for thermal coupling to GaN"
 		(exclude_from_sim no)
 		(at 147.32 81.026 0)
@@ -2795,15 +2806,26 @@
 		)
 		(uuid "9f466ce9-b263-484f-ba20-41018cb69326")
 	)
-	(text "Place at AGND plane boundary"
+	(text "Place ferrite at PGND/DGND plane boundary\n(PGND/AGND would be best, but DGND/AGND bounce\nis less of a concern than PGND bounce coupling\ninto AGND)"
 		(exclude_from_sim no)
-		(at 141.478 66.04 0)
+		(at 142.494 65.024 0)
 		(effects
 			(font
 				(size 0.635 0.635)
 			)
 		)
 		(uuid "a35db03b-edb7-4b3e-9d94-edf3ddd37793")
+	)
+	(text "10pF for ADC S&H cap fastcharge\n(NOT for filtering, Fc=9.5MHz)"
+		(exclude_from_sim no)
+		(at 112.776 119.38 0)
+		(effects
+			(font
+				(size 0.625 0.625)
+			)
+			(justify left)
+		)
+		(uuid "b929eb4c-3f56-4ce6-a5e6-4a52f175c5ba")
 	)
 	(text "Slow LS rise time"
 		(exclude_from_sim no)
@@ -2824,6 +2846,17 @@
 			)
 		)
 		(uuid "c86923f5-bacb-46b6-9c44-b11a4121bb8d")
+	)
+	(text "CLOSE TO INA296"
+		(exclude_from_sim no)
+		(at 163.322 91.186 0)
+		(effects
+			(font
+				(size 0.625 0.625)
+			)
+			(justify left)
+		)
+		(uuid "d4670097-eafd-42b8-862d-f8c9258893db")
 	)
 	(text "AEC-Q200, 10V, 0402\n2uF @ 5V"
 		(exclude_from_sim no)
@@ -3054,6 +3087,16 @@
 		)
 		(uuid "09280e00-ab7b-4f4e-9c70-211d051d05c6")
 	)
+	(polyline
+		(pts
+			(xy 167.64 90.17) (xy 170.18 87.63)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0b2352c3-9b45-4da7-9add-e5c653e3793a")
+	)
 	(wire
 		(pts
 			(xy 66.04 57.15) (xy 88.9 57.15)
@@ -3264,6 +3307,16 @@
 		)
 		(uuid "6d5c7b3a-5753-4614-bd11-e72f02a3a842")
 	)
+	(polyline
+		(pts
+			(xy 169.4339 87.649) (xy 170.18 87.63)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6f288201-4c4f-469b-89ff-e26e5c8f0760")
+	)
 	(wire
 		(pts
 			(xy 195.58 72.39) (xy 184.15 72.39)
@@ -3333,6 +3386,16 @@
 			(type default)
 		)
 		(uuid "820315b2-2994-42f3-88c0-3e75241a9533")
+	)
+	(polyline
+		(pts
+			(xy 170.18 87.63) (xy 170.1875 88.282)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8426e422-e7d0-4b88-abaf-16d543b15211")
 	)
 	(wire
 		(pts
