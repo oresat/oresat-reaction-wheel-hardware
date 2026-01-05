@@ -5887,7 +5887,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "50d82fc0-86b5-4645-941d-45a79f6eb7d1")
 		(property "Reference" "C52"
 			(at 130.81 114.3062 0)

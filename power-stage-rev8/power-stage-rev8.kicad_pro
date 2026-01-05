@@ -521,7 +521,7 @@
       "plot": "",
       "pos_files": "",
       "specctra_dsn": "",
-      "step": "../../../../../../tmp/power-stage-rev8.step",
+      "step": "power-stage-rev8-RC2.step",
       "svg": "",
       "vrml": ""
     },
