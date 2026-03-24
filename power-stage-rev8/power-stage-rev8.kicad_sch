@@ -10092,16 +10092,6 @@
 		)
 		(uuid "b8d74095-3329-4750-b073-bdf0b973b376")
 	)
-	(text "2.2uF/ea @ 8.4V"
-		(exclude_from_sim no)
-		(at 121.666 38.354 0)
-		(effects
-			(font
-				(size 0.635 0.635)
-			)
-		)
-		(uuid "b9543457-c239-4791-8789-3e034c19c472")
-	)
 	(text "GRT188C81C106ME13\n0603\n-55-105C\nAEC-Q200"
 		(exclude_from_sim no)
 		(at 96.266 46.736 0)
@@ -23285,6 +23275,24 @@
 				(hide yes)
 			)
 		)
+		(property "Mfg" "TI"
+			(at 535.94 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "REF3030AIDBZR"
+			(at 535.94 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "046f1796-f387-4342-84a0-0402fb740c67")
 		)
@@ -23490,11 +23498,20 @@
 				(hide yes)
 			)
 		)
-		(property "P/N" "GRM32EC81C476ME15L"
-			(at 402.59 143.51 0)
+		(property "MPN" "GRT32EC81C476KE13L"
+			(at 398.78 147.32 0)
 			(effects
 				(font
-					(size 0.7 0.7)
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mfg" "Murata"
+			(at 398.78 147.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
 				)
 				(hide yes)
 			)
@@ -23635,6 +23652,24 @@
 				(hide yes)
 			)
 		)
+		(property "Mfg" "Murata"
+			(at 104.14 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "GRT188C81C106ME13D"
+			(at 104.14 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "6d44b5e9-bb2e-437a-a720-de296a486d9c")
 		)
@@ -23722,7 +23757,7 @@
 		(at 360.68 240.03 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
@@ -23765,6 +23800,15 @@
 			)
 		)
 		(property "Description" "test point (alternative shape)"
+			(at 360.68 240.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mfg" ""
 			(at 360.68 240.03 0)
 			(effects
 				(font
@@ -23840,6 +23884,24 @@
 				(hide yes)
 			)
 		)
+		(property "Mfg" "Yageo"
+			(at 41.91 200.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RP0402BRD073K3L"
+			(at 41.91 200.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "c4a21d67-b5f9-4803-832c-c8f8aeddd2b5")
 		)
@@ -23902,6 +23964,24 @@
 			)
 		)
 		(property "Description" ""
+			(at 480.06 160.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mfg" "Yageo"
+			(at 480.06 160.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "SR0805FR-7T12RL"
 			(at 480.06 160.02 0)
 			(effects
 				(font
@@ -24244,6 +24324,24 @@
 				(hide yes)
 			)
 		)
+		(property "Mfg" "Murata"
+			(at 190.5 123.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "GRT155R71E104KE01J"
+			(at 190.5 123.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "df81045a-8b86-4e8b-9ddd-3b1009239dab")
 		)
@@ -24304,6 +24402,24 @@
 			)
 		)
 		(property "Description" ""
+			(at 160.02 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mfg" "TI"
+			(at 160.02 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "TPSM82901SISR"
 			(at 160.02 36.83 0)
 			(effects
 				(font
@@ -24401,6 +24517,24 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor, small symbol"
+			(at 134.62 203.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mfg" "Murata"
+			(at 134.62 203.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "GRT155C81A475ME13J"
 			(at 134.62 203.2 0)
 			(effects
 				(font
@@ -24612,6 +24746,24 @@
 				(hide yes)
 			)
 		)
+		(property "Mfg" "MPS"
+			(at 353.06 351.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "MA732GQ-Z"
+			(at 353.06 351.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "8a7d0f32-23c0-444c-8f70-6a932c715a76")
 		)
@@ -24727,6 +24879,24 @@
 				(hide yes)
 			)
 		)
+		(property "Mfg" "Yageo"
+			(at 124.46 184.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "AC0402FR-073K3L"
+			(at 124.46 184.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "af7af2ea-5918-4f48-970d-1fb31216d097")
 		)
@@ -24795,12 +24965,22 @@
 				(hide yes)
 			)
 		)
-		(property "P/N" "BLM31SN500SN1L"
-			(at 486.41 135.89 90)
+		(property "MPN" "BLM31SN500SN1L"
+			(at 474.98 137.16 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
+			)
+		)
+		(property "Mfg" "Murata"
+			(at 474.98 137.16 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
 			)
 		)
 		(pin "1"
@@ -24931,6 +25111,24 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor, small symbol"
+			(at 124.46 203.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mfg" "Murata"
+			(at 124.46 203.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "GRT155C81A475ME13J"
 			(at 124.46 203.2 0)
 			(effects
 				(font
@@ -25075,13 +25273,21 @@
 				(hide yes)
 			)
 		)
-		(property "P/N" "GRT188C80J226ME13D"
-			(at 452.12 40.64 0)
+		(property "MPN" "GRT188C80J226ME13D"
+			(at 459.74 36.83 0)
 			(effects
 				(font
-					(size 0.635 0.635)
+					(size 1.27 1.27)
 				)
-				(justify right)
+				(hide yes)
+			)
+		)
+		(property "Mfg" "Murata"
+			(at 459.74 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 				(hide yes)
 			)
 		)
@@ -25155,11 +25361,20 @@
 				(hide yes)
 			)
 		)
-		(property "P/N" "GRM32EC81C476ME15L"
-			(at 411.48 123.19 0)
+		(property "MPN" "GRT32EC81C476KE13L"
+			(at 407.67 127 0)
 			(effects
 				(font
-					(size 0.7 0.7)
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mfg" "Murata"
+			(at 407.67 127 0)
+			(effects
+				(font
+					(size 1.27 1.27)
 				)
 				(hide yes)
 			)
@@ -25234,11 +25449,20 @@
 				(hide yes)
 			)
 		)
-		(property "P/N" "GRM32EC81C476ME15L"
-			(at 59.69 53.34 0)
+		(property "MPN" "GRT32EC81C476KE13L"
+			(at 55.88 57.15 0)
 			(effects
 				(font
-					(size 0.7 0.7)
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mfg" "Murata"
+			(at 55.88 57.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
 				)
 				(hide yes)
 			)
@@ -25304,6 +25528,24 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor, small symbol"
+			(at 184.15 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mfg" "Murata"
+			(at 184.15 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "GRT155C81A475ME13J"
 			(at 184.15 41.91 0)
 			(effects
 				(font
@@ -25515,11 +25757,20 @@
 				(hide yes)
 			)
 		)
-		(property "P/N" "GRM32EC81C476ME15L"
-			(at 429.26 143.51 0)
+		(property "MPN" "GRT32EC81C476KE13L"
+			(at 425.45 147.32 0)
 			(effects
 				(font
-					(size 0.7 0.7)
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mfg" "Murata"
+			(at 425.45 147.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
 				)
 				(hide yes)
 			)
@@ -25586,6 +25837,24 @@
 			)
 		)
 		(property "Description" "Resistor, small US symbol"
+			(at 144.78 184.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mfg" "Yageo"
+			(at 144.78 184.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "AC0402FR-073K3L"
 			(at 144.78 184.15 0)
 			(effects
 				(font
@@ -25797,11 +26066,20 @@
 				(hide yes)
 			)
 		)
-		(property "P/N" "GRM32EC81C476ME15L"
-			(at 420.37 143.51 0)
+		(property "MPN" "GRT32EC81C476KE13L"
+			(at 416.56 147.32 0)
 			(effects
 				(font
-					(size 0.7 0.7)
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mfg" "Murata"
+			(at 416.56 147.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
 				)
 				(hide yes)
 			)
@@ -25869,6 +26147,24 @@
 			)
 		)
 		(property "Description" "High-Speed CAN Transceiver, 1Mbps, 3.3V supply, silent mode, shutdown mode, SOT-23-8/SOIC-8"
+			(at 52.07 140.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mfg" "TI"
+			(at 52.07 140.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "TCAN330DCNR"
 			(at 52.07 140.97 0)
 			(effects
 				(font
@@ -25963,12 +26259,22 @@
 				(hide yes)
 			)
 		)
-		(property "P/N" "0555600307"
-			(at 41.91 90.17 0)
+		(property "MPN" "0555600307"
+			(at 41.91 69.85 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
+			)
+		)
+		(property "Mfg" "Molex"
+			(at 41.91 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
 			)
 		)
 		(pin "1"
@@ -26123,12 +26429,22 @@
 				(hide yes)
 			)
 		)
-		(property "P/N" "BLM31SN500SN1L"
-			(at 486.41 148.59 90)
+		(property "MPN" "BLM31SN500SN1L"
+			(at 474.98 149.86 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
+			)
+		)
+		(property "Mfg" "Murata"
+			(at 474.98 149.86 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
 			)
 		)
 		(pin "1"
@@ -26193,6 +26509,24 @@
 			)
 		)
 		(property "Description" ""
+			(at 488.95 160.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mfg" "Yageo"
+			(at 488.95 160.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "SR0805FR-7T12RL"
 			(at 488.95 160.02 0)
 			(effects
 				(font
@@ -26338,6 +26672,24 @@
 				(hide yes)
 			)
 		)
+		(property "Mfg" "Yageo"
+			(at 134.62 184.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "AC0402FR-073K3L"
+			(at 134.62 184.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "eb16f40d-ab1e-48af-bb6a-6cd8297179ab")
 		)
@@ -26408,6 +26760,24 @@
 				(hide yes)
 			)
 		)
+		(property "Mfg" "Murata"
+			(at 171.45 160.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "GCM1555C1H180JA16D"
+			(at 171.45 160.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "bed7139a-fa21-4441-a350-614eb5407a6b")
 		)
@@ -26470,6 +26840,24 @@
 			)
 		)
 		(property "Description" ""
+			(at 480.06 153.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mfg" "Murata"
+			(at 480.06 153.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "GCM2165C2A332JA16D"
 			(at 480.06 153.67 0)
 			(effects
 				(font
@@ -26746,6 +27134,15 @@
 				(hide yes)
 			)
 		)
+		(property "Mfg" ""
+			(at 38.1 306.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(instances
 			(project ""
 				(path "/dc35c2fc-4c63-4639-912e-b812884604c8"
@@ -27002,6 +27399,24 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor, small symbol"
+			(at 236.22 127 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mfg" "Murata"
+			(at 236.22 127 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "GCM155R71H103KA55D"
 			(at 236.22 127 0)
 			(effects
 				(font
@@ -27279,6 +27694,24 @@
 				(hide yes)
 			)
 		)
+		(property "Mfg" "Murata"
+			(at 497.84 153.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "GCM2165C2A332JA16D"
+			(at 497.84 153.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "0289f99f-2c09-489b-bbf8-cebce2e6b109")
 		)
@@ -27347,12 +27780,22 @@
 				(hide yes)
 			)
 		)
-		(property "P/N" "LFXTAL071255REEL"
-			(at 148.59 149.2251 90)
+		(property "MPN" "LFXTAL071255REEL"
+			(at 148.59 154.94 90)
 			(effects
 				(font
-					(size 0.635 0.635)
+					(size 1.27 1.27)
 				)
+				(hide yes)
+			)
+		)
+		(property "Mfg" "IQD"
+			(at 148.59 154.94 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
 			)
 		)
 		(pin "1"
@@ -27431,6 +27874,24 @@
 				(hide yes)
 			)
 		)
+		(property "Mfg" "Murata"
+			(at 524.51 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "GRT155C81A475ME13J"
+			(at 524.51 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "89c2e6d5-4fea-4f6a-b057-8cb5dc33ab99")
 		)
@@ -27493,6 +27954,24 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor, small symbol"
+			(at 185.42 142.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mfg" "Murata"
+			(at 185.42 142.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "GRT155R71E104KE01J"
 			(at 185.42 142.24 0)
 			(effects
 				(font
@@ -27701,6 +28180,24 @@
 				(hide yes)
 			)
 		)
+		(property "Mfg" "Murata"
+			(at 370.84 34.29 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "BLM15PX601SZ1"
+			(at 370.84 34.29 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "205c068e-35be-40dc-b8c3-44a891d54fc2")
 		)
@@ -27827,6 +28324,24 @@
 			)
 		)
 		(property "Description" "Generic connectable mounting pin connector, double row, 02x15, counter clockwise pin numbering scheme (similar to DIP package numbering), script generated (kicad-library-utils/schlib/autogen/connector/)"
+			(at 50.8 255.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mfg" "Amphenol"
+			(at 50.8 255.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "10132797-031100LF"
 			(at 50.8 255.27 0)
 			(effects
 				(font
@@ -27990,6 +28505,24 @@
 				(hide yes)
 			)
 		)
+		(property "Mfg" "Yageo"
+			(at 548.64 50.8 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "PE0402FRF470R1L"
+			(at 548.64 50.8 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "b36d4952-c942-4772-b6f8-095270fb5ab7")
 		)
@@ -28052,6 +28585,24 @@
 			)
 		)
 		(property "Description" ""
+			(at 497.84 160.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mfg" "Yageo"
+			(at 497.84 160.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "SR0805FR-7T12RL"
 			(at 497.84 160.02 0)
 			(effects
 				(font
@@ -28130,6 +28681,24 @@
 				(hide yes)
 			)
 		)
+		(property "Mfg" "Murata"
+			(at 393.7 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "GRT155C81A105ME01D"
+			(at 393.7 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "9bd5266d-066c-44c1-a5ab-bc6b8d6dc61a")
 		)
@@ -28192,6 +28761,24 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor, small symbol"
+			(at 170.18 123.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mfg" "Murata"
+			(at 170.18 123.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "GRT155C81A475ME13J"
 			(at 170.18 123.19 0)
 			(effects
 				(font
@@ -28402,6 +28989,24 @@
 				(hide yes)
 			)
 		)
+		(property "Mfg" "Yageo"
+			(at 177.8 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "AC0402FR-0776K8L"
+			(at 177.8 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "20eeca79-19c0-40b3-92cd-21c4391fb92d")
 		)
@@ -28464,6 +29069,24 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor, small symbol"
+			(at 257.81 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mfg" "Murata"
+			(at 257.81 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "GRT188C81C106ME13D"
 			(at 257.81 43.18 0)
 			(effects
 				(font
@@ -28608,11 +29231,20 @@
 				(hide yes)
 			)
 		)
-		(property "P/N" "GRT188R61C106KE13"
+		(property "MPN" "GRT188R61C106KE13"
 			(at 389.89 36.83 0)
 			(effects
 				(font
-					(size 0.635 0.635)
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mfg" "Murata"
+			(at 389.89 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
 				)
 				(hide yes)
 			)
@@ -28687,11 +29319,20 @@
 				(hide yes)
 			)
 		)
-		(property "P/N" "GRM32EC81C476ME15L"
-			(at 429.26 123.19 0)
+		(property "MPN" "GRT32EC81C476KE13L"
+			(at 425.45 127 0)
 			(effects
 				(font
-					(size 0.7 0.7)
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mfg" "Murata"
+			(at 425.45 127 0)
+			(effects
+				(font
+					(size 1.27 1.27)
 				)
 				(hide yes)
 			)
@@ -28716,7 +29357,7 @@
 		(at 370.84 240.03 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
@@ -28759,6 +29400,15 @@
 			)
 		)
 		(property "Description" "test point (alternative shape)"
+			(at 370.84 240.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mfg" ""
 			(at 370.84 240.03 0)
 			(effects
 				(font
@@ -29062,7 +29712,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "4.7u"
+		(property "Value" "2.2u"
 			(at 116.84 44.4562 0)
 			(effects
 				(font
@@ -29090,6 +29740,24 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor, small symbol"
+			(at 114.3 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mfg" "Murata"
+			(at 114.3 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "GRT155C81C225ME13D"
 			(at 114.3 43.18 0)
 			(effects
 				(font
@@ -29251,7 +29919,7 @@
 		(mirror x)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(uuid "69e9faf4-cc62-47f1-bf2e-4a27c6b1031d")
@@ -29290,6 +29958,15 @@
 			)
 		)
 		(property "Description" ""
+			(at 530.86 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mfg" ""
 			(at 530.86 143.51 0)
 			(effects
 				(font
@@ -29635,6 +30312,24 @@
 				(hide yes)
 			)
 		)
+		(property "Mfg" "Yageo"
+			(at 41.91 195.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RP0402BRD075K1L"
+			(at 41.91 195.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "b596ea83-3f8a-4057-a478-890f9f6f3251")
 		)
@@ -29697,6 +30392,24 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor, small symbol"
+			(at 199.39 123.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mfg" "Murata"
+			(at 199.39 123.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "GRT155R71E104KE01J"
 			(at 199.39 123.19 0)
 			(effects
 				(font
@@ -29841,6 +30554,24 @@
 				(hide yes)
 			)
 		)
+		(property "Mfg" "Murata"
+			(at 144.78 203.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "GRT155C81A475ME13J"
+			(at 144.78 203.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "98bd69ad-7c34-41a2-8cfa-f7b8525cff5f")
 		)
@@ -29903,6 +30634,24 @@
 			)
 		)
 		(property "Description" "Resistor, small US symbol"
+			(at 269.24 208.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mfg" "Yageo"
+			(at 269.24 208.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "AC0402FR-070RL"
 			(at 269.24 208.28 0)
 			(effects
 				(font
@@ -30114,6 +30863,24 @@
 				(hide yes)
 			)
 		)
+		(property "Mfg" "Yageo"
+			(at 143.51 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "AC0402FR-0749K9L"
+			(at 143.51 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "35111bd7-706a-454e-8916-cb24573d2134")
 		)
@@ -30176,6 +30943,24 @@
 			)
 		)
 		(property "Description" ""
+			(at 347.98 331.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mfg" "Murata"
+			(at 347.98 331.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "GRT155R71E104KE01J"
 			(at 347.98 331.47 0)
 			(effects
 				(font
@@ -30312,6 +31097,24 @@
 			)
 		)
 		(property "Description" "STMicroelectronics Arm Cortex-M4 MCU, 512KB flash, 128KB RAM, 170 MHz, 1.71-3.6V, 86 GPIO, TFBGA100"
+			(at 220.98 207.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mfg" "ST"
+			(at 220.98 207.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "STM32G474VEH3"
 			(at 220.98 207.01 0)
 			(effects
 				(font
@@ -30883,6 +31686,24 @@
 				(hide yes)
 			)
 		)
+		(property "Mfg" "Murata"
+			(at 208.28 123.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "GRT155R71E104KE01J"
+			(at 208.28 123.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "96a7af95-4c2d-4924-b25d-9ddeff88e1c7")
 		)
@@ -30953,6 +31774,24 @@
 				(hide yes)
 			)
 		)
+		(property "Mfg" "Murata"
+			(at 180.34 123.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "GRT155R71E104KE01J"
+			(at 180.34 123.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "bc12766c-a7bb-4327-9bd4-d63148dc9d86")
 		)
@@ -31013,6 +31852,24 @@
 		)
 		(property "Description" ""
 			(at 408.94 193.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mfg" "Yageo"
+			(at 408.94 193.04 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "AC0402FR-070RL"
+			(at 408.94 193.04 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -31149,6 +32006,24 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor, small symbol"
+			(at 201.93 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mfg" "Murata"
+			(at 201.93 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "GRT188C81C106ME13D"
 			(at 201.93 41.91 0)
 			(effects
 				(font
@@ -31360,6 +32235,24 @@
 				(hide yes)
 			)
 		)
+		(property "Mfg" "Murata"
+			(at 132.08 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "GCM155R71H103KA55D"
+			(at 132.08 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "aebf33e7-db95-4d21-ab48-3de774dbb2f4")
 		)
@@ -31422,6 +32315,24 @@
 			)
 		)
 		(property "Description" ""
+			(at 401.32 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mfg" "Murata"
+			(at 401.32 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "GRT155C81A105ME01D"
 			(at 401.32 53.34 0)
 			(effects
 				(font
@@ -31530,7 +32441,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "10k"
+		(property "Value" "3.3k"
 			(at 247.65 210.8199 0)
 			(effects
 				(font
@@ -31558,6 +32469,24 @@
 			)
 		)
 		(property "Description" "Resistor, small US symbol"
+			(at 245.11 209.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mfg" "Yageo"
+			(at 245.11 209.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "AC0402FR-073K3L"
 			(at 245.11 209.55 0)
 			(effects
 				(font
@@ -31628,6 +32557,24 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor, small symbol"
+			(at 246.38 127 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mfg" "Murata"
+			(at 246.38 127 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "GRT155C81A105ME01D"
 			(at 246.38 127 0)
 			(effects
 				(font
@@ -31772,13 +32719,21 @@
 				(hide yes)
 			)
 		)
-		(property "P/N" "GRT188C80J226ME13D"
-			(at 443.23 40.64 0)
+		(property "MPN" "GRT188C80J226ME13D"
+			(at 450.85 36.83 0)
 			(effects
 				(font
-					(size 0.635 0.635)
+					(size 1.27 1.27)
 				)
-				(justify right)
+				(hide yes)
+			)
+		)
+		(property "Mfg" "Murata"
+			(at 450.85 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 				(hide yes)
 			)
 		)
@@ -31918,6 +32873,24 @@
 				(hide yes)
 			)
 		)
+		(property "Mfg" "Murata"
+			(at 556.26 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "GRT155C81A475ME13J"
+			(at 556.26 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "b7b45bed-45ba-4c8b-b51a-9abb71014b0a")
 		)
@@ -31980,6 +32953,24 @@
 			)
 		)
 		(property "Description" ""
+			(at 163.83 160.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mfg" "Murata"
+			(at 163.83 160.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "GCM1555C1H180JA16D"
 			(at 163.83 160.02 0)
 			(effects
 				(font
@@ -32124,6 +33115,24 @@
 				(hide yes)
 			)
 		)
+		(property "Mfg" "Murata"
+			(at 156.21 134.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "GRT155C81A105ME01D"
+			(at 156.21 134.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "2e065692-e7e9-4fb5-ad46-f0273a8e3f0e")
 		)
@@ -32185,6 +33194,24 @@
 		)
 		(property "Description" ""
 			(at 358.14 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mfg" "Yageo"
+			(at 358.14 34.29 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "PE0402FRF7W0R47L"
+			(at 358.14 34.29 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -32411,7 +33438,7 @@
 		(at 36.83 99.06 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
@@ -32452,6 +33479,15 @@
 			)
 		)
 		(property "Description" ""
+			(at 36.83 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mfg" ""
 			(at 36.83 99.06 0)
 			(effects
 				(font
@@ -32596,11 +33632,20 @@
 				(hide yes)
 			)
 		)
-		(property "P/N" "GRT188R61C106KE13"
+		(property "MPN" "GRT188R61C106KE13"
 			(at 381 36.83 0)
 			(effects
 				(font
-					(size 0.635 0.635)
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mfg" "Murata"
+			(at 381 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
 				)
 				(hide yes)
 			)
@@ -32639,7 +33684,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "4.7u"
+		(property "Value" "2.2u"
 			(at 127 44.4562 0)
 			(effects
 				(font
@@ -32667,6 +33712,24 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor, small symbol"
+			(at 124.46 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mfg" "Murata"
+			(at 124.46 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "GRT155C81C225ME13D"
 			(at 124.46 43.18 0)
 			(effects
 				(font
@@ -32811,11 +33874,20 @@
 				(hide yes)
 			)
 		)
-		(property "P/N" "GRM32EC81C476ME15L"
-			(at 420.37 123.19 0)
+		(property "MPN" "GRT32EC81C476KE13L"
+			(at 416.56 127 0)
 			(effects
 				(font
-					(size 0.7 0.7)
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mfg" "Murata"
+			(at 416.56 127 0)
+			(effects
+				(font
+					(size 1.27 1.27)
 				)
 				(hide yes)
 			)
@@ -32882,6 +33954,24 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor, small symbol"
+			(at 55.88 123.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mfg" "Murata"
+			(at 55.88 123.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "GRT155R71E104KE01J"
 			(at 55.88 123.19 0)
 			(effects
 				(font
@@ -32960,11 +34050,20 @@
 				(hide yes)
 			)
 		)
-		(property "P/N" "GRM32EC81C476ME15L"
-			(at 402.59 123.19 0)
+		(property "MPN" "GRT32EC81C476KE13L"
+			(at 398.78 127 0)
 			(effects
 				(font
-					(size 0.7 0.7)
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mfg" "Murata"
+			(at 398.78 127 0)
+			(effects
+				(font
+					(size 1.27 1.27)
 				)
 				(hide yes)
 			)
@@ -33105,6 +34204,24 @@
 				(hide yes)
 			)
 		)
+		(property "Mfg" "Murata"
+			(at 36.83 200.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "GCM1555C1H100FA16D"
+			(at 36.83 200.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "def7c4e5-05de-4698-b524-a3ad005d0326")
 		)
@@ -33173,12 +34290,22 @@
 				(hide yes)
 			)
 		)
-		(property "P/N" "BLM31SN500SN1L"
-			(at 486.41 142.24 90)
+		(property "MPN" "BLM31SN500SN1L"
+			(at 474.98 143.51 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
+			)
+		)
+		(property "Mfg" "Murata"
+			(at 474.98 143.51 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
 			)
 		)
 		(pin "1"
@@ -33243,6 +34370,24 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor, small symbol"
+			(at 217.17 123.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mfg" "Murata"
+			(at 217.17 123.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "GRT155R71E104KE01J"
 			(at 217.17 123.19 0)
 			(effects
 				(font
@@ -33379,6 +34524,24 @@
 			)
 		)
 		(property "Description" "Temperature dependent resistor, negative temperature coefficient, US symbol"
+			(at 398.78 210.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mfg" "Murata"
+			(at 398.78 210.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "NCU15XH103F6SRC"
 			(at 398.78 210.82 0)
 			(effects
 				(font
@@ -33588,6 +34751,15 @@
 				(hide yes)
 			)
 		)
+		(property "Mfg" ""
+			(at 416.56 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "21573a8e-2693-4be0-a21e-e403126b90bd")
 		)
@@ -33715,6 +34887,24 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor, small symbol"
+			(at 193.04 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mfg" "Murata"
+			(at 193.04 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "GRT155C81A475ME13J"
 			(at 193.04 41.91 0)
 			(effects
 				(font
@@ -33944,7 +35134,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "ce382e42-1517-4ff5-99dd-f5cb724260d1")
 		(property "Reference" "R10"
@@ -33983,6 +35173,15 @@
 		)
 		(property "Description" ""
 			(at 538.48 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mfg" ""
+			(at 538.48 40.64 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -34060,6 +35259,24 @@
 				(hide yes)
 			)
 		)
+		(property "Mfg" "Yageo"
+			(at 154.94 184.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "AC0402FR-073K3L"
+			(at 154.94 184.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "874aa69f-a173-463a-971b-685f8a72e938")
 		)
@@ -34121,6 +35338,24 @@
 		)
 		(property "Description" "Ferrite bead, small symbol"
 			(at 416.56 193.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mfg" "Yageo"
+			(at 416.56 193.04 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "AC0402FR-070RL"
+			(at 416.56 193.04 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -34190,6 +35425,24 @@
 			)
 		)
 		(property "Description" ""
+			(at 444.5 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mfg" "Murata"
+			(at 444.5 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "GRT155C81A105ME01D"
 			(at 444.5 49.53 0)
 			(effects
 				(font
@@ -34268,6 +35521,24 @@
 				(hide yes)
 			)
 		)
+		(property "Mfg" "Yageo"
+			(at 279.4 208.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "AC0402FR-070RL"
+			(at 279.4 208.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "1e7a45b3-d907-4c88-b67f-3f14812ad7ea")
 		)
@@ -34330,6 +35601,24 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor, small symbol"
+			(at 154.94 203.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mfg" "Murata"
+			(at 154.94 203.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "GRT155C81A475ME13J"
 			(at 154.94 203.2 0)
 			(effects
 				(font
@@ -34436,7 +35725,7 @@
 				)
 			)
 		)
-		(property "Value" "FerriteBead_Small"
+		(property "Value" "BLM15PX601SZ1"
 			(at 407.6319 201.93 90)
 			(effects
 				(font
@@ -34465,6 +35754,24 @@
 		)
 		(property "Description" "Ferrite bead, small symbol"
 			(at 407.67 205.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mfg" "Murata"
+			(at 407.67 205.74 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "BLM15PX601SZ1"
+			(at 407.67 205.74 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -34534,6 +35841,24 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor, small symbol"
+			(at 295.91 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mfg" "Murata"
+			(at 295.91 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "GRT188C80J226ME13D"
 			(at 295.91 44.45 0)
 			(effects
 				(font
@@ -34612,11 +35937,20 @@
 				(hide yes)
 			)
 		)
-		(property "P/N" "GRM32EC81C476ME15L"
-			(at 69.85 53.34 0)
+		(property "MPN" "GRT32EC81C476KE13L"
+			(at 66.04 57.15 0)
 			(effects
 				(font
-					(size 0.7 0.7)
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mfg" "Murata"
+			(at 66.04 57.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
 				)
 				(hide yes)
 			)
@@ -34757,6 +36091,24 @@
 				(hide yes)
 			)
 		)
+		(property "Mfg" "Murata"
+			(at 166.37 134.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "GRT155R71E104KE01J"
+			(at 166.37 134.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "8d7f769b-f2be-4812-901c-37124dfb5c10")
 		)
@@ -34817,6 +36169,24 @@
 			)
 		)
 		(property "Description" ""
+			(at 414.02 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mfg" "AD"
+			(at 414.02 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "ADP7156ACPZ-3.3-R7"
 			(at 414.02 36.83 0)
 			(effects
 				(font
@@ -34980,6 +36350,24 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor, small symbol"
+			(at 246.38 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mfg" "Murata"
+			(at 246.38 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "GRT155C81A475ME13J"
 			(at 246.38 43.18 0)
 			(effects
 				(font
@@ -35182,6 +36570,24 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor, small symbol"
+			(at 307.34 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mfg" "Murata"
+			(at 307.34 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "GRT155C81A475ME13J"
 			(at 307.34 43.18 0)
 			(effects
 				(font
@@ -35393,11 +36799,20 @@
 				(hide yes)
 			)
 		)
-		(property "P/N" "GRM32EC81C476ME15L"
-			(at 411.48 143.51 0)
+		(property "MPN" "GRT32EC81C476KE13L"
+			(at 407.67 147.32 0)
 			(effects
 				(font
-					(size 0.7 0.7)
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mfg" "Murata"
+			(at 407.67 147.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
 				)
 				(hide yes)
 			)
@@ -35530,6 +36945,24 @@
 			)
 		)
 		(property "Description" ""
+			(at 488.95 153.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mfg" "Murata"
+			(at 488.95 153.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "GCM2165C2A332JA16D"
 			(at 488.95 153.67 0)
 			(effects
 				(font
@@ -35730,6 +37163,24 @@
 			)
 		)
 		(property "Description" ""
+			(at 276.86 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mfg" "TI"
+			(at 276.86 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "TPSM828214SILR"
 			(at 276.86 38.1 0)
 			(effects
 				(font
