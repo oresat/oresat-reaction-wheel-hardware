@@ -675,7 +675,7 @@
       "default_line_thickness": 6.0,
       "default_text_size": 50.0,
       "field_names": [],
-      "hop_over_size_choice": 0,
+      "hop_over_size_choice": 2,
       "intersheets_ref_own_page": false,
       "intersheets_ref_prefix": "",
       "intersheets_ref_short": false,
@@ -716,7 +716,7 @@
         "uuid": "dc35c2fc-4c63-4639-912e-b812884604c8"
       }
     ],
-    "used_designators": "",
+    "used_designators": "NT2,NT4,#PWR34,#PWR139-146,C108,C111,C114,C119-121,R49-53,L1-2,U4,U14-16",
     "variants": []
   },
   "sheets": [

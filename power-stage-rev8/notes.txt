@@ -1,0 +1,47 @@
+Rail A: VBAT (6.4–8.4V) → 5V, ~500mA
+TPS62173 (TPS6217x family, 5V fixed variant) — 2×2mm WSON-8, 3–17V in, 500mA, ~2.25MHz DCS-Control, auto power-save. Fixed output kills the divider, and DCS parts are stable with small ceramic Cout. This is about the smallest legitimate way to do 8.4V→5V at 500mA.
+
+L: Murata DFE201612E-3R3M=P2 (3.3µH, 2.0×1.6×1.2mm). I'd take 3.3µH over the datasheet-typical 2.2µH here: at Vin=8.4V, ΔI_L = 5·(1−5/8.4)/(2.25MHz·3.3µH) ≈ 0.27A, so peak = 0.5 + 0.135 ≈ 0.64A against the part's 0.85A minimum current limit — comfortable margin, where 2.2µH (0.70A peak) is thinner. Same footprint either way, and 3.3µH also keeps you in PWM down to ~136mA as a bonus.
+Cin: 2.2–4.7µF/25V X7R 0603 + 100nF close to VIN.
+Cout: bump to 22µF nominal (2×10µF 0805 or 1×22µF). The TPS6217x design guidance assumes ~22µF; your 8µF effective is below where I'd want to sit with DCS-Control ramp/comparator behavior, and the area cost is nil.
+Total: roughly 20–25mm² placed and routed.
+
+You run at 500mA-class on a part whose limit is 500mA, so check thermals at 125°C ambient — but at ~0.5A and this efficiency class, dissipation is a couple hundred mW; the 2×2 WSON with a decent ground pour is fine. If you want more current headroom instead, TPS62153 (5V fixed, 1A, QFN 3×3, FSW=Low → 2.5MHz) is the same architecture one size up.
+
+
+Rail B: 5V → 3.3V, ~300mA
+TPS62821DLCR — this is essentially the die inside your TPSM828214, without the inductor. 1.5×1.5mm, 2.4–5.5V in, 1A, 4MHz, auto-PSM. 4MHz means a sub-µH inductor:
+
+L: Murata DFE201612E-R47M=P2 (0.47µH, same 0806 body — nice BOM commonality) or DFE201210S-R47M (2.0×1.25×1.0mm) if you want to shave further. ΔI_L = 3.3·(1−3.3/5)/(4MHz·0.47µH) ≈ 0.60A pk-pk, peak ≈ 0.60A at 300mA load — trivial for either inductor's Isat.
+FB divider: 2× 0201/0402 resistors for 3.3V (TPS6282x is adjustable-only).
+Cin: 4.7µF 0603; Cout: 22µF nominal, same reasoning as above.
+Total: ~12–15mm².
+
+If you'd rather not have the divider, TPS62A02 / TPS62A01 (SOT-563, 2.4MHz) with a 1µH DFE201612E-1R0M is nearly identical in area — but it's also adjustable-only in the common variants, so the divider mostly comes along anyway; TPS62821 at 4MHz wins slightly on passive size
+
+
+
+Honestly? Because I missed it. The TPS6292xx family (2022) is TI's direct fix for the exact complaint that drove this whole thread — it's DCS-Control with a real MODE pin. It supersedes the TPS6217x/6215x generation for this use case, and it's a better Rail A part than anything I recommended, including the LMR51610. Good find.
+Checking it against your requirements:
+
+3–17V in, 18V abs max — covers 6.4–8.4V with margin.
+0.6A — fits your 400–500mA. HS current limit is 1.1A minimum; at 8.4V/2.2µH/2.5MHz, ΔI_L ≈ 368mA so peak ≈ 0.68A. Comfortable.
+True forced PWM at 2.5MHz, selectable by one resistor on MODE/S-CONF. So you get the original FCCM behavior back essentially for free — the whole "can I live with auto-PSM" analysis becomes moot for this rail.
+SOT-5X3, 1.6×2.1mm — smaller than the LMR51610's SOT-23-6, smaller than the TPS6217x WSON in practice once you count it doesn't need the divider (below).
+No bootstrap cap — one fewer passive than LMR51610.
+TJ −40 to 125°C recommended (orderable rated to 150°C; and a TPS629206-Q1 exists if you want Grade 1).
+
+The elegant configuration for your 5V rail: VSET mode. Table 8-1 row 12 (52.3kΩ on MODE/S-CONF) gives you 2.5MHz + forced PWM + no output discharge, with the internal feedback divider; then 80.6kΩ from FB/VSET to GND selects 5.0V fixed (Table 8-2). Two small resistors total, no external divider, VOS senses the output directly. Alternatively row 10 (34k) if you want the discharge function.
+BOM sketch:
+
+TPS629206DRLR, R_MODE = 52.3k 1%, R_VSET = 80.6k 1% (both E96, ≤±200ppm/°C per the datasheet note — don't cheap out on these, they're read by an R-to-D converter)
+L: 2.2µH — Murata DFE252012PD-2R2M (2.5×2.0×1.2mm, 84mΩ, 2.8A) is literally in TI's Table 9-4, or DFE201612E-2R2M if you want the 0806 body
+Cin 4.7µF/25V, Cout 22µF nominal (recommended operating conditions specify 10µF minimum effective — your 8µF derated is just under, same bump-to-22µF-nominal advice as before)
+
+Two things to watch:
+
+Min off-time at the bottom of your battery range. Typical t_off,min is 80ns; at Vin=6.4V→5V, 2.5MHz leaves you 87.5ns of off-time. That's razor-thin against a typical spec with no max, so expect some on-time extension/frequency foldback below ~6.8Vin. With your relaxed filter requirement this is cosmetic — it folds toward ~2MHz, not to kHz. If it bothers you, the 1MHz FPWM setting (row 14, 80.6k... careful, check the table — 1MHz FPWM VSET rows are 80.6k/124k) has huge off-time margin, and per your own PSRR analysis 1MHz is fine.
+Avoid the "AEE" rows (7.5k/27.4k/42.2k, and GND level). AEE deliberately varies fsw with Vin — per Eq 8 you'd get ~2.4MHz at 8.4Vin sliding to ~1.7MHz at 6.4Vin. Not harmful for you, but the fixed-2.5MHz FPWM rows are the predictable choice.
+
+And if your load estimate ever creeps past 600mA: TPS629210 is the pin-to-pin 1A sibling — same footprint, same config tables, drop-in.
+For Rail B I'd stay with the TPS62821 recommendation (4MHz buys the smallest passives, and 5V→3.3V has no off-time concerns), though a second TPS629206/203 would give you BOM commonality if you value that over the last few mm².

@@ -1,0 +1,122 @@
+(footprint "L_Murata_DFE201612E_2016Metric"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(descr "Murata DFE201612E metal-alloy power inductor, 2.0x1.6x1.2mm (0806 in / 2016 metric). IPC-7351B nominal land derived from body+terminal dims; verify vs Murata reference pattern. https://www.murata.com/en-us/products/productdetail?partno=DFE201612E-1R0M%23")
+	(tags "inductor murata dfe 2016 0806 power shielded")
+	(property "Reference" "REF**"
+		(at 0 -1.8 0)
+		(layer "F.SilkS")
+		(uuid "4c9c2322-0156-4f3a-9310-0874860055e5")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "L_Murata_DFE201612E_2016Metric"
+		(at 0 1.8 0)
+		(layer "F.Fab")
+		(uuid "83c2ebd2-915b-4c04-8523-09ce446ab5ea")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "6b68215f-5621-4aee-bba7-9612c63b2a15")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Description" "Murata DFE201612E series power inductor 2.0x1.6x1.2mm"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "6f1989f8-bb1d-47e8-866f-281dfd3c09ec")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(attr smd)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_line
+		(start -0.15 -1.11)
+		(end 0.15 -1.11)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "1b320846-7342-4c0a-8b99-dd9249692bc2")
+	)
+	(fp_line
+		(start -0.15 1.11)
+		(end 0.15 1.11)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "ef181233-208f-4804-a62b-082d930934bb")
+	)
+	(fp_rect
+		(start -1.55 -1.1)
+		(end 1.55 1.1)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "fe6f6d77-45e3-4b67-9b48-eec65a6bcac5")
+	)
+	(fp_rect
+		(start -1 -0.8)
+		(end 1 0.8)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "aa4c9744-9d53-44d5-865b-4a9afc502535")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(uuid "0ef99070-6cbc-4674-a77b-64694ef61c93")
+		(effects
+			(font
+				(size 0.6 0.6)
+				(thickness 0.1)
+			)
+		)
+	)
+	(pad "1" smd roundrect
+		(at -0.825 0)
+		(size 0.95 1.7)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.25)
+		(uuid "a59b89b9-a6ce-4934-aa46-858910544743")
+	)
+	(pad "2" smd roundrect
+		(at 0.825 0)
+		(size 0.95 1.7)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.25)
+		(uuid "67019924-4282-489d-ae4a-70233f477f9c")
+	)
+	(embedded_fonts no)
+)
