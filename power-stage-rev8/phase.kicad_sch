@@ -5996,7 +5996,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "36d6e8e2-cd97-40e0-80e0-eef0f6133f88")
 		(property "Reference" "C47"
 			(at 168.91 85.0962 0)
@@ -6110,7 +6110,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "5.1k/0.1%"
+		(property "Value" "8.2k/0.1%"
 			(at 140.97 111.7599 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6165,7 +6165,7 @@
 				)
 			)
 		)
-		(property "MPN" "RP0402BRD075K1L"
+		(property "MPN" "RP0402BRD078K2L"
 			(at 138.43 110.49 0)
 			(hide yes)
 			(show_name no)
@@ -8767,7 +8767,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "3.3k/0.1%"
+		(property "Value" "2.7k/0.1%"
 			(at 140.97 116.8399 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8822,7 +8822,7 @@
 				)
 			)
 		)
-		(property "MPN" "RP0402BRD073K3L"
+		(property "MPN" "RP0402BRD072K7L"
 			(at 138.43 115.57 0)
 			(hide yes)
 			(show_name no)
@@ -9629,7 +9629,7 @@
 				)
 			)
 		)
-		(property "MPN" "BLM15PX601SZ1"
+		(property "MPN" "BLM15PX601SZ1D"
 			(at 140.97 68.58 90)
 			(hide yes)
 			(show_name no)

@@ -10557,16 +10557,6 @@
 		)
 		(uuid "647415e9-25c0-4f42-a755-2cf75963259c")
 	)
-	(text "Internal PD"
-		(exclude_from_sim no)
-		(at 68.834 143.764 0)
-		(effects
-			(font
-				(size 0.635 0.635)
-			)
-		)
-		(uuid "668e6781-dc5f-4113-a597-50d1a8a91f54")
-	)
 	(text "This goes somewhere kinda further from inverter"
 		(exclude_from_sim no)
 		(at 412.242 215.9 0)
@@ -10662,16 +10652,6 @@
 			)
 		)
 		(uuid "8e2f02cd-94df-4d33-bc77-4cd9534decb3")
-	)
-	(text "Internal PD"
-		(exclude_from_sim no)
-		(at 68.834 146.05 0)
-		(effects
-			(font
-				(size 0.635 0.635)
-			)
-		)
-		(uuid "97b50882-faa4-409f-9834-2a0236b9284f")
 	)
 	(text "100kHz-2.5MHz Fsw\n(PWM/PFM)"
 		(exclude_from_sim no)
@@ -11088,6 +11068,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "4253cf63-76b7-47b7-af80-884f636cc435")
+	)
+	(junction
+		(at 64.77 146.05)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "433fc829-94fa-44f1-b8d5-8df543988e34")
 	)
 	(junction
 		(at 144.78 195.58)
@@ -11546,10 +11532,6 @@
 		(uuid "09c4a497-e472-403c-8583-7b6e64420417")
 	)
 	(no_connect
-		(at 64.77 146.05)
-		(uuid "0a155f7d-5d5e-4087-9581-d72ed1b56a91")
-	)
-	(no_connect
 		(at 200.66 237.49)
 		(uuid "0ac5c742-1ce0-42f3-92e7-0c26a3cb4162")
 	)
@@ -11660,10 +11642,6 @@
 	(no_connect
 		(at 241.3 173.99)
 		(uuid "80701902-4695-49ff-9a05-1cd760caad85")
-	)
-	(no_connect
-		(at 64.77 143.51)
-		(uuid "84c8d76c-41de-4917-87bf-239a0f35d95a")
 	)
 	(no_connect
 		(at 241.3 196.85)
@@ -12044,6 +12022,16 @@
 			(type default)
 		)
 		(uuid "10a45939-e6a0-4414-b4c9-a35c3896b9d9")
+	)
+	(wire
+		(pts
+			(xy 64.77 143.51) (xy 64.77 146.05)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "11bdb501-fd60-4953-a903-0111b4eb823d")
 	)
 	(wire
 		(pts
@@ -24751,7 +24739,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "3.3k/0.1%"
+		(property "Value" "2.7k/0.1%"
 			(at 44.45 201.9299 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -24806,7 +24794,7 @@
 				)
 			)
 		)
-		(property "MPN" "RP0402BRD073K3L"
+		(property "MPN" "RP0402BRD072K7L"
 			(at 41.91 200.66 0)
 			(hide yes)
 			(show_name no)
@@ -25943,7 +25931,7 @@
 				)
 			)
 		)
-		(property "MPN" ""
+		(property "MPN" "AC0402FR-0734KL"
 			(at 130.81 59.69 0)
 			(hide yes)
 			(show_name no)
@@ -27473,6 +27461,28 @@
 			)
 		)
 		(property "Description" "Resistor, small US symbol"
+			(at 308.61 44.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "AC0402FR-07100KL"
+			(at 308.61 44.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Mfg" "Yageo"
 			(at 308.61 44.45 0)
 			(hide yes)
 			(show_name no)
@@ -29244,6 +29254,28 @@
 				)
 			)
 		)
+		(property "MPN" "GRM1555C1H121JA01D"
+			(at 318.77 38.1 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Mfg" "Murata"
+			(at 318.77 38.1 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "2c09372c-06bf-4a69-81bf-2391b6ebb075")
 		)
@@ -29428,7 +29460,7 @@
 				)
 			)
 		)
-		(property "MPN" "LFXTAL071255REEL"
+		(property "MPN" "LFXTAL071255"
 			(at 148.59 154.94 90)
 			(hide yes)
 			(show_name no)
@@ -29992,7 +30024,7 @@
 				)
 			)
 		)
-		(property "MPN" "BLM15PX601SZ1"
+		(property "MPN" "BLM15PX601SZ1D"
 			(at 381 34.29 90)
 			(hide yes)
 			(show_name no)
@@ -31184,7 +31216,7 @@
 				)
 			)
 		)
-		(property "MPN" "GRT188R61C106KE13"
+		(property "MPN" "GRT188C81C106ME13D"
 			(at 400.05 36.83 0)
 			(hide yes)
 			(show_name no)
@@ -31550,6 +31582,28 @@
 			)
 		)
 		(property "Description" "1A Step-Down Converter with DCS-Control, adjustable output, 2.4-5.5V input voltage, QFN-8"
+			(at 281.94 43.18 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "TPS62821DLCR"
+			(at 281.94 43.18 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Mfg" "TI"
 			(at 281.94 43.18 0)
 			(hide yes)
 			(show_name no)
@@ -32097,7 +32151,7 @@
 		(in_bom no)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "69e9faf4-cc62-47f1-bf2e-4a27c6b1031d")
 		(property "Reference" "J2"
 			(at 530.86 152.4 0)
@@ -32516,7 +32570,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "5.1k/0.1%"
+		(property "Value" "8.2k/0.1%"
 			(at 44.45 196.8499 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -32571,7 +32625,7 @@
 				)
 			)
 		)
-		(property "MPN" "RP0402BRD075K1L"
+		(property "MPN" "RP0402BRD078K2L"
 			(at 41.91 195.58 0)
 			(hide yes)
 			(show_name no)
@@ -32892,7 +32946,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "7989fe9f-051b-44a0-8698-42ea495e417c")
 		(property "Reference" "R47"
@@ -34775,6 +34829,28 @@
 				)
 			)
 		)
+		(property "MPN" "TPS629210DRLR"
+			(at 158.75 49.53 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Mfg" "TI"
+			(at 158.75 49.53 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "8"
 			(uuid "9391db4b-e541-47ad-994f-a705b41b8846")
 		)
@@ -35044,7 +35120,7 @@
 				)
 			)
 		)
-		(property "MPN" ""
+		(property "MPN" "AC0402FR-0780K6L"
 			(at 139.7 59.69 0)
 			(hide yes)
 			(show_name no)
@@ -36502,7 +36578,7 @@
 				)
 			)
 		)
-		(property "MPN" "GRT188R61C106KE13"
+		(property "MPN" "GRT188C81C106ME13D"
 			(at 391.16 36.83 0)
 			(hide yes)
 			(show_name no)
@@ -37034,6 +37110,85 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 64.77 146.05 0)
+		(mirror y)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "b07e4c2b-496e-489a-bc12-fa10e0d8bfdb")
+		(property "Reference" "#PWR018"
+			(at 64.77 152.4 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 64.77 151.13 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 64.77 146.05 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 64.77 146.05 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 64.77 146.05 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "35452861-849d-4dc3-8603-8a839ec1c0b9")
+		)
+		(instances
+			(project "power-stage-rev8"
+				(path "/dc35c2fc-4c63-4639-912e-b812884604c8"
+					(reference "#PWR018")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "rev-8-symbols:AGND")
 		(at 124.46 205.74 0)
 		(unit 1)
@@ -37372,6 +37527,28 @@
 		)
 		(property "Description" "Inductor"
 			(at 181.61 43.18 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "DFE201612E-2R2M=P2"
+			(at 181.61 43.18 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Mfg" "Murata"
+			(at 181.61 43.18 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -37953,7 +38130,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "353k"
+		(property "Value" "453k"
 			(at 311.15 39.3699 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -37987,6 +38164,28 @@
 			)
 		)
 		(property "Description" "Resistor, small US symbol"
+			(at 308.61 38.1 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "AC0402FR-07453KL"
+			(at 308.61 38.1 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Mfg" "Yageo"
 			(at 308.61 38.1 0)
 			(hide yes)
 			(show_name no)
@@ -38838,7 +39037,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "d6d695fe-9e3f-4f05-90ce-f4df99b9f9d4")
 		(property "Reference" "R48"
@@ -39191,7 +39390,7 @@
 				)
 			)
 		)
-		(property "MPN" "BLM15PX601SZ1"
+		(property "MPN" "BLM15PX601SZ1D"
 			(at 407.67 205.74 90)
 			(hide yes)
 			(show_name no)
@@ -40572,6 +40771,28 @@
 		)
 		(property "Description" "Inductor"
 			(at 300.99 35.56 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "DFE201612E-1R0M=P2"
+			(at 300.99 35.56 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Mfg" "Murata"
+			(at 300.99 35.56 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
