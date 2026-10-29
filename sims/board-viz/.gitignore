@@ -1,0 +1,5 @@
+# regenerable or large: PEEC field products (tinyhorse, ~0.3 GB per stack), full-size renders, circuit-state arrays
+products/
+fig/
+*.npz
+__pycache__/

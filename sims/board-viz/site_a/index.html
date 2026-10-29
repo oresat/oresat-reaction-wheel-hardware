@@ -1,0 +1,314 @@
+<title>Inside the Rev8 Power Stage</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a field atlas. Full-width plates on a dark bench, each with a caption strip (what, stack, frequency, units, scale).
+   Single dark theme by choice: the field renders are light-on-dark and need a dark ground. */
+:root{
+  color-scheme:dark;
+  --bg:#08090c; --panel:#0f1217; --panel-2:#151920; --rule:#232831;
+  --ink:#ece8e1; --ink-2:#b6b8bc; --ink-3:#80858d;
+  --copper:#d9925a; --vbus:#ff6b3d; --pgnd:#3fa0ff; --efield:#b8e986; --bfield:#d0449c;
+  --c1:#d9925a; --c2:#ffd166; --c3:#8fd3c7; --c4:#3fa0ff; --c5:#9b87ff; --c6:#ece8e1;
+  --f-display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
+  --f-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.58;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding-block:36px 80px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:72px}
+h1,h2,h3{font-family:var(--f-display);margin:0;text-wrap:balance;font-weight:800;letter-spacing:.005em;line-height:1.0}
+h1{font-size:clamp(44px,7.4vw,96px);text-transform:uppercase}
+h2{font-size:clamp(30px,4.2vw,48px);text-transform:uppercase}
+h3{font-size:22px;font-weight:600;letter-spacing:.02em;text-transform:uppercase}
+p{margin:0;max-width:68ch;color:var(--ink-2)}
+b,strong{color:var(--ink);font-weight:600}
+.kicker{font-family:var(--f-mono);font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--copper)}
+section,header{display:grid;gap:20px;min-width:0}
+.lede{font-size:19px;color:var(--ink)}
+.hero{display:grid;gap:22px}
+.heroplate{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--rule);background:#08090c}
+.heroplate img{display:block;width:100%;height:auto}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:12px;overflow:hidden}
+.stats div{background:var(--panel);padding:12px 14px;display:grid;gap:2px}
+.stats .k{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
+.stats .v{font-family:var(--f-display);font-weight:600;font-size:30px;font-variant-numeric:tabular-nums;line-height:1.05}
+.stats .u{font-size:14px;color:var(--ink-3);font-family:var(--f-body);font-weight:400;margin-left:3px}
+.plate{margin:0;display:grid;gap:8px;min-width:0}
+.plate img{width:100%;height:auto;display:block;border-radius:10px;border:1px solid var(--rule);background:#08090c}
+.plate figcaption{font-size:13.5px;color:var(--ink-3);max-width:90ch}
+.plate figcaption b{color:var(--ink-2);font-weight:600}
+.lbl{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;font-family:var(--f-mono);font-size:12px;color:var(--ink-3)}
+.lbl b{font-family:var(--f-display);font-size:18px;letter-spacing:.03em;text-transform:uppercase;color:var(--ink);font-weight:600}
+.g2{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:18px 20px}
+.g4{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px 16px}
+.panel{background:var(--panel);border:1px solid var(--rule);border-radius:12px;padding:16px;min-width:0;display:grid;gap:12px}
+.ptitle{font-family:var(--f-display);font-weight:600;font-size:20px;letter-spacing:.03em;text-transform:uppercase}
+.sub{font-size:13px;color:var(--ink-3)}
+.legend{display:flex;gap:6px 16px;flex-wrap:wrap;font-size:13px;color:var(--ink-2)}
+.legend i{display:inline-block;width:14px;height:3px;border-radius:2px;margin-right:6px;vertical-align:4px}
+svg.ch{display:block;width:100%;height:auto;overflow:visible}
+.axl{fill:var(--ink-3);font:11px var(--f-mono)} .axt{fill:var(--ink-3);font:12px var(--f-body)}
+.grid{stroke:var(--rule);stroke-width:1} .zero{stroke:#3a414c;stroke-width:1}
+.note{font-size:13.5px;color:var(--ink-3);max-width:90ch}
+.swatch{display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center;font-size:13px;color:var(--ink-2)}
+.swatch span.c{display:inline-block;width:28px;height:8px;border-radius:4px;margin-right:6px;vertical-align:1px}
+@media (max-width:560px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* animation */
+.anim{display:grid;gap:12px}
+.stage{position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--rule);background:#08090c;aspect-ratio:32/23.5}
+.stage img{position:absolute;inset:0;width:100%;height:100%;display:block}
+.stage .tlabel{position:absolute;left:12px;top:10px;font-family:var(--f-mono);font-size:13px;background:rgba(8,9,12,.78);border:1px solid var(--rule);border-radius:8px;padding:5px 9px;color:var(--ink)}
+.stage .tlabel b{font-family:var(--f-display);font-size:22px;font-weight:600;letter-spacing:.02em}
+.ctl{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.ctl input[type=range]{flex:1 1 260px;accent-color:var(--copper)}
+.btn{all:unset;cursor:pointer;font-family:var(--f-display);font-weight:600;font-size:16px;letter-spacing:.04em;text-transform:uppercase;padding:7px 16px;border-radius:8px;background:var(--panel-2);border:1px solid var(--rule);color:var(--ink)}
+.btn:focus-visible,input:focus-visible{outline:2px solid var(--copper);outline-offset:2px}
+.seg{display:inline-flex;border:1px solid var(--rule);border-radius:999px;padding:3px;gap:2px;background:var(--panel)}
+.seg button{all:unset;cursor:pointer;font-family:var(--f-mono);font-size:12.5px;padding:5px 12px;border-radius:999px;color:var(--ink-2)}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.seg button:focus-visible{outline:2px solid var(--copper)}
+table{border-collapse:collapse;width:100%;font-size:14px;font-variant-numeric:tabular-nums}
+.tbl{overflow-x:auto}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);font-weight:500;white-space:nowrap}
+td{color:var(--ink-2)} td b{color:var(--ink)}
+ul.list{margin:0;padding-left:20px;display:grid;gap:8px;max-width:84ch;color:var(--ink-2)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<div class="wrap">
+
+<header class="hero">
+  <div class="kicker">Rev8 reaction-wheel power stage · as designed · 3D PEEC + Xyce</div>
+  <h1>Inside the Rev8 Power Stage</h1>
+  <p class="lede">Three LMG2100 GaN half-bridges switch an 8.4 V bus 96,000 times a second. Each edge moves 10 A in about a nanosecond. This page follows that current through the copper: which capacitors answer first, how the return current finds the path directly under the supply current, and what the fields look like while it happens.</p>
+  <figure class="plate heroplate" id="heroplate">
+    <img id="heroimg" src="img/flow_BULK_L_10M.webp" alt="Top view of the power stage with the 10 MHz loop current from the left bulk capacitors to leg C. Supply and return current overlap in white along the VBUS band." width="1200" height="881">
+  </figure>
+  <p class="note">Above: 1 A at 10 MHz from the left bulk capacitors to leg C, all six layers seen from the top. Warm is VBUS copper, cool is PGND copper; where the supply current and its return run directly over each other the two colors add to white. Brightness is log₁₀ of sheet current, 0.005–0.5 A/mm. Streamlines follow the current in each net.</p>
+  <div class="stats" id="stats">
+    <div><span class="k">SW rise, 10–90 %</span><span class="v">1.16<span class="u">ns</span></span></div>
+    <div><span class="k">Peak di/dt</span><span class="v">16.6<span class="u">A/ns</span></span></div>
+    <div><span class="k">Hot loop, board side</span><span class="v">62–105<span class="u">pH</span></span></div>
+    <div><span class="k">Bus |Z| at 1 MHz</span><span class="v">1.45<span class="u">mΩ</span></span></div>
+    <div><span class="k">Band field energy</span><span class="v">15<span class="u">pH/mm</span></span></div>
+    <div><span class="k">Sense pickup, after ADC</span><span class="v">≤0.25<span class="u">mV</span></span></div>
+  </div>
+</header>
+
+<section>
+  <div class="kicker">01 · the edge</div>
+  <h2>One nanosecond, ten amps</h2>
+  <p>Leg C (U12) at 8.4 V carrying 10 A out of SW. HI rises at t = 0; the LMG2100's 35 ns propagation delay puts the switching instant at about 39 ns. The high side takes the load current in 1.2 ns, overshoots to 19.6 A while it charges the low side's output capacitance, and rings at about 330 MHz: the commutation loop is the package (≈ 0.2 nH) plus 62–105 pH of board to the bottom 2.2 µF bank, against roughly 1 nF of Coss.</p>
+  <div class="g2">
+    <div class="panel"><div class="ptitle">HS turn-on</div><svg class="ch" id="c-on" role="img" aria-label="SW voltage and device current at HS turn-on"></svg></div>
+    <div class="panel"><div class="ptitle">HS turn-off</div><svg class="ch" id="c-off" role="img" aria-label="SW voltage and device current at HS turn-off"></svg></div>
+  </div>
+  <div class="legend"><span><i style="background:var(--copper)"></i>SW node (V)</span><span><i style="background:var(--pgnd)"></i>current into the VIN pin (A)</span></div>
+  <p class="note">Xyce, LMG2100R044 model (EPC2090 dies, LMG1205-style driver), the leg's real gate-drive parts (2.7 Ω VCC and bootstrap resistors, 100 nF bootstrap, 22 Ω / 47 pF inputs), 10.4 ns dead time, on the 28-port PEEC model of the VBUS/PGND copper with Murata capacitor models at 8.4 V.</p>
+</section>
+
+<section>
+  <div class="kicker">02 · who answers</div>
+  <h2>The capacitors hand the current outward</h2>
+  <p>The device draws its 10 A from whatever is closest in inductance. For the first nanoseconds that is leg C's own banks under and over the device. Within about 100 ns the neighbouring legs' banks and the right bulk capacitors take over, by a microsecond the two bulk banks carry most of it, and the feed from J1 ramps up behind them. Each step outward has more capacitance and more inductance. The curves below are the current each group supplies into the VBUS copper after the switching instant.</p>
+  <div class="panel"><svg class="ch" id="c-cascade" role="img" aria-label="Current supplied by each capacitor group versus log time after the switching instant"></svg>
+    <div class="legend" id="lg-cascade"></div></div>
+  <div class="anim panel" id="anim">
+    <div class="ptitle">Current sheet density through one switching edge</div>
+    <div class="stage"><img id="frame" alt="Animated top view of the current density in all layers during an HS turn-on" src="anim/f000.webp"><div class="tlabel" id="tlabel"><b>−100 ns</b></div></div>
+    <div class="ctl">
+      <button type="button" class="btn" id="play" aria-pressed="false">Play</button>
+      <label for="scrub" class="sub" style="display:flex;gap:10px;align-items:center;flex:1 1 300px">Frame <input id="scrub" type="range" min="0" max="169" value="0"></label>
+    </div>
+    <svg class="ch" id="c-strip" role="img" aria-label="Device current and VBUS at the feed at each animation frame"></svg>
+    <p class="note">The change in sheet current since 100 ns before the HI command, so only the edge's own current shows (the steady 5 A from J1 is subtracted). All six layers seen from the top, HS turn-on at 8.4 V and 10 A. Warm: VBUS copper; cool: PGND copper; white: supply and return current stacked over each other. Brightness: log₁₀ |ΔK| from 0.03 to 5 A/mm, fixed for every frame. Frames are 0.25 ns apart from 32 to 64 ns, then log-spaced to 5 µs. Strip: device current in A (blue) and VBUS at the feed (copper, plotted ÷10, so 10 on the scale is 100 mV) at each frame. Method under "How these pictures were made".</p>
+  </div>
+</section>
+
+<section>
+  <div class="kicker">03 · return paths</div>
+  <h2>At DC the return spreads. At 10 MHz it lines up.</h2>
+  <p>Same loop, two frequencies: 1 A from the left bulk bank to leg C. At DC the current divides by resistance, so the return uses every bit of PGND copper on every layer. Above about 1 MHz inductance decides, and the return current crowds into the PGND plane directly next to the VBUS band, because that path encloses the least magnetic flux. The VBUS band lives on L3 and L4, each 0.1 mm from its own PGND plane (L2 and L5): the stackup gives every supply layer an immediate return layer.</p>
+  <div class="g2">
+    <figure class="plate"><div class="lbl"><b>DC</b><span>all layers · 1 A · 0.005–0.5 A/mm</span></div><img src="img/flow_BULK_L_dc.webp" alt="DC loop current from the left bulk to leg C, all layers; return current spread widely" width="1200" height="881" loading="lazy"></figure>
+    <figure class="plate"><div class="lbl"><b>10 MHz</b><span>all layers · 1 A · 0.005–0.5 A/mm</span></div><img src="img/flow_BULK_L_10M.webp" alt="10 MHz loop current from the left bulk to leg C, all layers; return current aligned under the supply current" width="1200" height="881" loading="lazy"></figure>
+  </div>
+  <div class="ctl"><span class="sub">Layer by layer:</span>
+    <div class="seg" role="group" aria-label="Frequency" id="lf"><button type="button" aria-pressed="false" data-f="dc">DC</button><button type="button" aria-pressed="true" data-f="10M">10 MHz</button></div></div>
+  <div class="g4" id="layers"></div>
+  <p class="note" id="share-note"></p>
+</section>
+
+<section>
+  <div class="kicker">04 · the hot loop</div>
+  <h2>The tightest loop on the board</h2>
+  <p>The commutation current at each edge closes through the five 2.2 µF 0402s right next to the LMG2100 on the bottom side. Board side, that loop is 62–105 pH at 10 MHz (62 pH with the device pads as ideal conductors, 105 pH with a copper slab across them); it sits on L6 over the PGND plane on L5, 0.092 mm away. The field of the loop stays in that thin gap.</p>
+  <div class="g2">
+    <figure class="plate"><div class="lbl"><b>Current, all layers</b><span>C_bot → leg C · 1 A · 10 MHz · close-up</span></div><img src="img/hot_flow.webp" alt="Hot-loop current at 10 MHz between the bottom bank and leg C, close-up" loading="lazy"></figure>
+    <figure class="plate"><div class="lbl"><b>|B| between L6 and L5</b><span>C_bot → leg C · 1 A · 10 MHz · close-up</span></div><img src="img/hot_bgap.webp" alt="Magnetic field in the gap between L6 and L5 for the hot loop, close-up" loading="lazy"></figure>
+  </div>
+  <p class="note" id="hot-note"></p>
+</section>
+
+<section>
+  <div class="kicker">05 · magnetic field</div>
+  <h2>The bus field lives in two thin gaps</h2>
+  <p>Cut across the VBUS band at x = 98 mm with 1 A flowing from the left bulk to leg C. At 10 MHz the field is squeezed into the two 0.1 mm gaps between the VBUS layers and their PGND planes. Field energy per unit length is the band's inductance: 15 pH/mm here. At DC the return spreads and the field fills the board.</p>
+  <div class="g2">
+    <figure class="plate"><div class="lbl"><b>10 MHz</b><span>|B| · y 90–103 mm · z ×4</span></div><img src="img/byz_BULK_L_10M.webp" alt="Magnetic field cross-section of the VBUS band at 10 MHz" loading="lazy"></figure>
+    <figure class="plate"><div class="lbl"><b>DC</b><span>|B| · y 90–103 mm · z ×4</span></div><img src="img/byz_BULK_L_dc.webp" alt="Magnetic field cross-section of the VBUS band at DC" loading="lazy"></figure>
+  </div>
+  <p class="note">|B| from the PEEC current (exact cell-integrated 1/r kernel, FFT convolution), per amp of loop current, each image on its own scale (dark to pale). Board top is up; layers L1 (top) to L6 (bottom).</p>
+</section>
+
+<section>
+  <div class="kicker">06 · electric field</div>
+  <h2>Where the field lines land</h2>
+  <p>The electrostatic picture with VBUS held at 1 V and every other net at 0 V. In the VBUS band the field is confined between each VBUS layer and its PGND plane: 5–6 pF/mm of plane capacitance that helps the MLCCs at the highest frequencies. Under the analog sense bundle the traces sit 0.1 mm over a quiet AGND plane on L2, and the VBUS feed on L4 is a full millimetre of core away: each sense trace sees 7.4 fF/mm to VBUS, and only 4.6 % of the high-frequency VBUS swing appears on an open trace.</p>
+  <figure class="plate"><div class="lbl"><b>VBUS band, cut at x = 104 mm</b><span>|E| per volt · log · z ×2</span></div><img src="img/e_band_x104_intended.webp" alt="Electric field across the VBUS band: field lines confined between VBUS layers and PGND planes" loading="lazy"></figure>
+  <figure class="plate"><div class="lbl"><b>Analog bundle over the feed, cut at y = 105 mm</b><span>|E| per volt · log · z ×2</span></div><img src="img/e_bundle_y105_intended.webp" alt="Electric field under the analog sense bundle: traces shielded by AGND on L2, VBUS feed far below" loading="lazy"></figure>
+  <div class="swatch"><span><span class="c" style="background:#ff5d50"></span>VBUS</span><span><span class="c" style="background:#5b8fe0"></span>PGND</span><span><span class="c" style="background:#e2a93f"></span>AGND</span><span><span class="c" style="background:#39ff6a"></span>analog sense traces (ISNS ×3, VSNS ×3, VREF, 3V3A)</span><span><span class="c" style="background:#8c94a8"></span>GND / other</span></div>
+  <p class="note">2D finite-volume Laplace solve with the dielectrics (εr 4.1 prepreg, 4.6 core), |E| in V/mm per volt of VBUS on a log scale from 0.01 to 30, with field lines. Vertical scale ×2.</p>
+  <figure class="plate"><div class="lbl"><b>Voltage along the VBUS band, L3</b><span>1 A · 10 MHz · inductive part · 0 to 32 mV per A</span></div>
+    <img src="img/pot_BULK_L_10M_L3_VBUS.webp" alt="Inductive voltage along the VBUS band on L3, rising from leg C toward the left bulk" loading="lazy">
+    <figcaption>PEEC copper potential on the VBUS copper of L3, imaginary part at 10 MHz, for 1 A from the left bulk to leg C, referenced to leg C's VIN pad: it rises steadily along the band to about 32 mV per A at the left bulk bank. The loop total, 33 mV per A, is ωL for the 534 pH bulk-to-leg loop. How that total divides between the VBUS and PGND copper depends on the potential reference, so only the loop total is physical; the map shows where along the band it accumulates. The PEEC model is magnetoquasistatic: this is the potential on the copper, not a field solution in the dielectric.</figcaption></figure>
+</section>
+
+<section>
+  <div class="kicker">07 · the bus</div>
+  <h2>Three timescales on one bus</h2>
+  <p>What the VBUS feed under the analog bundle sees at every edge: a 330 MHz burst from the device loop that is gone in tens of nanoseconds, bus modes near 1.5 MHz as the banks hand the current outward, and the 96 kHz triangle as the bulk capacitors discharge and recharge against the pack.</p>
+  <div class="g2">
+    <div class="panel"><div class="ptitle">Bus impedance at leg C</div><svg class="ch" id="c-z" role="img" aria-label="Bus impedance at leg C versus frequency"></svg>
+      <div class="legend"><span><i style="background:var(--copper)"></i>|Z| VBUS–PGND at the device pads (mΩ)</span><span><i style="background:var(--efield)"></i>transfer to the feed probe (mV per A)</span></div></div>
+    <div class="panel"><div class="ptitle">VBUS at the feed, first 120 ns</div><svg class="ch" id="c-v1" role="img" aria-label="VBUS at the feed in the first 120 ns after the HI command"></svg>
+      <div class="sub">mV, relative to just before the edge; HI rises at 0 ns.</div></div>
+    <div class="panel"><div class="ptitle">… the first 3 µs</div><svg class="ch" id="c-v2" role="img" aria-label="VBUS at the feed in the first 3 microseconds"></svg>
+      <div class="sub">Bus modes ride on the start of the ripple ramp.</div></div>
+    <div class="panel"><div class="ptitle">… one PWM period</div><svg class="ch" id="c-v3" role="img" aria-label="VBUS at the feed over one PWM period"></svg>
+      <div class="sub">96 kHz, duty 0.5, 10 A: the bulk capacitors against 50 mΩ + 100 nH of pack and harness.</div></div>
+  </div>
+  <div class="tbl"><table>
+    <thead><tr><th>timescale</th><th>frequency</th><th>at the feed (8.4 V, 10 A)</th><th>what sets it</th></tr></thead>
+    <tbody>
+      <tr><td><b>device-loop burst</b></td><td>330–340 MHz</td><td>≈ 110 mV peak, 1/e in 2–10 ns</td><td>package + 62–105 pH board loop against Coss; the bottom 0402s</td></tr>
+      <tr><td><b>bus modes</b></td><td>1.4–1.5 MHz, plus 2.9, 6, 27 MHz</td><td>3.3 mV at 0.1–0.3 µs, 1.3 mV at 0.6–1.2 µs</td><td>MLCC banks against bank-to-bulk copper (205–534 pH)</td></tr>
+      <tr><td><b>PWM ripple</b></td><td>96 kHz</td><td>116 mV peak to peak</td><td>10 × 47 µF bulk (17.6 µF each at 8.4 V) against the pack</td></tr>
+    </tbody></table></div>
+</section>
+
+<section>
+  <div class="kicker">08 · why the sense lines stay quiet</div>
+  <h2>Shielded where it counts</h2>
+  <p>The current-sense traces run over the VBUS feed for 23–27 mm, but in this stackup a solid AGND plane sits 0.1 mm above them on L2 and the feed is a millimetre of core below. After the ADC's 69 ns sampling aperture the pickup on the sense nodes is a few hundredths of a millivolt, and the worst bound (the feed current's magnetic coupling into the trace loop) stays under 0.25 mV: about 2.5 mA of phase-current error, and only for samples within half a microsecond of an edge.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>sense node</th><th>raw peak</th><th>after 69 ns aperture</th><th>mechanism</th></tr></thead>
+    <tbody>
+      <tr><td><b>VSNS</b></td><td>1.6 mV</td><td>0.04 mV</td><td>0.19 pF to VBUS into 2.03 kΩ ∥ 13 pF</td></tr>
+      <tr><td><b>ISNS</b></td><td>—</td><td>0.006–0.020 mV</td><td>same coupling into the INA296 output (20–100 Ω assumed)</td></tr>
+      <tr><td><b>feed-current EMF</b></td><td>1.1–5.9 mV</td><td>0.05–0.25 mV</td><td>feed current dI/dt × 0.2–0.9 pH/mm × 23–27 mm (bound)</td></tr>
+    </tbody></table></div>
+</section>
+
+<section>
+  <div class="kicker">how these pictures were made</div>
+  <h2>Method and limits</h2>
+  <ul class="list">
+    <li><b>Copper:</b> PyPEEC 5.8, VBUS and PGND copper of the rev 8.1.1 KiCad file, 100 µm × 11.5 µm voxels, crop x 85.5–117.5, y 89.5–113 mm, about 710k voxels. 28 terminals: the three LMG2100s, eight capacitor banks, two probes on the feed, the feed cut at y = 113 mm. Solved at DC and 10 MHz with fields saved (AWS).</li>
+    <li><b>Circuit:</b> hub-referenced port impedances R(f) + jωL from the PEEC terminal matrix, Murata SimSurfing ladders for every capacitor at 8.4 V, the feed continued to J1 and C2/C27, the pack and harness as 50 mΩ + 100 nH. The device edge comes from Xyce on the same network; probe voltages and port currents are computed per harmonic of the 96 kHz period up to 1 GHz.</li>
+    <li><b>Time-domain current density:</b> J(r,t) = Σ ports I_p(t) · J_p(r), where J_p is the PEEC field for 1 A into port p. J_p is known at DC and at 10 MHz; each harmonic uses the blend (1−w)·J_p,DC + w·J_p,10MHz with w = f²/(f² + (1 MHz)²), the corner where ωL ≈ R for the bank and bulk loops. Above 10 MHz the 10 MHz distribution is used: it is already in the inductive limit at the plane level, but skin and proximity effects inside each 35 µm layer are not resolved.</li>
+    <li><b>Fields:</b> |B| from the PEEC current with an exact cell-integrated kernel. |E| from 2D cross-section solves with the dielectrics; the PEEC model itself is magnetoquasistatic and gives copper potentials, not fields in the dielectric.</li>
+    <li><b>Limits:</b> model results, no bench data. GND/AGND copper and the regulator input capacitors are not in the 3D model. The LMG2100R044 model is unofficial (package L ±50 %, DC-only package resistance, so the 330 MHz burst probably decays faster in hardware). One leg switches at a time.</li>
+    <li><b>Files:</b> <span class="mono">sims/bus-ring/</span> (bus study, RESULTS.md) and <span class="mono">sims/board-viz/</span> (these plots), branch <span class="mono">worktree-bus-ring-sim</span>.</li>
+  </ul>
+</section>
+
+</div>
+
+<script>
+(function(){
+'use strict';
+const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const fmt=v=>{const a=Math.abs(v);if(a===0)return '0';if(a>=1e9)return (v/1e9)+'G';if(a>=1e6)return (v/1e6)+'M';if(a>=1e3)return (v/1e3)+'k';if(a<0.01)return v.toExponential(0);return String(+v.toPrecision(3))};
+let cid=0;
+function chart(svg,o){
+  const W=o.w||640,H=o.h||260,m=Object.assign({l:50,r:12,t:10,b:36},o.m||{});const id='cl'+(cid++);
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  const X=o.x,Y=o.y,L=Math.log10;
+  const sx=X.log?v=>m.l+(L(v)-L(X.min))/(L(X.max)-L(X.min))*(W-m.l-m.r):v=>m.l+(v-X.min)/(X.max-X.min)*(W-m.l-m.r);
+  const sy=Y.log?v=>H-m.b-(L(v)-L(Y.min))/(L(Y.max)-L(Y.min))*(H-m.t-m.b):v=>H-m.b-(v-Y.min)/(Y.max-Y.min)*(H-m.t-m.b);
+  let h=`<defs><clipPath id="${id}"><rect x="${m.l}" y="${m.t}" width="${W-m.l-m.r}" height="${H-m.t-m.b}"/></clipPath></defs>`;
+  (X.ticks||[]).forEach(t=>{h+=`<line class="grid" x1="${sx(t)}" x2="${sx(t)}" y1="${m.t}" y2="${H-m.b}"/><text class="axl" x="${sx(t)}" y="${H-m.b+15}" text-anchor="middle">${X.tf?X.tf(t):fmt(t)}</text>`});
+  (Y.ticks||[]).forEach(t=>{h+=`<line class="${t===0&&!Y.log?'zero':'grid'}" x1="${m.l}" x2="${W-m.r}" y1="${sy(t)}" y2="${sy(t)}"/><text class="axl" x="${m.l-6}" y="${sy(t)+4}" text-anchor="end">${Y.tf?Y.tf(t):fmt(t)}</text>`});
+  if(X.label)h+=`<text class="axt" x="${(m.l+W-m.r)/2}" y="${H-4}" text-anchor="middle">${X.label}</text>`;
+  if(Y.label)h+=`<text class="axt" transform="translate(12 ${(m.t+H-m.b)/2}) rotate(-90)" text-anchor="middle">${Y.label}</text>`;
+  (o.vlines||[]).forEach(v=>{h+=`<line x1="${sx(v.x)}" x2="${sx(v.x)}" y1="${m.t}" y2="${H-m.b}" stroke="${v.color||css('--ink-3')}" stroke-dasharray="3 4"/>`+(v.label?`<text class="axl" x="${sx(v.x)+4}" y="${m.t+11}">${v.label}</text>`:'')});
+  o.series.forEach(s=>{let d='';const n=s.x.length;for(let i=0;i<n;i++){const xv=s.x[i],yv=s.y[i];if(yv==null||(Y.log&&yv<=0)||(X.log&&xv<=0)||xv<X.min||xv>X.max)continue;
+      d+=(d?'L':'M')+sx(xv).toFixed(1)+','+sy(Math.max(Y.min*(Y.log?1:1),Math.min(Y.max,yv))).toFixed(1)}
+    h+=`<path d="${d}" fill="none" stroke="${s.color}" stroke-width="${s.width||1.6}" stroke-linejoin="round" ${s.dash?`stroke-dasharray="${s.dash}"`:''} clip-path="url(#${id})" opacity="${s.op||1}"/>`});
+  svg.innerHTML=h+(o.extra?o.extra(sx,sy):'');
+  return {sx,sy};
+}
+const C={copper:css('--copper'),pgnd:css('--pgnd'),ef:css('--efield'),ink:css('--ink'),c:[1,2,3,4,5,6].map(i=>css('--c'+i))};
+fetch('data/viz.json').then(r=>r.json()).then(D=>{
+  const S=D.intended;
+  // 01 edges: SW and device current on one chart, two scales folded into one axis (V and A share -5..20)
+  [['c-on','edge_on'],['c-off','edge_off']].forEach(([id,k])=>{const E=S[k];
+    chart(document.getElementById(id),{w:640,h:280,x:{min:20,max:90,ticks:[20,30,40,50,60,70,80,90],label:'ns from the HI command'},
+      y:{min:-6,max:21,ticks:[-5,0,5,10,15,20],label:'V  ·  A'},
+      series:[{x:E.t,y:E.sw,color:C.copper,width:1.8},{x:E.t,y:E.idev,color:C.pgnd,width:1.4}]})});
+  // 02 cascade
+  const cs=S.cascade,names=Object.keys(cs.groups);
+  chart(document.getElementById('c-cascade'),{w:1100,h:340,m:{l:50,r:14,t:12,b:40},x:{min:0.1,max:5000,log:true,ticks:[0.1,1,10,100,1000,5000],tf:t=>t>=1000?(t/1000)+' µs':t+' ns',label:'time after the switching instant (log)'},
+    y:{min:-3,max:9,ticks:[-2,0,2,4,6,8],label:'A supplied into VBUS'},series:names.map((n,i)=>({x:cs.t_ns,y:cs.groups[n],color:C.c[i],width:2}))});
+  document.getElementById('lg-cascade').innerHTML=names.map((n,i)=>`<span><i style="background:${C.c[i]}"></i>${n}</span>`).join('');
+  // 07 impedance and probe transfer
+  const Z=D.zbus;
+  chart(document.getElementById('c-z'),{w:640,h:300,x:{min:1e4,max:1e9,log:true,ticks:[1e4,1e5,1e6,1e7,1e8,1e9],tf:t=>fmt(t)+'Hz',label:'frequency'},
+    y:{min:0.1,max:500,log:true,ticks:[0.1,1,10,100],label:'mΩ  ·  mV/A'},
+    series:[{x:Z.f,y:Z.intended,color:C.copper,width:2},{x:Z.f,y:Z.h_intended,color:C.ef,width:1.6}]});
+  const vf=S.vbus_fast,vs=S.vbus_slow,vp=S.vbus_period;
+  chart(document.getElementById('c-v1'),{w:640,h:260,x:{min:-10,max:120,ticks:[0,20,40,60,80,100,120],label:'ns'},y:{min:-140,max:100,ticks:[-120,-80,-40,0,40,80],label:'mV'},series:[{x:vf.t,y:vf.v,color:C.copper,width:1.3}]});
+  chart(document.getElementById('c-v2'),{w:640,h:260,x:{min:-100,max:3000,ticks:[0,500,1000,1500,2000,2500,3000],tf:t=>String(t),label:'ns'},y:{min:-60,max:20,ticks:[-60,-40,-20,0,20],label:'mV'},series:[{x:vs.t,y:vs.v,color:C.copper,width:1.3}]});
+  chart(document.getElementById('c-v3'),{w:640,h:260,x:{min:0,max:10.42,ticks:[0,2,4,6,8,10],label:'µs in the period'},y:{min:-80,max:80,ticks:[-80,-40,0,40,80],label:'mV'},
+    vlines:[{x:vp.t_on,label:'HS on'},{x:vp.t_off,label:'HS off'}],series:[{x:vp.t,y:vp.v,color:C.copper,width:1.3}]});
+  initAnim(S);
+});
+// 03 layer grid
+const LAYERS=[['L1','top: pours, top caps'],['L2','PGND plane'],['L3','VBUS band'],['L4','VBUS band + feed'],['L5','PGND plane'],['L6','bottom: GaN, bottom caps']];
+const lg=document.getElementById('layers');
+function layers(f){lg.innerHTML=LAYERS.map(([l,d])=>`<figure class="plate"><div class="lbl"><b>${l}</b><span>${d}</span></div><img src="img/layer_BULK_L_${f}_${l}.webp" alt="${l} sheet current, ${f==='dc'?'DC':'10 MHz'}" loading="lazy" width="1200" height="881"></figure>`).join('')}
+layers('10M');
+document.querySelectorAll('#lf button').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('#lf button').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));layers(b.dataset.f)}));
+fetch('img/info.json').then(r=>r.json()).then(I=>{
+  const s=I.BULK_L_10M&&I.BULK_L_10M.share_x98_A,s0=I.BULK_L_dc&&I.BULK_L_dc.share_x98_A;
+  if(s&&s0){const pct=(o,k)=>Math.round(100*o[k]/Object.values(o).reduce((a,b)=>a+b,0));
+    document.getElementById('share-note').textContent=`Where the return current flows across x = 98 mm: at 10 MHz, L2 ${pct(s.PGND,'L2')} % and L5 ${pct(s.PGND,'L5')} % of the PGND current (the two planes next to the band); at DC, L2 ${pct(s0.PGND,'L2')} %, L5 ${pct(s0.PGND,'L5')} %, and the rest on L1 and L6. Images: each layer alone, same scale as above.`}
+}).catch(()=>{});
+// animation
+function initAnim(S){
+  const img=document.getElementById('frame'),sl=document.getElementById('scrub'),tl=document.getElementById('tlabel'),pb=document.getElementById('play');
+  fetch('anim/frames.json').then(r=>r.json()).then(F=>{
+    const n=F.t_ns.length;sl.max=n-1;const cache=[];let loaded=false;
+    function preload(){if(loaded)return;loaded=true;for(let i=0;i<n;i++){const im=new Image();im.src=`anim/f${String(i).padStart(3,'0')}.webp`;cache[i]=im}}
+    const fmtT=t=>Math.abs(t)>=1000?(t/1000).toFixed(2)+' µs':(Math.abs(t)>=100?t.toFixed(0):t.toFixed(2))+' ns';
+    const strip=document.getElementById('c-strip');
+    function drawStrip(i){chart(strip,{w:1100,h:150,m:{l:50,r:14,t:8,b:28},x:{min:0,max:n-1,ticks:[0,F.seg[0]+28,F.seg[0]+80,F.seg[0]+F.seg[1]-1,n-1],tf:k=>fmtT(F.t_ns[k])},
+      y:{min:-14,max:21,ticks:[-10,0,10,20]},series:[{x:F.t_ns.map((_,k)=>k),y:F.idev,color:C.pgnd,width:1.5},{x:F.t_ns.map((_,k)=>k),y:F.vbus.map(v=>v/10),color:C.copper,width:1.5}],
+      vlines:[{x:i,color:C.ink}]})}
+    function show(i){i=Math.max(0,Math.min(n-1,i|0));sl.value=i;img.src=(cache[i]&&cache[i].complete)?cache[i].src:`anim/f${String(i).padStart(3,'0')}.webp`;
+      tl.innerHTML=`<b>${fmtT(F.t_ns[i])}</b> from HI · device ${F.idev[i].toFixed(1)} A`;drawStrip(i)}
+    sl.addEventListener('input',()=>{preload();show(+sl.value)});
+    let playing=false,last=0,acc=0,cur=0;
+    function step(ts){if(!playing)return;if(!last)last=ts;acc+=ts-last;last=ts;if(acc>70){acc=0;cur=(cur+1)%n;show(cur)}requestAnimationFrame(step)}
+    pb.addEventListener('click',()=>{preload();playing=!playing;pb.textContent=playing?'Pause':'Play';pb.setAttribute('aria-pressed',String(playing));cur=+sl.value;last=0;if(playing)requestAnimationFrame(step)});
+    if('IntersectionObserver' in window){new IntersectionObserver(es=>{if(es[0].isIntersecting)preload()},{rootMargin:'400px'}).observe(document.getElementById('anim'))}
+    show(F.seg[0]+28);
+  }).catch(()=>{tl.textContent='Animation frames not available'});
+}
+})();
+</script>

@@ -1,0 +1,273 @@
+<title>Rev8 Stackup by the Numbers</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: an engineering report in one column; every comparison is a pair (intended left, as built right) or an overlay
+   in the two stack colors; field renders sit on dark plates in both themes. */
+:root{
+  --bg:#f6f5f1; --panel:#ffffff; --panel-2:#efede7; --ink:#16181c; --ink-2:#41454c; --ink-3:#6b7079; --rule:#dcd9d1;
+  --intended:#2a6fc9; --asbuilt:#c9531f; --good:#2f7d4f; --plate:#08090c;
+  --f-display:"IBM Plex Sans Condensed","Arial Narrow",Arial,sans-serif;
+  --f-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0d0f12; --panel:#14171c; --panel-2:#1a1e24; --ink:#ebe9e3; --ink-2:#b9bcc2; --ink-3:#848a93; --rule:#272c34;
+  --intended:#4f95ea; --asbuilt:#ee7a45; --good:#5fbf86; --plate:#08090c; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0d0f12; --panel:#14171c; --panel-2:#1a1e24; --ink:#ebe9e3; --ink-2:#b9bcc2; --ink-3:#848a93; --rule:#272c34;
+  --intended:#4f95ea; --asbuilt:#ee7a45; --good:#5fbf86; --plate:#08090c; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.58;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1100px;margin:0 auto;padding-block:36px 80px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:64px}
+h1,h2,h3{font-family:var(--f-display);margin:0;text-wrap:balance;letter-spacing:-.005em;line-height:1.08}
+h1{font-size:clamp(34px,5vw,54px);font-weight:700}
+h2{font-size:clamp(24px,3vw,32px);font-weight:600}
+h3{font-size:19px;font-weight:600}
+p{margin:0;max-width:72ch;color:var(--ink-2)}
+b,strong{color:var(--ink);font-weight:600}
+.kicker{font-family:var(--f-mono);font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3)}
+section,header{display:grid;gap:18px;min-width:0}
+.lede{font-size:18px;color:var(--ink)}
+.i{color:var(--intended);font-weight:600} .a{color:var(--asbuilt);font-weight:600}
+.panel{background:var(--panel);border:1px solid var(--rule);border-radius:12px;padding:16px;min-width:0;display:grid;gap:12px}
+.ptitle{font-family:var(--f-display);font-weight:600;font-size:18px}
+.sub,.note{font-size:13.5px;color:var(--ink-3);max-width:90ch}
+.pair{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px}
+.plate{margin:0;display:grid;gap:6px;min-width:0}
+.plate img{width:100%;height:auto;display:block;border-radius:8px;background:var(--plate);border:1px solid var(--rule)}
+.plate .lbl{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;font-family:var(--f-mono);font-size:12px;color:var(--ink-3)}
+.plate .lbl b{font-family:var(--f-display);font-size:16px}
+.plate .lbl b.i{color:var(--intended)} .plate .lbl b.a{color:var(--asbuilt)}
+table{border-collapse:collapse;width:100%;font-size:14.5px;font-variant-numeric:tabular-nums}
+.tbl{overflow-x:auto;background:var(--panel);border:1px solid var(--rule);border-radius:12px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--rule);vertical-align:top}
+tr:last-child td{border-bottom:none}
+th{font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);font-weight:500;white-space:nowrap;background:var(--panel-2)}
+td.n{white-space:nowrap;text-align:right} th.n{text-align:right}
+td.grp{font-family:var(--f-display);font-weight:600;font-size:16px;color:var(--ink);background:var(--panel-2)}
+.ratio{display:inline-block;font-family:var(--f-mono);font-size:12.5px;padding:2px 7px;border-radius:999px;border:1px solid var(--rule);color:var(--ink-2);white-space:nowrap}
+.ratio.bad{border-color:var(--asbuilt);color:var(--asbuilt)} .ratio.same{border-color:var(--good);color:var(--good)}
+.legend{display:flex;gap:6px 16px;flex-wrap:wrap;font-size:13px;color:var(--ink-2)}
+.legend i{display:inline-block;width:14px;height:3px;border-radius:2px;margin-right:6px;vertical-align:4px}
+svg.ch{display:block;width:100%;height:auto;overflow:visible}
+.axl{fill:var(--ink-3);font:11px var(--f-mono)} .axt{fill:var(--ink-3);font:12px var(--f-body)}
+.grid{stroke:var(--rule);stroke-width:1} .zero{stroke:var(--ink-3);stroke-width:.6}
+.g2{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px}
+.g3{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.callout{border-left:3px solid var(--asbuilt);padding:4px 0 4px 14px;display:grid;gap:6px}
+ul.list{margin:0;padding-left:20px;display:grid;gap:8px;max-width:84ch;color:var(--ink-2)}
+.mono{font-family:var(--f-mono);font-size:.92em}
+a{color:var(--intended)}
+a:focus-visible{outline:2px solid var(--intended);outline-offset:2px}
+</style>
+
+<div class="wrap">
+
+<header>
+  <div class="kicker">Rev8 power stage · intended vs as-built stackup · model results, not bench data</div>
+  <h1>Rev8 Stackup by the Numbers</h1>
+  <p class="lede">The rev8 boards were built on KiCad's default 6-layer stackup instead of the specified one. The copper is identical; which layers sit 0.1 mm from each other changed. This page measures what that does to the power bus and to the analog sense lines, with a 3D field solve of the bus copper, a switching simulation of the GaN half-bridge, and 2D solves of the sense-trace cross-sections.</p>
+  <p class="note">Companion to the interactive <a href="https://claude.ai/artifact/16S3eEkvFqtkDHjFX69RPe">Rev8 Stackup Viewer</a>. All numbers: leg C switching at 8.4 V and 10 A unless noted. <span class="i">Blue: intended</span> (the specified stackup). <span class="a">Orange: as built</span> (KiCad default).</p>
+</header>
+
+<section>
+  <h2>The noise source barely changed. The coupling did.</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>quantity</th><th class="n">intended</th><th class="n">as built</th><th>change</th></tr></thead>
+    <tbody>
+      <tr><td class="grp" colspan="4">Aggressor: VBUS at the feed under the sense bundle</td></tr>
+      <tr><td>device-loop burst (330–340 MHz), peak within 300 ns</td><td class="n">113 mV</td><td class="n">72 mV</td><td><span class="ratio same">×0.6</span></td></tr>
+      <tr><td>bus modes, 0.1–0.3 µs after the edge</td><td class="n">3.3 mV @ 1.45 MHz</td><td class="n">3.4 mV @ 1.3 MHz</td><td><span class="ratio same">×1.0</span></td></tr>
+      <tr><td>96 kHz ripple, peak to peak</td><td class="n">116 mV</td><td class="n">116 mV</td><td><span class="ratio same">×1.0</span></td></tr>
+      <tr><td class="grp" colspan="4">Coupling: VBUS feed → analog traces on L3 (2D)</td></tr>
+      <tr><td>capacitance per mm, over the feed</td><td class="n">7.4 fF/mm</td><td class="n">74 fF/mm</td><td><span class="ratio bad">×10</span></td></tr>
+      <tr><td>open-node HF divider C_VBUS / C_total</td><td class="n">0.046</td><td class="n">0.458</td><td><span class="ratio bad">×10</span></td></tr>
+      <tr><td>feed current → trace loop mutual inductance</td><td class="n">0.2–0.9 pH/mm</td><td class="n">2.5–6.9 pH/mm</td><td><span class="ratio bad">×7–11</span></td></tr>
+      <tr><td class="grp" colspan="4">Victim: pickup on the sense nodes after the 69 ns ADC aperture, 0–200 ns after an edge</td></tr>
+      <tr><td>VSNS node</td><td class="n">0.04 mV</td><td class="n">0.35 mV</td><td><span class="ratio bad">×9</span></td></tr>
+      <tr><td>ISNS node (INA296 output 20–100 Ω, assumed)</td><td class="n">0.006–0.020 mV</td><td class="n">0.04–0.12 mV</td><td><span class="ratio bad">×6</span></td></tr>
+      <tr><td>feed-current EMF in the trace loop (upper bound)</td><td class="n">0.05–0.25 mV</td><td class="n">0.45–1.46 mV</td><td><span class="ratio bad">×6–10</span></td></tr>
+      <tr><td>same, as phase-current error (0.1 V/A)</td><td class="n">0.5–2.5 mA</td><td class="n">4.5–15 mA</td><td><span class="ratio bad">×6–10</span></td></tr>
+      <tr><td class="grp" colspan="4">Bus inductance, bank → leg C, 10 MHz (3D)</td></tr>
+      <tr><td>leg C bottom bank (hot loop, board side)</td><td class="n">62–105 pH</td><td class="n">65–127 pH</td><td><span class="ratio">×1.06–1.22</span></td></tr>
+      <tr><td>right bulk 47 µF ×4</td><td class="n">226–267 pH</td><td class="n">402–472 pH</td><td><span class="ratio bad">×1.77</span></td></tr>
+      <tr><td>left bulk 47 µF ×4 (far side)</td><td class="n">534–592 pH</td><td class="n">1234–1345 pH</td><td><span class="ratio bad">×2.3</span></td></tr>
+    </tbody></table></div>
+  <p class="note">Ranges in the inductance rows: low value with the device pads as ideal conductors (28-port model), high value with a copper slab across them (single-port model); the ratios agree. "Upper bound" for the EMF: the full loop EMF is counted, and how much of it reaches the ADC depends on where the trace/AGND loop closes.</p>
+</section>
+
+<section>
+  <h2>What changed: which layers are neighbours</h2>
+  <p>Same six copper layers, same artwork. The specified stackup builds two tight triplets, L1-L2-L3 and L4-L5-L6, with a thick core between them. KiCad's default spaces the layers in pairs instead: L3 and L4 end up 0.1 mm apart, and L2 and L5 move half a millimetre away from the layers they were meant to shield.</p>
+  <div class="panel"><svg class="ch" id="stack" role="img" aria-label="Both stackups drawn to scale with layer roles"></svg></div>
+</section>
+
+<section>
+  <h2>Mechanism 1: the sense traces lost their shield</h2>
+  <p>The analog bundle (ISNS ×3, VSNS ×3, VREF, 3V3A) runs on L3 for 23–27 mm over the VBUS feed on L4. As specified, L3 sits 0.1 mm under the AGND plane on L2 and 1.05 mm above L4, so the feed's field lands on AGND. As built, L3 is 0.1 mm above L4 and half a millimetre from AGND: the traces sit in the feed's field. Coupling capacitance and mutual inductance both go up by about ten.</p>
+  <div class="pair">
+    <figure class="plate"><div class="lbl"><b class="i">Intended</b><span>|E| per volt of VBUS · log · z ×2</span></div><img src="img/e_bundle_y105_intended.webp" alt="E-field under the sense bundle, intended: field lands on AGND" loading="lazy"></figure>
+    <figure class="plate"><div class="lbl"><b class="a">As built</b><span>|E| per volt of VBUS · log · z ×2</span></div><img src="img/e_bundle_y105_asbuilt.webp" alt="E-field under the sense bundle, as built: traces sit directly over the VBUS feed" loading="lazy"></figure>
+  </div>
+  <p class="note">Cut at y = 105 mm, VBUS at 1 V and every other net at 0 V; 2D finite-volume solve with the dielectrics. Copper: red VBUS, blue PGND, amber AGND, green analog traces, grey GND.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>fraction of VBUS noise reaching the VSNS node</th><th class="n">96 kHz</th><th class="n">1 MHz</th><th class="n">10 MHz</th><th class="n">HF limit</th></tr></thead>
+    <tbody><tr><td class="i">intended</td><td class="n">0.023 %</td><td class="n">0.24 %</td><td class="n">1.2 %</td><td class="n">1.4 %</td></tr>
+      <tr><td class="a">as built</td><td class="n">0.23 %</td><td class="n">2.4 %</td><td class="n">12 %</td><td class="n">14 %</td></tr></tbody></table></div>
+</section>
+
+<section>
+  <h2>Mechanism 2: the bus got more inductive</h2>
+  <p>Between the bulk capacitors and the legs, VBUS exists only as a band on L3 and L4. As specified, each band layer has its own PGND plane 0.1 mm away (L2 and L5), and the bus field stays in those two thin gaps. As built, those planes are 0.535 mm away: the same current encloses about four times the flux per millimetre, and whole bank-to-leg loops come out 1.8–2.3× more inductive. The return current still lines up under the band at 10 MHz; it is just further away.</p>
+  <div class="pair">
+    <figure class="plate"><div class="lbl"><b class="i">Intended</b><span>|B| · 1 A · 10 MHz · z ×4</span></div><img src="img/byz_BULK_L_10M_intended.webp" alt="B-field across the band, intended: field in two thin gaps" loading="lazy"></figure>
+    <figure class="plate"><div class="lbl"><b class="a">As built</b><span>|B| · 1 A · 10 MHz · z ×4</span></div><img src="img/byz_BULK_L_10M_asbuilt.webp" alt="B-field across the band, as built: field fills two thick gaps" loading="lazy"></figure>
+  </div>
+  <p class="note">Cut across the band at x = 98 mm, y 90–103 mm, for 1 A from the left bulk to leg C; each image on its own scale. Field energy across this cut: 15.4 pH/mm intended, 59.0 pH/mm as built (×3.8).</p>
+  <div class="pair">
+    <figure class="plate"><div class="lbl"><b class="i">Intended</b><span>sheet current · all layers · 1 A · 10 MHz</span></div><img src="img/flow_BULK_L_10M_intended.webp" alt="Return path at 10 MHz, intended" loading="lazy"></figure>
+    <figure class="plate"><div class="lbl"><b class="a">As built</b><span>sheet current · all layers · 1 A · 10 MHz</span></div><img src="img/flow_BULK_L_10M_asbuilt.webp" alt="Return path at 10 MHz, as built" loading="lazy"></figure>
+  </div>
+  <p class="note" id="share-note">Top view, warm VBUS copper, cool PGND copper, white where they overlap; log₁₀ |K| from 0.003 to 3 A/mm.</p>
+</section>
+
+<section>
+  <h2>The aggressor: what VBUS does at the feed</h2>
+  <p>A more inductive bus would be expected to ring harder, and the device does see about 35 % more bus impedance at the mode peaks. But the feed under the sense bundle sits behind that inductance. As built, a smaller share of each edge's fast current reaches the feed, so the voltage there is about the same, and the 330 MHz burst is even somewhat lower. The bus modes move from about 1.45 to 1.3 MHz.</p>
+  <div class="g2">
+    <div class="panel"><div class="ptitle">VBUS at the feed, first 120 ns</div><svg class="ch" id="c-v1" role="img" aria-label="VBUS at the feed, both stackups, first 120 ns"></svg><div class="sub">mV; HI rises at 0, SW switches at about 39 ns.</div></div>
+    <div class="panel"><div class="ptitle">… first 3 µs</div><svg class="ch" id="c-v2" role="img" aria-label="VBUS at the feed, both stackups, first 3 microseconds"></svg><div class="sub">Bus modes on the start of the ripple ramp.</div></div>
+    <div class="panel"><div class="ptitle">Bus impedance at leg C</div><svg class="ch" id="c-z" role="img" aria-label="Bus impedance at leg C, both stackups"></svg><div class="sub">|Z| VBUS–PGND at the device pads, mΩ.</div></div>
+    <div class="panel"><div class="ptitle">Share of device current reaching the feed</div><svg class="ch" id="c-hi" role="img" aria-label="Feed current per amp of device current, both stackups"></svg><div class="sub">|I_feed / I_device| vs frequency.</div></div>
+  </div>
+  <div class="legend"><span><i style="background:var(--intended)"></i>intended</span><span><i style="background:var(--asbuilt)"></i>as built</span></div>
+  <div class="g2">
+    <div class="panel"><div class="ptitle">Who supplies the current, intended</div><svg class="ch" id="c-cas-i" role="img" aria-label="Current per capacitor group after the edge, intended"></svg></div>
+    <div class="panel"><div class="ptitle">… as built</div><svg class="ch" id="c-cas-a" role="img" aria-label="Current per capacitor group after the edge, as built"></svg></div>
+  </div>
+  <div class="legend" id="lg-cas"></div>
+  <p class="note">Current each capacitor group supplies into VBUS after the HS turn-on (10 A step), log time. As built, leg C's own banks carry more of the first nanoseconds (7.7 vs 6.5 A at 1 ns) and the far bulk joins later (0.4 vs 1.0 A at 100 ns): each leg is more isolated from its neighbours and the bulk.</p>
+</section>
+
+<section>
+  <h2>The victim: pickup on the sense nodes</h2>
+  <p>Multiply a similar aggressor by ten times the coupling and the pickup goes up by six to ten. The capacitive part arrives with the 330 MHz burst and is mostly averaged away by the ADC's 69 ns aperture. The magnetic part follows the feed current, which keeps changing for about half a microsecond after each edge, so it survives the aperture: up to about 1.5 mV as built against 0.25 mV intended.</p>
+  <div class="g2">
+    <div class="panel"><div class="ptitle">VSNS node, first 120 ns</div><svg class="ch" id="c-p1" role="img" aria-label="VSNS pickup, both stackups"></svg><div class="sub">mV at the node before the ADC.</div></div>
+    <div class="panel"><div class="ptitle">Feed-current EMF (high M), first 3 µs</div><svg class="ch" id="c-p2" role="img" aria-label="Feed-current EMF bound, both stackups"></svg><div class="sub">mV in the trace loop, upper bound; the edge spike (up to 20 mV) is clipped.</div></div>
+  </div>
+  <div class="callout"><p><b>When it matters.</b> The firmware samples current four times around the PWM crest, 417 ns apart, each with a 69 ns aperture. An edge lands inside that sampling burst (about 1.7 µs around the crest) only when the smallest phase duty drops below about 0.2: high speed, and sooner at low pack voltage. That is where the as-built board's 4.5–15 mA of extra phase-current error appears, and shunt selection turns a common pickup into about twice that in the αβ frame. The <a href="https://claude.ai/artifact/16S3eEkvFqtkDHjFX69RPe">Stackup Viewer</a> animates this.</p></div>
+</section>
+
+<section>
+  <h2>What did not change</h2>
+  <ul class="list">
+    <li><b>The switching edge.</b> SW rise 1.16 vs 1.12 ns, device current peak 19.6 A in both, ring 333–340 MHz in both. The hot loop changes by only 4–22 pH on a loop dominated by the package.</li>
+    <li><b>Voltage stress and shoot-through.</b> 100 V parts on an 8.4 V bus; no new path.</li>
+    <li><b>Thermal and mechanical.</b> The board is 1.6 vs 1.663 mm and still symmetric.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Everything else the stackup touches</h2>
+  <p>A separate review checked what else the change could affect: every cross-net overlap on every layer pair, crosstalk inside the bundle, the regulator and gate-drive loops, thermal paths, the encoder. Nothing comes near the two findings above. For scale, one ADC LSB is 0.73 mV, about 7 mA of phase current.</p>
+  <div class="callout"><p><b>PGND facing GND: it does not matter.</b> As built, L3 GND sits 0.1 mm over L4 PGND around J1 and in a strip beside the net tie NT1; total PGND–GND plate capacitance goes from 9.0 to 18.4 pF. The two nets are already tied at NT1 and inside every LMG2100 (its AGND pin is on GND and is internally the low-side source). The voltage across the overlap is the PGND drop between J1 and NT1: about 1 mV at µs scale, at most about 50 mV at the 330 MHz ring. Through a few pF that is nA up to about 1 mA, and NT1 is the lower-impedance path below 1–2 GHz. AGND, the net the ADC references, is not involved (≤ 0.1 pF to PGND). VBUS facing GND goes from 6.4 to 20.7 pF at the same places, next to U4's roughly 6 µF of input capacitors that already connect VBUS to GND: the same story.</p></div>
+  <figure class="plate"><div class="lbl"><b>Where PGND and VBUS face GND</b><span>plate capacitance density, both stackups (review figure)</span></div><img src="img/fig_gnd_overlap.webp" alt="Maps of where PGND and VBUS copper face GND copper, intended and as built, with plate capacitance per region" loading="lazy" style="background:#fff"></figure>
+  <div class="tbl"><table>
+    <thead><tr><th>item</th><th class="n">intended → as built</th><th>effect</th></tr></thead>
+    <tbody>
+      <tr><td><b>analog bundle over digital GND near the MCU</b> (5–8 mm per net on L4 GND instead of L2 AGND)</td><td class="n">0.05 → 0.4–0.6 pF per net</td><td>≤ 0.2 mV on VSNS, ≤ 0.03 mV on ISNS, asynchronous to the PWM. The largest new effect, still small.</td></tr>
+      <tr><td><b>DAC_1–3 crossing under VSNS/ISNS</b></td><td class="n">2 → 22 fF per crossing</td><td>None in flight: the DACs are static in the flight firmware.</td></tr>
+      <tr><td><b>Kelvin SNS± pairs over the SW keep-outs</b></td><td class="n">CM 15 → 25 fF</td><td>Matched between SNS+ and SNS−. Differential coupling is lower as built, because L4 PGND now shields the pairs.</td></tr>
+      <tr><td><b>VBUS/PGND plate capacitance</b></td><td class="n">222 → 103 pF</td><td>Negligible next to the MLCCs (4.7 vs 2.2 Ω at 330 MHz, against 0.2 Ω of MLCC path).</td></tr>
+      <tr><td><b>gate drive, SPI, debug on L4</b></td><td class="n">Z0 50.9 → 49.8 Ω</td><td>Identical GND exposure, net by net.</td></tr>
+      <tr><td><b>crosstalk inside the bundle</b></td><td class="n">32.5 → 33.6 fF/mm</td><td>No change.</td></tr>
+      <tr><td><b>LMG2100 thermal path</b></td><td class="n">13.7–16.2 → 13.2–15.6 K/W</td><td>Vias dominate; no change.</td></tr>
+      <tr><td><b>MA732 encoder, stray field from the band</b></td><td class="n">0.11 → 0.28 µT/A</td><td>µT level against a ≈ 50 mT magnet.</td></tr>
+      <tr><td><b>regulator loops, MCU power, plane-cavity modes</b></td><td class="n">same</td><td>Cavity modes 1.5–2.5 GHz in both stacks, far above the edge content.</td></tr>
+    </tbody></table></div>
+  <p class="note"><b>Refinement to the EMF numbers.</b> The INA296s' REF1 pins are fed from +VREF along the same bundle, so the same feed current induces a partly cancelling EMF there. Below about 2 MHz the real EMF error is about 0.5–0.7× the bound shown above; above about 5 MHz, about 1×. The stackup ratio is unchanged.</p>
+  <p class="note"><b>Context, in both stackups.</b> Each phase output has a 3.3 nF + 12 Ω snubber to PGND after the ferrite, downstream of the shunt. Every edge pushes about 28 nC through the shunt, which ISNS reads as roughly 0.2 A peak, still 10–15 mA at 0.5 µs. Samples within half a microsecond of an edge are therefore already disturbed on either stackup; the as-built EMF adds a smaller, systematic layer on top. This is not a stackup effect.</p>
+</section>
+
+<section>
+  <h2>How these numbers were made, and their limits</h2>
+  <ul class="list">
+    <li><b>3D bus model:</b> PyPEEC 5.8 on the VBUS and PGND copper of the rev 8.1.1 file, 100 µm × 11.5 µm voxels, 28 terminals, DC and 10 MHz, both stackups (as-built gaps modelled as 0.1035 / 0.5405 mm). Reciprocity 4e-6, KCL 1e-11.</li>
+    <li><b>Switching:</b> Xyce, unofficial LMG2100R044 model with the leg's real gate-drive parts, on the exported bus with Murata capacitor models; probe voltages per harmonic to 1 GHz with frequency-dependent copper resistance. Checked against Xyce's own node voltages to within 2–7 %.</li>
+    <li><b>Coupling:</b> 2D finite-volume cross-sections with the dielectrics (as-built εr assumed 4.5; the fab's real stackup is unconfirmed).</li>
+    <li><b>Not modelled:</b> GND/AGND copper in 3D, the regulator input capacitors, AGND bounce, the real INA296 output impedance at tens of MHz. Only one leg switches at a time.</li>
+    <li><b>No bench data yet.</b> A scope capture of VBUS at the feed (or at C97/C98) during a switching edge would check the 330 MHz and 1.3–1.5 MHz numbers directly.</li>
+  </ul>
+</section>
+
+</div>
+
+<script>
+(function(){
+'use strict';
+const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const fmt=v=>{const a=Math.abs(v);if(a===0)return '0';if(a>=1e9)return (v/1e9)+'G';if(a>=1e6)return (v/1e6)+'M';if(a>=1e3)return (v/1e3)+'k';if(a<0.01)return v.toExponential(0);return String(+v.toPrecision(3))};
+let cid=0;
+function chart(svg,o){
+  const W=o.w||640,H=o.h||260,m=Object.assign({l:50,r:12,t:10,b:36},o.m||{});const id='cl'+(cid++);
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  const X=o.x,Y=o.y,L=Math.log10;
+  const sx=X.log?v=>m.l+(L(v)-L(X.min))/(L(X.max)-L(X.min))*(W-m.l-m.r):v=>m.l+(v-X.min)/(X.max-X.min)*(W-m.l-m.r);
+  const sy=Y.log?v=>H-m.b-(L(v)-L(Y.min))/(L(Y.max)-L(Y.min))*(H-m.t-m.b):v=>H-m.b-(v-Y.min)/(Y.max-Y.min)*(H-m.t-m.b);
+  let h=`<defs><clipPath id="${id}"><rect x="${m.l}" y="${m.t}" width="${W-m.l-m.r}" height="${H-m.t-m.b}"/></clipPath></defs>`;
+  (X.ticks||[]).forEach(t=>{h+=`<line class="grid" x1="${sx(t)}" x2="${sx(t)}" y1="${m.t}" y2="${H-m.b}"/><text class="axl" x="${sx(t)}" y="${H-m.b+15}" text-anchor="middle">${X.tf?X.tf(t):fmt(t)}</text>`});
+  (Y.ticks||[]).forEach(t=>{h+=`<line class="${t===0&&!Y.log?'zero':'grid'}" x1="${m.l}" x2="${W-m.r}" y1="${sy(t)}" y2="${sy(t)}"/><text class="axl" x="${m.l-6}" y="${sy(t)+4}" text-anchor="end">${Y.tf?Y.tf(t):fmt(t)}</text>`});
+  if(X.label)h+=`<text class="axt" x="${(m.l+W-m.r)/2}" y="${H-4}" text-anchor="middle">${X.label}</text>`;
+  if(Y.label)h+=`<text class="axt" transform="translate(12 ${(m.t+H-m.b)/2}) rotate(-90)" text-anchor="middle">${Y.label}</text>`;
+  o.series.forEach(s=>{let d='';const n=s.x.length;for(let i=0;i<n;i++){const xv=s.x[i],yv=s.y[i];if(yv==null||(Y.log&&yv<=0)||(X.log&&xv<=0)||xv<X.min||xv>X.max)continue;
+      d+=(d?'L':'M')+sx(xv).toFixed(1)+','+sy(Math.max(Y.min,Math.min(Y.max,yv))).toFixed(1)}
+    h+=`<path d="${d}" fill="none" stroke="${s.color}" stroke-width="${s.width||1.6}" stroke-linejoin="round" ${s.dash?`stroke-dasharray="${s.dash}"`:''} clip-path="url(#${id})" opacity="${s.op||1}"/>`});
+  svg.innerHTML=h;
+}
+function stackDiagram(){
+  const svg=document.getElementById('stack');const W=1000,H=330;svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  const ST={intended:[0.092,0.100,1.049,0.100,0.092],asbuilt:[0.100,0.535,0.100,0.535,0.100]};
+  const ROLE=['L1 parts, pours','L2 PGND / GND / AGND planes','L3 analog bundle, VBUS band','L4 gate drive, VBUS band + feed','L5 PGND / GND / AGND planes','L6 GaN, caps'];
+  const COL=['#8c94a8','#5b8fe0','#39c46a','#ff5d50','#5b8fe0','#8c94a8'];
+  const CU=0.035,sc=150,top=26;let h='';
+  [['intended',40,'Intended (specified)'],['asbuilt',540,'As built (KiCad default)']].forEach(([s,x0,title])=>{
+    const g=ST[s];let z=top;h+=`<text x="${x0}" y="14" style="font:600 15px var(--f-display);fill:var(--${s})">${title}</text>`;
+    for(let k=0;k<6;k++){h+=`<rect x="${x0}" y="${z}" width="150" height="${Math.max(4,CU*sc)}" rx="1.5" fill="${COL[k]}"/>`;
+      h+=`<text class="axl" x="${x0+160}" y="${z+5}">${ROLE[k]}</text>`;z+=Math.max(4,CU*sc);
+      if(k<5){const gh=g[k]*sc;const hot=s==='asbuilt'&&Math.abs(g[k]-ST.intended[k])>0.05;
+        h+=`<rect x="${x0}" y="${z}" width="150" height="${gh}" fill="var(--panel-2)"/><text class="axl" x="${x0+75}" y="${z+gh/2+4}" text-anchor="middle" style="${hot?'fill:var(--asbuilt);font-weight:600':''}">${g[k].toFixed(3)} mm</text>`;z+=gh}}});
+  svg.innerHTML=h;
+}
+let D=null;
+function render(){
+  if(!D)return;const CI=css('--intended'),CA=css('--asbuilt');
+  const I=D.intended,A=D.asbuilt;
+  chart(document.getElementById('c-v1'),{w:640,h:260,x:{min:-10,max:120,ticks:[0,20,40,60,80,100,120],label:'ns'},y:{min:-140,max:100,ticks:[-120,-80,-40,0,40,80],label:'mV'},
+    series:[{x:I.vbus_fast.t,y:I.vbus_fast.v,color:CI,width:1.3},{x:A.vbus_fast.t,y:A.vbus_fast.v,color:CA,width:1.3,op:.9}]});
+  chart(document.getElementById('c-v2'),{w:640,h:260,x:{min:-100,max:3000,ticks:[0,500,1000,1500,2000,2500,3000],label:'ns'},y:{min:-60,max:20,ticks:[-60,-40,-20,0,20],label:'mV'},
+    series:[{x:I.vbus_slow.t,y:I.vbus_slow.v,color:CI,width:1.5},{x:A.vbus_slow.t,y:A.vbus_slow.v,color:CA,width:1.5}]});
+  const Z=D.zbus;
+  chart(document.getElementById('c-z'),{w:640,h:260,x:{min:1e4,max:1e9,log:true,ticks:[1e4,1e5,1e6,1e7,1e8,1e9],tf:t=>fmt(t)+'Hz'},y:{min:0.5,max:500,log:true,ticks:[1,10,100]},
+    series:[{x:Z.f,y:Z.intended,color:CI,width:1.8},{x:Z.f,y:Z.asbuilt,color:CA,width:1.8}]});
+  chart(document.getElementById('c-hi'),{w:640,h:260,x:{min:1e4,max:1e9,log:true,ticks:[1e4,1e5,1e6,1e7,1e8,1e9],tf:t=>fmt(t)+'Hz'},y:{min:0.003,max:1.2,log:true,ticks:[0.01,0.1,1]},
+    series:[{x:Z.f,y:Z.ifeed_intended,color:CI,width:1.8},{x:Z.f,y:Z.ifeed_asbuilt,color:CA,width:1.8}]});
+  const GC=['#d9925a','#e0b27a','#4fb2a3','#3f86d9','#8a74e8','#7d838c'];
+  [['c-cas-i',I],['c-cas-a',A]].forEach(([id,S])=>{const cs=S.cascade,names=Object.keys(cs.groups);
+    chart(document.getElementById(id),{w:640,h:280,x:{min:0.1,max:5000,log:true,ticks:[0.1,1,10,100,1000,5000],tf:t=>t>=1000?(t/1000)+' µs':t+' ns'},y:{min:-2,max:6.5,ticks:[-2,0,2,4,6],label:'A'},
+      series:names.map((n,i)=>({x:cs.t_ns,y:cs.groups[n],color:GC[i],width:1.8}))});
+    document.getElementById('lg-cas').innerHTML=names.map((n,i)=>`<span><i style="background:${GC[i]}"></i>${n}</span>`).join('')});
+  chart(document.getElementById('c-p1'),{w:640,h:260,x:{min:-10,max:120,ticks:[0,20,40,60,80,100,120],label:'ns'},y:{min:-12,max:8,ticks:[-12,-8,-4,0,4,8],label:'mV'},
+    series:[{x:I.vbus_fast.t,y:I.pick_fast.vsns,color:CI,width:1.3},{x:A.vbus_fast.t,y:A.pick_fast.vsns,color:CA,width:1.3}]});
+  chart(document.getElementById('c-p2'),{w:640,h:260,x:{min:-100,max:3000,ticks:[0,500,1000,1500,2000,2500,3000],label:'ns'},y:{min:-3,max:2,ticks:[-3,-2,-1,0,1,2],label:'mV'},
+    series:[{x:I.vbus_slow.t,y:I.pick_slow.emf_hi,color:CI,width:1.2},{x:A.vbus_slow.t,y:A.pick_slow.emf_hi,color:CA,width:1.2}]});
+}
+stackDiagram();
+fetch('data/viz.json').then(r=>r.json()).then(d=>{D=d;render()});
+if(window.matchMedia){const mq=window.matchMedia('(prefers-color-scheme: dark)');(mq.addEventListener?mq.addEventListener('change',render):mq.addListener(render))}
+new MutationObserver(render).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+})();
+</script>
