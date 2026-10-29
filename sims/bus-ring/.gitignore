@@ -1,0 +1,12 @@
+# regenerable or large outputs (the raw PEEC terminal data, ymat.npz, decks, logs, figures and tables stay tracked)
+__pycache__/
+*.pkl
+*.csv
+*.prn
+*.mpk
+mp/*/geometry.yaml
+mp/*/smoke/
+mp/*/lane*/run.log
+*.npz
+!mp/*/ymat.npz
+xyce/t1.*

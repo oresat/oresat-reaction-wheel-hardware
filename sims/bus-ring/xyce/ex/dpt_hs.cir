@@ -1,0 +1,61 @@
+* LMG2100R044 double-pulse test, high-side hard switching (buck direction)
+* Xyce:  Xyce dpt_hs_xyce.cir   (measures print to stdout and dpt_hs_xyce.cir.mt0)
+*
+* Pulse 1 ramps the inductor to ~15A, LS freewheels synchronously, pulse 2
+* measures HS hard turn-on at ~15A and turn-off at ~19A. Dead time 8ns.
+* Defaults reproduce TI's Fig 5-7 / 8-3 / 8-4 conditions (48V, 15A, RBST).
+*
+.include ../../models/lmg2100r044.lib
+.param RBST=2.7 RVCC=0 VBUS=48 LDPT=2.2u
+
+* ---- 5V bias: supply -> CVCC -> RVCC -> VCC pin
+V5   v5 0 5
+CVCC v5 0 1u
+RVCC_ v5 vcc {RVCC+1m}
+* ---- bootstrap: CBST -> RBST -> HB pin (TI Fig 8-2)
+CBST hbx hs 100n
+RBST_ hbx hb {RBST+1m}
+
+* ---- input bus and power loop (replace with your own layout numbers)
+VB   bus 0 {VBUS}
+LBUS bus vb 5n
+CBLK vb vbk 10u
+RBLK vbk 0 20m
+LBK  vb vhf 1n
+* HF decoupling bank: 4x100nF, lumped ESL/ESR
+CHF  vhf nhf 400n
+RHF  nhf nhf2 3m
+LHF  nhf2 0 0.1n
+* PCB loop from caps to VIN/PGND pins. The 3ohm across 0.3nH is a crude
+* skin/proximity-loss model, tuned so ringing decays like TI's EVM scope shots
+* (Fig 8-3). Without it the loop rings for 30+ cycles.
+LPCB vhf vpc 0.3n
+RPCB vhf vpc 3
+RPCBDC vpc vin 0.5m
+
+* ---- DPT inductor from SW to ground, small SW-node stray
+LDPT sw 0 {LDPT}
+CSW  sw 0 5p
+
+* ---- gate signals (3.3V logic)
+* LI: on 0-100n (charges CBST), sync freewheel 806n-1006n, on again 1222n
+VLI li 0 PWL(0 3.3 100n 3.3 100.5n 0 806n 0 806.5n 3.3 1006n 3.3 1006.5n 0 1222n 0 1222.5n 3.3)
+* HI: pulse 1 108n-798n, pulse 2 1014n-1214n
+VHI hi 0 PWL(0 0 108n 0 108.5n 3.3 798n 3.3 798.5n 0 1014n 0 1014.5n 3.3 1214n 3.3 1214.5n 0)
+
+X1 vin sw 0 hb hs hi li vcc 0 LMG2100R044 PARAMS: TJ=25
+
+.tran 20p 1400n 0 50p
+* second pulse edges
+.measure tran ion  find i(LDPT) at=1014n
+.measure tran ioff find i(LDPT) at=1214n
+.measure tran t10r when v(sw)=10 rise=1 from=1000n
+.measure tran t40r when v(sw)=40 rise=1 from=1000n
+.measure tran t40f when v(sw)=40 fall=1 from=1200n
+.measure tran t10f when v(sw)=10 fall=1 from=1200n
+.measure tran sr_on  param={30/(t40r-t10r)/1e9}
+.measure tran sr_off param={30/(t10f-t40f)/1e9}
+.measure tran vpk  max v(sw) from=1040n to=1150n
+.measure tran vmin min v(sw) from=1240n to=1300n
+.print tran format=csv file=dpt_hs.csv v(sw) {v(hb)-v(hs)} i(LDPT) v(hi) v(li)
+.end

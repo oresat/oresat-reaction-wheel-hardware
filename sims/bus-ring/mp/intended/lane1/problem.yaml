@@ -1,0 +1,739 @@
+material_def:
+  copper:
+    domain_list: [cu_VBUS, cu_PGND, t_devA_V, t_devA_G, t_devB_V, t_devB_G, t_devC_V, t_devC_G, t_A_bot_V, t_A_bot_G, t_A_top_V, t_A_top_G, t_B_bot_V, t_B_bot_G, t_B_top_V, t_B_top_G, t_C_bot_V, t_C_bot_G, t_C_top_V, t_C_top_G, t_BULK_L_V, t_BULK_L_G, t_BULK_R_V, t_BULK_R_G, t_P105_V, t_P105_G, t_P110_V, t_P110_G, t_FEED_V, t_FEED_G]
+    material_type: electric
+    orientation_type: isotropic
+    var_type: lumped
+  via:
+    domain_list: [via_VBUS, via_PGND]
+    material_type: electric
+    orientation_type: isotropic
+    var_type: lumped
+source_def:
+  t_devA_V:
+    domain_list: [t_devA_V]
+    source_type: voltage
+    var_type: lumped
+  t_devA_G:
+    domain_list: [t_devA_G]
+    source_type: voltage
+    var_type: lumped
+  t_devB_V:
+    domain_list: [t_devB_V]
+    source_type: voltage
+    var_type: lumped
+  t_devB_G:
+    domain_list: [t_devB_G]
+    source_type: voltage
+    var_type: lumped
+  t_devC_V:
+    domain_list: [t_devC_V]
+    source_type: voltage
+    var_type: lumped
+  t_devC_G:
+    domain_list: [t_devC_G]
+    source_type: voltage
+    var_type: lumped
+  t_A_bot_V:
+    domain_list: [t_A_bot_V]
+    source_type: voltage
+    var_type: lumped
+  t_A_bot_G:
+    domain_list: [t_A_bot_G]
+    source_type: voltage
+    var_type: lumped
+  t_A_top_V:
+    domain_list: [t_A_top_V]
+    source_type: voltage
+    var_type: lumped
+  t_A_top_G:
+    domain_list: [t_A_top_G]
+    source_type: voltage
+    var_type: lumped
+  t_B_bot_V:
+    domain_list: [t_B_bot_V]
+    source_type: voltage
+    var_type: lumped
+  t_B_bot_G:
+    domain_list: [t_B_bot_G]
+    source_type: voltage
+    var_type: lumped
+  t_B_top_V:
+    domain_list: [t_B_top_V]
+    source_type: voltage
+    var_type: lumped
+  t_B_top_G:
+    domain_list: [t_B_top_G]
+    source_type: voltage
+    var_type: lumped
+  t_C_bot_V:
+    domain_list: [t_C_bot_V]
+    source_type: voltage
+    var_type: lumped
+  t_C_bot_G:
+    domain_list: [t_C_bot_G]
+    source_type: voltage
+    var_type: lumped
+  t_C_top_V:
+    domain_list: [t_C_top_V]
+    source_type: voltage
+    var_type: lumped
+  t_C_top_G:
+    domain_list: [t_C_top_G]
+    source_type: voltage
+    var_type: lumped
+  t_BULK_L_V:
+    domain_list: [t_BULK_L_V]
+    source_type: voltage
+    var_type: lumped
+  t_BULK_L_G:
+    domain_list: [t_BULK_L_G]
+    source_type: voltage
+    var_type: lumped
+  t_BULK_R_V:
+    domain_list: [t_BULK_R_V]
+    source_type: voltage
+    var_type: lumped
+  t_BULK_R_G:
+    domain_list: [t_BULK_R_G]
+    source_type: voltage
+    var_type: lumped
+  t_P105_V:
+    domain_list: [t_P105_V]
+    source_type: voltage
+    var_type: lumped
+  t_P105_G:
+    domain_list: [t_P105_G]
+    source_type: voltage
+    var_type: lumped
+  t_P110_V:
+    domain_list: [t_P110_V]
+    source_type: voltage
+    var_type: lumped
+  t_P110_G:
+    domain_list: [t_P110_G]
+    source_type: voltage
+    var_type: lumped
+  t_FEED_V:
+    domain_list: [t_FEED_V]
+    source_type: voltage
+    var_type: lumped
+  t_FEED_G:
+    domain_list: [t_FEED_G]
+    source_type: voltage
+    var_type: lumped
+sweep_solver:
+  f0M__t_devA_G:
+    init: null
+    param:
+      freq: 0.0
+      material_val: &id001
+        copper: {rho_re: 1.72e-08, rho_im: 0.0}
+        via: {rho_re: 3.9314285714285704e-08, rho_im: 0.0}
+      source_val:
+        t_devA_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devA_G: {V_re: 0.001, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devB_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devB_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devC_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devC_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_A_bot_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_A_bot_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_A_top_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_A_top_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_B_bot_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_B_bot_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_B_top_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_B_top_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_C_bot_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_C_bot_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_C_top_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_C_top_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_BULK_L_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_BULK_L_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_BULK_R_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_BULK_R_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_P105_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_P105_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_P110_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_P110_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_FEED_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_FEED_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+  f10M__t_devA_G:
+    init: null
+    param:
+      freq: 10000000.0
+      material_val: *id001
+      source_val:
+        t_devA_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devA_G: {V_re: 0.001, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devB_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devB_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devC_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devC_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_A_bot_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_A_bot_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_A_top_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_A_top_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_B_bot_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_B_bot_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_B_top_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_B_top_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_C_bot_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_C_bot_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_C_top_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_C_top_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_BULK_L_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_BULK_L_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_BULK_R_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_BULK_R_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_P105_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_P105_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_P110_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_P110_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_FEED_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_FEED_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+  f0M__t_devC_V:
+    init: null
+    param:
+      freq: 0.0
+      material_val: *id001
+      source_val:
+        t_devA_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devA_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devB_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devB_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devC_V: {V_re: 0.001, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devC_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_A_bot_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_A_bot_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_A_top_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_A_top_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_B_bot_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_B_bot_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_B_top_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_B_top_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_C_bot_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_C_bot_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_C_top_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_C_top_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_BULK_L_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_BULK_L_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_BULK_R_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_BULK_R_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_P105_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_P105_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_P110_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_P110_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_FEED_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_FEED_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+  f10M__t_devC_V:
+    init: null
+    param:
+      freq: 10000000.0
+      material_val: *id001
+      source_val:
+        t_devA_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devA_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devB_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devB_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devC_V: {V_re: 0.001, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devC_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_A_bot_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_A_bot_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_A_top_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_A_top_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_B_bot_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_B_bot_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_B_top_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_B_top_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_C_bot_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_C_bot_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_C_top_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_C_top_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_BULK_L_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_BULK_L_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_BULK_R_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_BULK_R_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_P105_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_P105_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_P110_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_P110_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_FEED_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_FEED_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+  f0M__t_A_bot_G:
+    init: null
+    param:
+      freq: 0.0
+      material_val: *id001
+      source_val:
+        t_devA_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devA_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devB_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devB_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devC_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devC_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_A_bot_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_A_bot_G: {V_re: 0.001, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_A_top_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_A_top_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_B_bot_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_B_bot_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_B_top_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_B_top_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_C_bot_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_C_bot_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_C_top_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_C_top_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_BULK_L_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_BULK_L_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_BULK_R_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_BULK_R_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_P105_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_P105_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_P110_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_P110_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_FEED_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_FEED_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+  f10M__t_A_bot_G:
+    init: null
+    param:
+      freq: 10000000.0
+      material_val: *id001
+      source_val:
+        t_devA_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devA_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devB_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devB_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devC_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devC_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_A_bot_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_A_bot_G: {V_re: 0.001, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_A_top_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_A_top_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_B_bot_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_B_bot_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_B_top_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_B_top_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_C_bot_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_C_bot_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_C_top_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_C_top_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_BULK_L_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_BULK_L_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_BULK_R_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_BULK_R_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_P105_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_P105_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_P110_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_P110_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_FEED_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_FEED_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+  f0M__t_B_bot_V:
+    init: null
+    param:
+      freq: 0.0
+      material_val: *id001
+      source_val:
+        t_devA_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devA_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devB_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devB_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devC_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devC_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_A_bot_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_A_bot_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_A_top_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_A_top_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_B_bot_V: {V_re: 0.001, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_B_bot_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_B_top_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_B_top_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_C_bot_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_C_bot_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_C_top_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_C_top_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_BULK_L_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_BULK_L_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_BULK_R_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_BULK_R_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_P105_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_P105_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_P110_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_P110_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_FEED_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_FEED_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+  f10M__t_B_bot_V:
+    init: null
+    param:
+      freq: 10000000.0
+      material_val: *id001
+      source_val:
+        t_devA_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devA_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devB_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devB_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devC_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devC_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_A_bot_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_A_bot_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_A_top_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_A_top_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_B_bot_V: {V_re: 0.001, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_B_bot_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_B_top_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_B_top_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_C_bot_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_C_bot_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_C_top_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_C_top_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_BULK_L_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_BULK_L_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_BULK_R_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_BULK_R_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_P105_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_P105_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_P110_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_P110_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_FEED_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_FEED_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+  f0M__t_B_top_G:
+    init: null
+    param:
+      freq: 0.0
+      material_val: *id001
+      source_val:
+        t_devA_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devA_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devB_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devB_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devC_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devC_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_A_bot_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_A_bot_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_A_top_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_A_top_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_B_bot_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_B_bot_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_B_top_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_B_top_G: {V_re: 0.001, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_C_bot_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_C_bot_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_C_top_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_C_top_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_BULK_L_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_BULK_L_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_BULK_R_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_BULK_R_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_P105_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_P105_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_P110_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_P110_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_FEED_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_FEED_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+  f10M__t_B_top_G:
+    init: null
+    param:
+      freq: 10000000.0
+      material_val: *id001
+      source_val:
+        t_devA_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devA_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devB_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devB_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devC_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devC_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_A_bot_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_A_bot_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_A_top_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_A_top_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_B_bot_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_B_bot_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_B_top_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_B_top_G: {V_re: 0.001, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_C_bot_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_C_bot_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_C_top_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_C_top_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_BULK_L_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_BULK_L_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_BULK_R_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_BULK_R_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_P105_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_P105_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_P110_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_P110_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_FEED_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_FEED_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+  f0M__t_C_top_V:
+    init: null
+    param:
+      freq: 0.0
+      material_val: *id001
+      source_val:
+        t_devA_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devA_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devB_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devB_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devC_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devC_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_A_bot_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_A_bot_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_A_top_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_A_top_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_B_bot_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_B_bot_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_B_top_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_B_top_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_C_bot_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_C_bot_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_C_top_V: {V_re: 0.001, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_C_top_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_BULK_L_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_BULK_L_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_BULK_R_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_BULK_R_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_P105_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_P105_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_P110_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_P110_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_FEED_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_FEED_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+  f10M__t_C_top_V:
+    init: null
+    param:
+      freq: 10000000.0
+      material_val: *id001
+      source_val:
+        t_devA_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devA_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devB_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devB_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devC_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devC_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_A_bot_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_A_bot_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_A_top_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_A_top_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_B_bot_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_B_bot_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_B_top_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_B_top_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_C_bot_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_C_bot_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_C_top_V: {V_re: 0.001, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_C_top_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_BULK_L_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_BULK_L_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_BULK_R_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_BULK_R_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_P105_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_P105_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_P110_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_P110_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_FEED_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_FEED_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+  f0M__t_BULK_L_G:
+    init: null
+    param:
+      freq: 0.0
+      material_val: *id001
+      source_val:
+        t_devA_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devA_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devB_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devB_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devC_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devC_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_A_bot_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_A_bot_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_A_top_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_A_top_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_B_bot_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_B_bot_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_B_top_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_B_top_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_C_bot_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_C_bot_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_C_top_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_C_top_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_BULK_L_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_BULK_L_G: {V_re: 0.001, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_BULK_R_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_BULK_R_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_P105_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_P105_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_P110_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_P110_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_FEED_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_FEED_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+  f10M__t_BULK_L_G:
+    init: null
+    param:
+      freq: 10000000.0
+      material_val: *id001
+      source_val:
+        t_devA_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devA_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devB_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devB_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devC_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devC_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_A_bot_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_A_bot_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_A_top_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_A_top_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_B_bot_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_B_bot_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_B_top_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_B_top_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_C_bot_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_C_bot_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_C_top_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_C_top_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_BULK_L_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_BULK_L_G: {V_re: 0.001, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_BULK_R_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_BULK_R_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_P105_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_P105_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_P110_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_P110_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_FEED_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_FEED_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+  f0M__t_P105_V:
+    init: null
+    param:
+      freq: 0.0
+      material_val: *id001
+      source_val:
+        t_devA_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devA_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devB_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devB_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devC_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devC_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_A_bot_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_A_bot_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_A_top_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_A_top_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_B_bot_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_B_bot_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_B_top_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_B_top_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_C_bot_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_C_bot_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_C_top_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_C_top_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_BULK_L_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_BULK_L_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_BULK_R_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_BULK_R_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_P105_V: {V_re: 0.001, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_P105_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_P110_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_P110_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_FEED_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_FEED_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+  f10M__t_P105_V:
+    init: null
+    param:
+      freq: 10000000.0
+      material_val: *id001
+      source_val:
+        t_devA_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devA_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devB_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devB_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devC_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devC_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_A_bot_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_A_bot_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_A_top_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_A_top_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_B_bot_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_B_bot_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_B_top_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_B_top_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_C_bot_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_C_bot_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_C_top_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_C_top_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_BULK_L_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_BULK_L_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_BULK_R_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_BULK_R_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_P105_V: {V_re: 0.001, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_P105_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_P110_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_P110_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_FEED_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_FEED_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+  f0M__t_P110_G:
+    init: null
+    param:
+      freq: 0.0
+      material_val: *id001
+      source_val:
+        t_devA_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devA_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devB_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devB_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devC_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devC_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_A_bot_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_A_bot_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_A_top_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_A_top_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_B_bot_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_B_bot_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_B_top_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_B_top_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_C_bot_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_C_bot_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_C_top_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_C_top_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_BULK_L_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_BULK_L_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_BULK_R_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_BULK_R_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_P105_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_P105_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_P110_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_P110_G: {V_re: 0.001, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_FEED_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_FEED_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+  f10M__t_P110_G:
+    init: null
+    param:
+      freq: 10000000.0
+      material_val: *id001
+      source_val:
+        t_devA_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devA_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devB_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devB_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devC_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_devC_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_A_bot_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_A_bot_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_A_top_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_A_top_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_B_bot_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_B_bot_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_B_top_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_B_top_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_C_bot_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_C_bot_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_C_top_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_C_top_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_BULK_L_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_BULK_L_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_BULK_R_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_BULK_R_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_P105_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_P105_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_P110_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_P110_G: {V_re: 0.001, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_FEED_V: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}
+        t_FEED_G: {V_re: 0.0, V_im: 0.0, Z_re: 1.0e-09, Z_im: 0.0}

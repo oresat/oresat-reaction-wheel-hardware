@@ -1,0 +1,96 @@
+* rev8 bus transient, asbuilt, Vbus 8.4 V, phase current 10.0 A, duty 0.5, leg C switching
+.include /home/solomon/code/oresat/oresat-rw-board-rev8/.claude/worktrees/bus-ring-sim/sims/bus-ring/xyce/board_asbuilt.sub
+.include /home/solomon/code/oresat/oresat-rw-board-rev8/.claude/worktrees/bus-ring-sim/sims/bus-ring/murata_dl/GRT155C81C225KE13_DC8.4V_25degC.mod
+.include /home/solomon/code/oresat/oresat-rw-board-rev8/.claude/worktrees/bus-ring-sim/sims/bus-ring/murata_dl/GRT188C81C106ME13_DC8.4V_25degC.mod
+.include /home/solomon/code/oresat/oresat-rw-board-rev8/.claude/worktrees/bus-ring-sim/sims/bus-ring/murata_dl/GRT32EC81C476KE13_DC8.4V_25degC.mod
+XBRD devC_V 0 A_bot_V A_bot_G A_top_V A_top_G B_bot_V B_bot_G B_top_V B_top_G C_bot_V C_bot_G C_top_V C_top_G BULK_L_V BULK_L_G BULK_R_V BULK_R_G FEED_V FEED_G BOARD_ASBUILT
+XC_A_bot_2u2_0402_0 A_bot_V A_bot_G GRT155C81C225KE13_DC8V4_25degC
+XC_A_bot_2u2_0402_1 A_bot_V A_bot_G GRT155C81C225KE13_DC8V4_25degC
+XC_A_bot_2u2_0402_2 A_bot_V A_bot_G GRT155C81C225KE13_DC8V4_25degC
+XC_A_bot_2u2_0402_3 A_bot_V A_bot_G GRT155C81C225KE13_DC8V4_25degC
+XC_A_bot_2u2_0402_4 A_bot_V A_bot_G GRT155C81C225KE13_DC8V4_25degC
+XC_B_bot_2u2_0402_0 B_bot_V B_bot_G GRT155C81C225KE13_DC8V4_25degC
+XC_B_bot_2u2_0402_1 B_bot_V B_bot_G GRT155C81C225KE13_DC8V4_25degC
+XC_B_bot_2u2_0402_2 B_bot_V B_bot_G GRT155C81C225KE13_DC8V4_25degC
+XC_B_bot_2u2_0402_3 B_bot_V B_bot_G GRT155C81C225KE13_DC8V4_25degC
+XC_B_bot_2u2_0402_4 B_bot_V B_bot_G GRT155C81C225KE13_DC8V4_25degC
+XC_C_bot_2u2_0402_0 C_bot_V C_bot_G GRT155C81C225KE13_DC8V4_25degC
+XC_C_bot_2u2_0402_1 C_bot_V C_bot_G GRT155C81C225KE13_DC8V4_25degC
+XC_C_bot_2u2_0402_2 C_bot_V C_bot_G GRT155C81C225KE13_DC8V4_25degC
+XC_C_bot_2u2_0402_3 C_bot_V C_bot_G GRT155C81C225KE13_DC8V4_25degC
+XC_C_bot_2u2_0402_4 C_bot_V C_bot_G GRT155C81C225KE13_DC8V4_25degC
+XC_A_top_10u_0603_0 A_top_V A_top_G GRT188C81C106ME13_DC8V4_25degC
+XC_A_top_10u_0603_1 A_top_V A_top_G GRT188C81C106ME13_DC8V4_25degC
+XC_A_top_10u_0603_2 A_top_V A_top_G GRT188C81C106ME13_DC8V4_25degC
+XC_A_top_10u_0603_3 A_top_V A_top_G GRT188C81C106ME13_DC8V4_25degC
+XC_A_top_10u_0603_4 A_top_V A_top_G GRT188C81C106ME13_DC8V4_25degC
+XC_A_top_2u2_0402_0 A_top_V A_top_G GRT155C81C225KE13_DC8V4_25degC
+XC_A_top_2u2_0402_1 A_top_V A_top_G GRT155C81C225KE13_DC8V4_25degC
+XC_A_top_2u2_0402_2 A_top_V A_top_G GRT155C81C225KE13_DC8V4_25degC
+XC_A_top_2u2_0402_3 A_top_V A_top_G GRT155C81C225KE13_DC8V4_25degC
+XC_A_top_2u2_0402_4 A_top_V A_top_G GRT155C81C225KE13_DC8V4_25degC
+XC_B_top_10u_0603_0 B_top_V B_top_G GRT188C81C106ME13_DC8V4_25degC
+XC_B_top_10u_0603_1 B_top_V B_top_G GRT188C81C106ME13_DC8V4_25degC
+XC_B_top_10u_0603_2 B_top_V B_top_G GRT188C81C106ME13_DC8V4_25degC
+XC_B_top_10u_0603_3 B_top_V B_top_G GRT188C81C106ME13_DC8V4_25degC
+XC_B_top_10u_0603_4 B_top_V B_top_G GRT188C81C106ME13_DC8V4_25degC
+XC_B_top_2u2_0402_0 B_top_V B_top_G GRT155C81C225KE13_DC8V4_25degC
+XC_B_top_2u2_0402_1 B_top_V B_top_G GRT155C81C225KE13_DC8V4_25degC
+XC_B_top_2u2_0402_2 B_top_V B_top_G GRT155C81C225KE13_DC8V4_25degC
+XC_B_top_2u2_0402_3 B_top_V B_top_G GRT155C81C225KE13_DC8V4_25degC
+XC_B_top_2u2_0402_4 B_top_V B_top_G GRT155C81C225KE13_DC8V4_25degC
+XC_C_top_10u_0603_0 C_top_V C_top_G GRT188C81C106ME13_DC8V4_25degC
+XC_C_top_10u_0603_1 C_top_V C_top_G GRT188C81C106ME13_DC8V4_25degC
+XC_C_top_10u_0603_2 C_top_V C_top_G GRT188C81C106ME13_DC8V4_25degC
+XC_C_top_10u_0603_3 C_top_V C_top_G GRT188C81C106ME13_DC8V4_25degC
+XC_C_top_10u_0603_4 C_top_V C_top_G GRT188C81C106ME13_DC8V4_25degC
+XC_C_top_2u2_0402_0 C_top_V C_top_G GRT155C81C225KE13_DC8V4_25degC
+XC_C_top_2u2_0402_1 C_top_V C_top_G GRT155C81C225KE13_DC8V4_25degC
+XC_C_top_2u2_0402_2 C_top_V C_top_G GRT155C81C225KE13_DC8V4_25degC
+XC_C_top_2u2_0402_3 C_top_V C_top_G GRT155C81C225KE13_DC8V4_25degC
+XC_C_top_2u2_0402_4 C_top_V C_top_G GRT155C81C225KE13_DC8V4_25degC
+XC_BULK_L_47u_1210_0 BULK_L_V BULK_L_G GRT32EC81C476KE13_DC8V4_25degC
+XC_BULK_L_47u_1210_1 BULK_L_V BULK_L_G GRT32EC81C476KE13_DC8V4_25degC
+XC_BULK_L_47u_1210_2 BULK_L_V BULK_L_G GRT32EC81C476KE13_DC8V4_25degC
+XC_BULK_L_47u_1210_3 BULK_L_V BULK_L_G GRT32EC81C476KE13_DC8V4_25degC
+XC_BULK_R_47u_1210_0 BULK_R_V BULK_R_G GRT32EC81C476KE13_DC8V4_25degC
+XC_BULK_R_47u_1210_1 BULK_R_V BULK_R_G GRT32EC81C476KE13_DC8V4_25degC
+XC_BULK_R_47u_1210_2 BULK_R_V BULK_R_G GRT32EC81C476KE13_DC8V4_25degC
+XC_BULK_R_47u_1210_3 BULK_R_V BULK_R_G GRT32EC81C476KE13_DC8V4_25degC
+VFS FEED_V fe0 0
+RFEXT fe0 fe1 0.001
+LFEXT fe1 fe2 2.2000e-10
+XC_J1_0 fe2 FEED_G GRT32EC81C476KE13_DC8V4_25degC
+XC_J1_1 fe2 FEED_G GRT32EC81C476KE13_DC8V4_25degC
+RSRC fe2 fs1 0.05
+LSRC fs1 fs2 1e-07
+VBAT fs2 FEED_G 8.4
+.include /home/solomon/code/oresat/oresat-rw-board-rev8/.claude/worktrees/bus-ring-sim/sims/bus-ring/models/lmg2100r044.lib
+* device port: current sense into the VIN pin, optional pad-gap L
+VIVIN devC_V vs1 0
+RPAD vs1 vinp 1u
+XU12 vinp sw 0 hb hs hi li vcc agnd LMG2100R044 PARAMS: TJ=25
+* driver ground: GND pin 15 to PGND through the board GND return (estimate)
+LAGND agnd 0 2n
+* VCC: +5V -> R36 2.7 ohm -> VCC pin; bootstrap C73 100 nF + R37 2.7 ohm to HS
+V5 v5 0 5
+CV5 v5 0 1u
+R36 v5 vcc 2.7
+C73 hb bst 100n
+R37 bst hs 2.7
+* MCU inputs through 22 ohm + 47 pF (R34/C72, R35/C70)
+VHIS his 0 PWL(0 0 2.604167e-06 0 2.605167e-06 3.3 7.812500e-06 3.3 7.813500e-06 0 1.302083e-05 0 1.302183e-05 3.3 1.822917e-05 3.3 1.823017e-05 0)
+R34 his hi 22
+C72 hi 0 47p
+VLIS lis 0 PWL(0 0 5e-9 0 6e-9 3.3 2.593767e-06 3.3 2.594767e-06 0 7.822900e-06 0 7.823900e-06 3.3 1.301043e-05 3.3 1.301143e-05 0 1.823957e-05 0 1.824057e-05 3.3)
+R35 lis li 22
+C70 li 0 47p
+* phase: R39 2 mOhm shunt, 100 uH, back-EMF source at duty*Vbus; IPRE hands i0 to the bridge at 100-110 ns, LS already on
+R39 sw swl 2m
+LLOAD swl vmid 0.0001
+VMID vmid 0 4.2
+IPRE vmid swl PWL(0 10 100n 10 110n 0)
+* default integrator (trap), as the model examples
+.tran 0.02n 2.083333e-05 0 0.1n
+.print tran format=csv v(sw) i(VIVIN) v(devC_V) i(VFS) i(LLOAD) {v(hb)-v(hs)} v(hi) v(li)
+.end

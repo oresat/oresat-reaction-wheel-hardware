@@ -1,0 +1,76 @@
+
+*****
+***** Welcome to the Xyce(TM) Parallel Electronic Simulator
+*****
+***** This is version Xyce Release 7.10.0-opensource
+***** Date: Wed Oct 28 17:39:55 PDT 2026
+
+
+***** Executing netlist xyce/ac_asbuilt.cir
+
+***** Reading and parsing netlist...
+***** Setting up topology...
+
+Netlist warning: Voltage Node (DEVA_V) connected to only 1 device Terminal
+Netlist warning: Voltage Node (DEVA_G) connected to only 1 device Terminal
+Netlist warning: Voltage Node (DEVB_V) connected to only 1 device Terminal
+Netlist warning: Voltage Node (DEVB_G) connected to only 1 device Terminal
+Netlist warning: Voltage Node (P105_V) connected to only 1 device Terminal
+Netlist warning: Voltage Node (P105_G) connected to only 1 device Terminal
+Netlist warning: Voltage Node (P110_V) connected to only 1 device Terminal
+Netlist warning: Voltage Node (P110_G) connected to only 1 device Terminal
+***** Device Count Summary ...
+       B level 1 (Expression Based Voltage or Current Source)   26
+       C level 1 (Capacitor)                                   535
+       I level 1 (Independent Current Source)                    1
+       K level 1 (Linear Mutual Inductor)                        1
+       L level 1 (Inductor)                                    397
+       R level 1 (Resistor)                                    783
+       V level 1 (Independent Voltage Source)                   28
+       -----------------------------------------------------------
+       Total Devices                                          1771
+***** Setting up matrix structure...
+***** Number of Unknowns = 1342
+***** Initializing...
+
+
+***** Solution Summary *****
+	Number Successful Steps Taken:		201
+	Number Failed Steps Attempted:		0
+	Number Jacobians Evaluated:		1
+	Number Linear Solves:			1
+	Number Failed Linear Solves:		0
+	Number Residual Evaluations:		3
+	Number Nonlinear Convergence Failures:	0
+	Total Residual Load Time:		0.000740051 seconds
+	Total Jacobian Load Time:		8.82149e-05 seconds
+	Total Linear Solution Time:		0.00086689 seconds
+
+
+***** Total Simulation Solvers Run Time: 0.300928 seconds
+***** Total Elapsed Run Time:            0.328882 seconds
+*****
+***** End of Xyce(TM) Simulation
+*****
+
+Timing summary of 1 processor
+                 Stats                   Count       CPU Time              Wall Time
+---------------------------------------- ----- --------------------- ---------------------
+Xyce                                         1        0.295 (100.0%)        0.330 (100.0%)
+  Analysis                                   1        0.271 (91.65%)        0.301 (91.30%)
+    AC                                       1        0.271 (91.65%)        0.301 (91.29%)
+      DC Nonlinear Solve                     1        0.002 ( 0.65%)        0.002 ( 0.60%)
+        Residual                             3        0.001 ( 0.24%)        0.001 ( 0.23%)
+        Jacobian                             1        0.000 ( 0.03%)        0.000 ( 0.03%)
+        Linear Solve                         1        0.001 ( 0.29%)        0.001 ( 0.26%)
+      AC Linear Solve                      201        0.219 (74.12%)        0.247 (74.99%)
+        Linear Solve                       201        0.219 (74.03%)        0.247 (74.94%)
+  Netlist Import                             1        0.020 ( 6.69%)        0.024 ( 7.14%)
+    Parse Context                            1        0.003 ( 1.09%)        0.003 ( 0.98%)
+    Distribute Devices                       1        0.014 ( 4.63%)        0.017 ( 5.01%)
+    Verify Devices                           1        0.000 (<0.01%)        0.000 (<0.01%)
+    Instantiate                              1        0.003 ( 0.85%)        0.003 ( 1.03%)
+  Late Initialization                        1        0.004 ( 1.21%)        0.004 ( 1.10%)
+    Global Indices                           1        0.002 ( 0.59%)        0.002 ( 0.53%)
+  Setup Matrix Structure                     1        0.001 ( 0.30%)        0.001 ( 0.27%)
+

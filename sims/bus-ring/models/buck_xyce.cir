@@ -1,0 +1,54 @@
+* LMG2100R044 synchronous buck, TI Table 8-1 conditions:
+* 48V -> 12V, 8A, 1MHz, 8ns dead time, 4.7uH, 0.1uF bootstrap.
+* Xyce:  Xyce buck_xyce.cir   (measures print to stdout and buck_xyce.cir.mt0;
+*        pd = LMG2100 dissipation in W)
+*
+.include ../lmg2100r044.lib
+.param VBUS=48 FSW=1meg D=0.255 TDT=8n
+
+V5   v5 0 5
+CVCC v5 0 1u
+RVCC_ v5 vcc 1m
+CBST hb hs 100n
+
+VB   bus 0 {VBUS}
+LBUS bus vb 5n
+CBLK vb vbk 10u
+RBLK vbk 0 20m
+LBK  vb vhf 1n
+CHF  vhf nhf 400n
+RHF  nhf nhf2 3m
+LHF  nhf2 0 0.1n
+LPCB vhf vpc 0.3n
+RPCB vhf vpc 3
+RPCBDC vpc vin 0.5m
+
+L1   sw out 4.7u
+* Pre-energise L1 at the 8A load current: at DC this source just circulates
+* 8A through L1; when it steps to zero at 2ns, L1 keeps the current. Together
+* with the .ic below this starts the converter close to steady state.
+IPRE out sw PWL(0 8 2n 8 3n 0)
+RL1  out out2 5m
+CO   out2 0 47u
+RLOAD out2 0 1.5
+* Output and bootstrap start precharged (SW sits at Vout at t=0, so CBST
+* would otherwise start empty and the HS couldn't turn on).
+.ic v(out2)=12 v(out)=12 v(hb)=16.6
+
+* HI high for D*T; LI high for the rest minus dead time on both edges.
+* Both start low so the OP is just "everything off" (consistent with the .ic).
+VHI hi 0 PULSE(0 3.3 {TDT} 0.5n 0.5n {D/FSW} {1/FSW})
+VLI li 0 PULSE(0 3.3 {D/FSW+2*TDT} 0.5n 0.5n {(1-D)/FSW-2*TDT-1n} {1/FSW})
+
+X1 vin sw 0 hb hs hi li vcc 0 LMG2100R044 PARAMS: TJ=25
+
+.tran 1n 25u 0 1n
+.measure tran vout  avg v(out2) from=15u to=25u
+.measure tran il    avg i(L1) from=15u to=25u
+.measure tran hbmin min {v(hb)-v(hs)} from=15u to=25u
+.measure tran hbmax max {v(hb)-v(hs)} from=15u to=25u
+.measure tran vgmax max {v(x1:gh)-v(x1:sh)} from=15u to=25u
+* Device dissipation straight from the pins (PGND/AGND are at 0V)
+.measure tran pd avg {v(vin)*i(RPCBDC) - v(sw)*i(L1) + v(vcc)*i(RVCC_) - (v(hb)-v(hs))*i(CBST)} from=15u to=25u
+.print tran format=csv file=buck.csv v(sw) {v(hb)-v(hs)} i(L1) v(out2)
+.end

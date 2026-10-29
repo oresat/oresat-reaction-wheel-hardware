@@ -1,0 +1,4 @@
+L: eig min 6.287e-12 max 4.111e-09
+R: eig min 1.942e-04 max 6.258e-02
+wrote /home/solomon/code/oresat/oresat-rw-board-rev8/.claude/worktrees/bus-ring-sim/sims/bus-ring/xyce/in_8v4_10a_r300_lpad60/board.sub: subckt BOARD_INTENDED, 18 branches, max |k| 0.94738
+pins: devC_V devC_G A_bot_V A_bot_G A_top_V A_top_G B_bot_V B_bot_G B_top_V B_top_G C_bot_V C_bot_G C_top_V C_top_G BULK_L_V BULK_L_G BULK_R_V BULK_R_G FEED_V FEED_G

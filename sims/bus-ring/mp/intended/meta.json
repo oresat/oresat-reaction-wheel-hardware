@@ -1,0 +1,320 @@
+{
+ "stack": "intended",
+ "pitch": 0.1,
+ "dz": 0.0115,
+ "crop": [
+  85.5,
+  89.5,
+  117.5,
+  113.0
+ ],
+ "n": [
+  320,
+  235,
+  145
+ ],
+ "n_grid": 10904000,
+ "n_active": 709531,
+ "zlay": {
+  "B.Cu": [
+   1,
+   4
+  ],
+  "In4.Cu": [
+   12,
+   15
+  ],
+  "In3.Cu": [
+   24,
+   27
+  ],
+  "In2.Cu": [
+   118,
+   121
+  ],
+  "In1.Cu": [
+   130,
+   133
+  ],
+  "F.Cu": [
+   141,
+   144
+  ]
+ },
+ "gaps_mm": [
+  0.092,
+  0.1035,
+  1.0465,
+  0.1035,
+  0.092
+ ],
+ "terminals": {
+  "devA_V": {
+   "code": 10,
+   "net": "VBUS",
+   "voxels": 624
+  },
+  "devA_G": {
+   "code": 11,
+   "net": "PGND",
+   "voxels": 2976
+  },
+  "devB_V": {
+   "code": 12,
+   "net": "VBUS",
+   "voxels": 624
+  },
+  "devB_G": {
+   "code": 13,
+   "net": "PGND",
+   "voxels": 3015
+  },
+  "devC_V": {
+   "code": 14,
+   "net": "VBUS",
+   "voxels": 624
+  },
+  "devC_G": {
+   "code": 15,
+   "net": "PGND",
+   "voxels": 3036
+  },
+  "A_bot_V": {
+   "code": 16,
+   "net": "VBUS",
+   "voxels": 558
+  },
+  "A_bot_G": {
+   "code": 17,
+   "net": "PGND",
+   "voxels": 522
+  },
+  "A_top_V": {
+   "code": 18,
+   "net": "VBUS",
+   "voxels": 1854
+  },
+  "A_top_G": {
+   "code": 19,
+   "net": "PGND",
+   "voxels": 1761
+  },
+  "B_bot_V": {
+   "code": 20,
+   "net": "VBUS",
+   "voxels": 468
+  },
+  "B_bot_G": {
+   "code": 21,
+   "net": "PGND",
+   "voxels": 486
+  },
+  "B_top_V": {
+   "code": 22,
+   "net": "VBUS",
+   "voxels": 1746
+  },
+  "B_top_G": {
+   "code": 23,
+   "net": "PGND",
+   "voxels": 1836
+  },
+  "C_bot_V": {
+   "code": 24,
+   "net": "VBUS",
+   "voxels": 540
+  },
+  "C_bot_G": {
+   "code": 25,
+   "net": "PGND",
+   "voxels": 558
+  },
+  "C_top_V": {
+   "code": 26,
+   "net": "VBUS",
+   "voxels": 1746
+  },
+  "C_top_G": {
+   "code": 27,
+   "net": "PGND",
+   "voxels": 1836
+  },
+  "BULK_L_V": {
+   "code": 28,
+   "net": "VBUS",
+   "voxels": 3807
+  },
+  "BULK_L_G": {
+   "code": 29,
+   "net": "PGND",
+   "voxels": 3564
+  },
+  "BULK_R_V": {
+   "code": 30,
+   "net": "VBUS",
+   "voxels": 3771
+  },
+  "BULK_R_G": {
+   "code": 31,
+   "net": "PGND",
+   "voxels": 3612
+  },
+  "P105_V": {
+   "code": 32,
+   "net": "VBUS",
+   "voxels": 48
+  },
+  "P105_G": {
+   "code": 33,
+   "net": "PGND",
+   "voxels": 48
+  },
+  "P110_V": {
+   "code": 34,
+   "net": "VBUS",
+   "voxels": 48
+  },
+  "P110_G": {
+   "code": 35,
+   "net": "PGND",
+   "voxels": 48
+  },
+  "FEED_V": {
+   "code": 36,
+   "net": "VBUS",
+   "voxels": 240
+  },
+  "FEED_G": {
+   "code": 37,
+   "net": "PGND",
+   "voxels": 225
+  }
+ },
+ "banks": {
+  "A_bot": [
+   "C42",
+   "C43",
+   "C44",
+   "C45",
+   "C93"
+  ],
+  "A_top": [
+   "C109",
+   "C110",
+   "C46",
+   "C48",
+   "C90",
+   "C117",
+   "C118",
+   "C129",
+   "C132",
+   "C135"
+  ],
+  "B_bot": [
+   "C58",
+   "C59",
+   "C60",
+   "C61",
+   "C94"
+  ],
+  "B_top": [
+   "C112",
+   "C113",
+   "C62",
+   "C64",
+   "C91",
+   "C122",
+   "C123",
+   "C130",
+   "C133",
+   "C136"
+  ],
+  "C_bot": [
+   "C74",
+   "C75",
+   "C76",
+   "C77",
+   "C95"
+  ],
+  "C_top": [
+   "C115",
+   "C116",
+   "C78",
+   "C80",
+   "C92",
+   "C127",
+   "C128",
+   "C131",
+   "C134",
+   "C137"
+  ],
+  "BULK_L": [
+   "C96",
+   "C99",
+   "C101",
+   "C106"
+  ],
+  "BULK_R": [
+   "C97",
+   "C98",
+   "C100",
+   "C107"
+  ]
+ },
+ "legs": {
+  "A": "U8",
+  "B": "U10",
+  "C": "U12"
+ },
+ "probes": {
+  "P105": [
+   115.5,
+   105.0
+  ],
+  "P110": [
+   115.5,
+   110.0
+  ]
+ },
+ "freqs": [
+  0.0,
+  10000000.0
+ ],
+ "lanes": [
+  [
+   "t_devA_V",
+   "t_devB_G",
+   "t_A_bot_V",
+   "t_A_top_G",
+   "t_B_top_V",
+   "t_C_bot_G",
+   "t_BULK_L_V",
+   "t_BULK_R_G",
+   "t_P110_V",
+   "t_FEED_G"
+  ],
+  [
+   "t_devA_G",
+   "t_devC_V",
+   "t_A_bot_G",
+   "t_B_bot_V",
+   "t_B_top_G",
+   "t_C_top_V",
+   "t_BULK_L_G",
+   "t_P105_V",
+   "t_P110_G"
+  ],
+  [
+   "t_devB_V",
+   "t_devC_G",
+   "t_A_top_V",
+   "t_B_bot_G",
+   "t_C_bot_V",
+   "t_C_top_G",
+   "t_BULK_R_V",
+   "t_P105_G",
+   "t_FEED_V"
+  ]
+ ],
+ "removed_island_vox": 1055
+}

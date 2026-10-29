@@ -1,0 +1,332 @@
+* LMG2100R044 100V 4.4mOhm GaN half-bridge power stage -- unofficial transient model
+*
+* Built from:
+*   - EPC2090 eGaN FET model (EPC, v1.00 12/07/2023) for both power FETs.
+*     Same equations and parameters, rewritten so it runs in PSpice,
+*     LTspice and ngspice:
+*       * "G ... Q={}" charge sources -> E/C/R/F charge-to-current trick
+*       * global Temp                -> subckt parameter TJ
+*       * RES model with TC1         -> inline resistor expression
+*   - LMG1205/LMG5200 driver datasheet numbers (thresholds, UVLO, bootstrap
+*     diode, 1.2A/5A output stage), cross-checked against SNOSDF9B.
+*   - Package parasitics ESTIMATED from the RAR0017B outline and calibrated
+*     against the SNOSDF9B application waveforms. TI does not publish these
+*     values, so treat them as educated guesses and tune them from measurement.
+*
+* Pins: VIN SW PGND HB HS HI LI VCC AGND   (NC pins omitted; PGND = pins 6+17)
+*
+* Parameters you are most likely to touch:
+*   TJ      junction temperature [C] for both FETs and package copper
+*   LVIN, LSWH, LSWL, LPGND, LCS   package power loop pieces (sum = ~0.2 nH)
+*   LG, LGK gate trace / Kelvin return inside the package
+*   TDH, TDL logic delay trims (set tMON/tMOFF mismatch per channel)
+*
+* Internal topology (die-level node names in brackets):
+*
+*   VIN --LVIN--RVIN--[dh] HS FET [sh]--LCS--[swk]--LSWH--RSWH--[swb]--LSWP--RSWP-- SW
+*                       ^gate [gh]          |                     |
+*                  ho --LG--+               LGK                    LSWL--RSWL--[dl] LS FET [sl]--LCS--[pgk]--LPGND--RPGND-- PGND
+*                                           |                                  ^gate [gl]            |
+*   HB --LHBP--[hbd]  HS driver   [hsd]-----+--LHSP-- HS          lo --LG------+                  LGK
+*                                                                                                    |
+*   VCC --LVCCP--[vccd]  LS driver   [vss]--------------------------------------------------------+--LAGNDP-- AGND
+*
+*   Bootstrap diode + 5V clamp: vccd -> hbd.  CWELL: hsd <-> vss.
+*
+* Logic thresholds are referenced to AGND (vss), as in the real part.
+*
+* No warranty. This is an estimate for design exploration, not a TI model.
+*
+.subckt LMG2100R044 VIN SW PGND HB HS HI LI VCC AGND
++ PARAMS: TJ=25
++ LVIN=50p   RVIN=0.25m
++ LSWH=40p   RSWH=0.20m
++ LSWL=40p   RSWL=0.10m
++ LPGND=50p  RPGND=0.25m
++ LSWP=50p   RSWP=0.15m
++ LCS=10p
++ LG=0.4n    LGK=0.2n
++ LHBP=0.3n  LHSP=0.3n  LVCCP=0.3n  LAGNDP=0.3n
++ CWELL=30p
++ VIH=2.06   VHYS=0.40
++ VCCR=3.8   VCCH=0.21  VHBR=3.2  VHBH=0.20
++ VCLAMP=5.0 TCLAMP=270n TUVLO=100n
++ IPU=1.2    RPU=2.1    IPD=5.0   RPD=0.6   COUT=50p
++ CHBI=400p  CVCCI=400p
++ TPWR=9n    TPWF=4.7n
++ TDH=22.5n  TDL=22.5n
+
+* ---- derived constants ---------------------------------------------------
+* Output stage: level-1 MOSFETs sized for peak current IPx at Vgs=5V, with a
+* series resistor so the small-signal on-resistance equals RPx. Strength goes
+* in via W (model KP=1, L=1mm) so the .model cards need no parameters.
+.param VTD=0.8
+.param KPU={2*IPU/((5-VTD)*(5-VTD))}  KPD={2*IPD/((5-VTD)*(5-VTD))}
+.param RSPU={max(RPU-1/(KPU*(5-VTD)),1m)}  RSPD={max(RPD-1/(KPD*(5-VTD)),1m)}
+* Copper tempco for the package resistances
+.param KCU={1+0.0039*(TJ-25)}
+* Pulse-width filter: RC whose 50% crossing delay is TPWR (rising) / TPWF (falling)
+.param RFR={TPWR/(1p*0.6931)}  RFF={TPWF/(1p*0.6931)}
+* Remaining propagation delay: 8 re-squared RC stages of TDx/8 each. Short
+* stages keep pulses longer than ~12ns intact; linear R keeps Newton happy.
+.param RDH={TDH/(8*1p*0.6931)}  RDL={TDL/(8*1p*0.6931)}
+
+* ---- power path ---------------------------------------------------------
+L_VIN   VIN    n_vin  {LVIN}
+R_VIN   n_vin  dh     {RVIN*KCU}
+X_HS    gh dh sh  EPC2090_LMG PARAMS: TJ={TJ}
+L_CSH   sh     swk    {LCS}
+L_SWH   swk    n_swh  {LSWH}
+R_SWH   n_swh  swb    {RSWH*KCU}
+L_SWP   swb    n_swp  {LSWP}
+R_SWP   n_swp  SW     {RSWP*KCU}
+L_SWL   swb    n_swl  {LSWL}
+R_SWL   n_swl  dl     {RSWL*KCU}
+X_LS    gl dl sl  EPC2090_LMG PARAMS: TJ={TJ}
+L_CSL   sl     pgk    {LCS}
+L_PGND  pgk    n_pg   {LPGND}
+R_PGND  n_pg   PGND   {RPGND*KCU}
+
+* ---- gate loops / Kelvin returns -----------------------------------------
+L_GH    ho     gh     {LG}
+L_GKH   swk    n_gkh  {LGK}
+R_GKH   n_gkh  hsd    10m
+L_GL    lo     gl     {LG}
+L_GKL   pgk    n_gkl  {LGK}
+R_GKL   n_gkl  vss    10m
+
+* ---- signal / supply pins ------------------------------------------------
+L_HBP   HB     n_hb   {LHBP}
+R_HBP   n_hb   hbd    10m
+L_HSP   hsd    n_hs   {LHSP}
+R_HSP   n_hs   HS     10m
+L_VCCP  VCC    n_vcc  {LVCCP}
+R_VCCP  n_vcc  vccd   10m
+L_AGP   vss    n_ag   {LAGNDP}
+R_AGP   n_ag   AGND   10m
+
+* On-die bypass of the driver rails (small, with some ESR)
+C_HBI   hbd    n_hbi  {CHBI}
+R_HBI   n_hbi  hsd    0.5
+C_VCI   vccd   n_vci  {CVCCI}
+R_VCI   n_vci  vss    0.5
+
+* High-side well capacitance (datasheet CWELL, SW to PGND)
+C_WELL  hsd    vss    {CWELL}
+
+* ---- bootstrap diode with HB-HS clamp ---------------------------------------
+* Diode fit: VDL=0.45V@100uA, VDH=0.9V@100mA, RD=1.85ohm. QRR (2nC at
+* VIN=50V, grows with VIN): TT=2ns (~2nC at ~1A of dead-time charging) plus
+* CJO=50p (~0.5nC of junction charge from 0 to 50V).
+* Clamp works like the LMG1205's: a switch in series with the diode opens
+* once HB-HS has been above VCLAMP for ~TCLAMP (270ns), so it regulates the
+* average bootstrap voltage, not each dead-time pulse.
+D_BST   vccd   n_bst  DBST_LMG2100
+E_CLC   clc_t  0      VALUE={0.5*(1-tanh((V(hbd,hsd)-VCLAMP)/20m))}
+R_CLC   clc_t  clc    {TCLAMP/(1p*0.6931)}
+C_CLC   clc    0      1p
+G_BCL   n_bst  hbd    VALUE={V(n_bst,hbd)*5*(1+tanh((V(clc)-0.5)/50m))}
+R_BCL   n_bst  hbd    100Meg
+
+* Quiescent currents (ICC 0.09/0.46mA, IHB 0.10/0.23mA)
+G_IQH   hbd    hsd    VALUE={(0.10m+0.13m*V(hd))*tanh(V(hbd,hsd)/0.5)}
+G_IQL   vccd   vss    VALUE={(0.09m+0.37m*V(ld))*tanh(V(vccd,vss)/0.5)}
+
+* ---- input stage: TTL Schmitt triggers referenced to AGND ----------------
+R_HI    HI     vss    200k
+C_HI    HI     vss    2p
+R_LI    LI     vss    200k
+C_LI    LI     vss    2p
+* Smooth bistables: threshold is VIH when low, VIH-VHYS when high.
+E_HIS   his_t  0  VALUE={0.5*(1+tanh((V(HI,vss)-VIH+VHYS*V(his))/10m))}
+R_HIS   his_t  his  1k
+C_HIS   his    0    0.5p
+E_LIS   lis_t  0  VALUE={0.5*(1+tanh((V(LI,vss)-VIH+VHYS*V(lis))/10m))}
+R_LIS   lis_t  lis  1k
+C_LIS   lis    0    0.5p
+
+* ---- UVLO (TUVLO deglitch so a dip during a gate pulse doesn't chatter) -----
+E_UVC   uvc_t  0  VALUE={0.5*(1+tanh((V(vccd,vss)-VCCR+VCCH*V(uvc))/10m))}
+R_UVC   uvc_t  uvc  {TUVLO/(1p*0.6931)}
+C_UVC   uvc    0    1p
+E_UVH   uvh_t  0  VALUE={0.5*(1+tanh((V(hbd,hsd)-VHBR+VHBH*V(uvh))/10m))}
+R_UVH   uvh_t  uvh  {TUVLO/(1p*0.6931)}
+C_UVH   uvh    0    1p
+
+* ---- gating, propagation delay, pulse-width filter --------------------------
+* VCC UVLO blocks both channels; HB UVLO blocks only the high side.
+E_HG    hg     0  VALUE={V(his)*V(uvc)*V(uvh)}
+E_LG    lg     0  VALUE={V(lis)*V(uvc)}
+* Delay line: 8 x (RC + re-square)
+R_H1    hg h1r {RDH}
+C_H1    h1r 0  1p
+E_H1    h1 0   VALUE={0.5*(1+tanh((V(h1r)-0.5)/20m))}
+R_H2    h1 h2r {RDH}
+C_H2    h2r 0  1p
+E_H2    h2 0   VALUE={0.5*(1+tanh((V(h2r)-0.5)/20m))}
+R_H3    h2 h3r {RDH}
+C_H3    h3r 0  1p
+E_H3    h3 0   VALUE={0.5*(1+tanh((V(h3r)-0.5)/20m))}
+R_H4    h3 h4r {RDH}
+C_H4    h4r 0  1p
+E_H4    h4 0   VALUE={0.5*(1+tanh((V(h4r)-0.5)/20m))}
+R_H5    h4 h5r {RDH}
+C_H5    h5r 0  1p
+E_H5    h5 0   VALUE={0.5*(1+tanh((V(h5r)-0.5)/20m))}
+R_H6    h5 h6r {RDH}
+C_H6    h6r 0  1p
+E_H6    h6 0   VALUE={0.5*(1+tanh((V(h6r)-0.5)/20m))}
+R_H7    h6 h7r {RDH}
+C_H7    h7r 0  1p
+E_H7    h7 0   VALUE={0.5*(1+tanh((V(h7r)-0.5)/20m))}
+R_H8    h7 h8r {RDH}
+C_H8    h8r 0  1p
+E_H8    h8 0   VALUE={0.5*(1+tanh((V(h8r)-0.5)/20m))}
+R_L1    lg l1r {RDL}
+C_L1    l1r 0  1p
+E_L1    l1 0   VALUE={0.5*(1+tanh((V(l1r)-0.5)/20m))}
+R_L2    l1 l2r {RDL}
+C_L2    l2r 0  1p
+E_L2    l2 0   VALUE={0.5*(1+tanh((V(l2r)-0.5)/20m))}
+R_L3    l2 l3r {RDL}
+C_L3    l3r 0  1p
+E_L3    l3 0   VALUE={0.5*(1+tanh((V(l3r)-0.5)/20m))}
+R_L4    l3 l4r {RDL}
+C_L4    l4r 0  1p
+E_L4    l4 0   VALUE={0.5*(1+tanh((V(l4r)-0.5)/20m))}
+R_L5    l4 l5r {RDL}
+C_L5    l5r 0  1p
+E_L5    l5 0   VALUE={0.5*(1+tanh((V(l5r)-0.5)/20m))}
+R_L6    l5 l6r {RDL}
+C_L6    l6r 0  1p
+E_L6    l6 0   VALUE={0.5*(1+tanh((V(l6r)-0.5)/20m))}
+R_L7    l6 l7r {RDL}
+C_L7    l7r 0  1p
+E_L7    l7 0   VALUE={0.5*(1+tanh((V(l7r)-0.5)/20m))}
+R_L8    l7 l8r {RDL}
+C_L8    l8r 0  1p
+E_L8    l8 0   VALUE={0.5*(1+tanh((V(l8r)-0.5)/20m))}
+* Asymmetric RC last: delays rising edges TPWR, falling TPWF, and swallows
+* short pulses (12ns is swallowed, 15ns gets through; datasheet tPW = 10ns).
+* Conductance blends smoothly between 1/RFR (charging) and 1/RFF.
+G_HF    0  hf  VALUE={(V(h8)-V(hf))*(1/RFF+(1/RFR-1/RFF)*0.5*(1+tanh((V(h8)-V(hf))/50m)))}
+C_HF    hf 0   1p
+R_HF    hf 0   1G
+E_HD    hd 0   VALUE={0.5*(1+tanh((V(hf)-0.5)/20m))}
+* (1G loads: these nodes are only read inside expressions; keeps Xyce's
+* single-terminal-node check quiet)
+R_H8X   h8 0   1G
+R_HDX   hd 0   1G
+G_LF    0  lf  VALUE={(V(l8)-V(lf))*(1/RFF+(1/RFR-1/RFF)*0.5*(1+tanh((V(l8)-V(lf))/50m)))}
+C_LF    lf 0   1p
+R_LF    lf 0   1G
+E_LD    ld 0   VALUE={0.5*(1+tanh((V(lf)-0.5)/20m))}
+R_L8X   l8 0   1G
+R_LDX   ld 0   1G
+
+* ---- output stages --------------------------------------------------------
+* Pull-up PMOS gate swings from its rail down to the driver ground, so drive
+* strength tracks HB-HS / VCC (this is what makes RBST/RVCC slow the edges).
+* Pull-down NMOS gets a fixed 5V drive so gates are held low even in UVLO.
+E_HPUG  hpug   0  VALUE={V(hbd)-V(hbd,hsd)*V(hd)}
+M_HPU   hpud   hpug  hbd  hbd  PPU_LMG2100  L=1m W={KPU*1m}
+R_HPU   hpud   ho    {RSPU}
+E_HPDG  hpdg   0  VALUE={V(hsd)+5*(1-V(hd))}
+M_HPD   hpdd   hpdg  hsd  hsd  NPD_LMG2100  L=1m W={KPD*1m}
+R_HPD   hpdd   ho    {RSPD}
+C_HO    ho     hsd   {COUT}
+
+E_LPUG  lpug   0  VALUE={V(vccd)-V(vccd,vss)*V(ld)}
+M_LPU   lpud   lpug  vccd vccd PPU_LMG2100  L=1m W={KPU*1m}
+R_LPU   lpud   lo    {RSPU}
+E_LPDG  lpdg   0  VALUE={V(vss)+5*(1-V(ld))}
+M_LPD   lpdd   lpdg  vss  vss  NPD_LMG2100  L=1m W={KPD*1m}
+R_LPD   lpdd   lo    {RSPD}
+C_LO    lo     vss   {COUT}
+
+.model PPU_LMG2100 PMOS (LEVEL=1 VTO=-0.8 KP=1 LAMBDA=0.01)
+.model NPD_LMG2100 NMOS (LEVEL=1 VTO=0.8  KP=1 LAMBDA=0.01)
+.model DBST_LMG2100 D (IS=4.36e-9 N=1.734 RS=1.40 TT=2n CJO=50p VJ=0.7 M=0.5 BV=110 IBV=1u)
+.ends LMG2100R044
+
+
+* ===========================================================================
+* EPC2090 (EPC model v1.00, 12/07/2023), rewritten for portability.
+* Equations/parameters unchanged except:
+*   - TJ subckt parameter replaces the global Temp.
+*   - The three nonlinear charge sources use E/C/R/F (scaled to nC so the
+*     integrator's charge tolerance sees them) instead of "G ... Q={}".
+*     The 1nF*10mohm loop puts a 10ps lag on the capacitive currents;
+*     shorter (1ps) made ngspice's timestep collapse.
+*   - Zero-valued terms (ags5, agd8, asd8) dropped.
+*   - log(1+exp(x)) written as max(x,0)+ln(1+exp(-abs(x))) (same value,
+*     cannot overflow when the solver tries large voltages).
+*   - Natural log written as 2.302585093*log10(): log() is base 10 in Xyce
+*     but natural in PSpice/LTspice/ngspice, and PSpice has no ln().
+* ===========================================================================
+.subckt EPC2090_LMG gatein drainin sourcein PARAMS: TJ=25
+.param aWg=837
+.param A1={2.678e-02*aWg} k2=2.120 k3=0.09 rpara=2.309e-3 rpara_s_factor=0.3229
++ aITc=4.2e-3 arTc=-4.465e-3 k2Tc=5.6e-4
++ x0_0=3.54 x0_0_TC=-1.25e-3 x0_1=-0.2 x0_1_TC=2.062e-14
++ dgs1=4.3e-07 dgs2=2.6e-13 dgs3=0.8 dgs4=0.23
++ ags1={1.214e-12*aWg} ags2={5.379e-13*aWg} ags3=1.717 ags4=0.2668
++ agd1={1.456e-15*aWg} agd2={1.473e-13*aWg} agd3=-1.875 agd4=4.858
++ agd5={4.058e-15*aWg} agd6=-49.72 agd7=10.0
++ asd1={3.331e-13*aWg} asd2={4.209e-13*aWg} asd3=-11.95 asd4=2.890
++ asd5={3.139e-13*aWg} asd6=-34.14 asd7=16.26
++ rg_value=0.4
+.param ATJ={1-aITc*(TJ-25)} K2TJ={k2*(1-k2Tc*(TJ-25))}
++ X00TJ={x0_0*(1-x0_0_TC*(TJ-25))} X01TJ={x0_1*(1-x0_1_TC*(TJ-25))}
++ RTJ={1-arTc*(TJ-25)}
+
+rd drainin  drain  {(1-rpara_s_factor)*rpara*RTJ}
+rs sourcein source {rpara_s_factor*rpara*RTJ}
+rg gatein   gate   {rg_value}
+
+* Large resistors to aid convergence
+Rcsdconv drain source {100000Meg/aWg}
+Rcgsconv gate  source {100000Meg/aWg}
+Rcgdconv gate  drain  {100000Meg/aWg}
+
+* Original uses if(Vds>0, fwd, -rev); both branches vanish at Vds=0, so
+* fwd(max(Vds,0)) - rev(max(Vsd,0)) is identical and needs no if().
+gswitch drain source VALUE={
++ A1*ATJ*(max((v(gate,source)-K2TJ)/k3,0)+2.302585093*log10(1+exp(-abs((v(gate,source)-K2TJ)/k3))))*
++ max(v(drain,source),0)/(1+(X00TJ+X01TJ*v(gate,source))*max(v(drain,source),0))
++ -A1*ATJ*(max((v(gate,drain)-K2TJ)/k3,0)+2.302585093*log10(1+exp(-abs((v(gate,drain)-K2TJ)/k3))))*
++ max(v(source,drain),0)/(1+(X00TJ+X01TJ*v(gate,drain))*max(v(source,drain),0))}
+
+* Original: if(V<10, f(V), f(10)) == f(min(V,10))
+ggsdiode gate source VALUE={0.125*aWg/1077*(dgs1*(exp(min(v(gate,source),10)/dgs3)-1)
++ +dgs2*(exp(min(v(gate,source),10)/dgs4)-1))}
+ggddiode gate drain VALUE={0.125*aWg/1077*(dgs1*(exp(min(v(gate,drain),10)/dgs3)-1)
++ +dgs2*(exp(min(v(gate,drain),10)/dgs4)-1))}
+
+* Gate-source capacitance: linear part + nonlinear charge
+C_GS gate source {ags1}
+E_QGS qgs1 0 VALUE={1e9*(0.5*ags2*ags4*(max((v(gate,source)-ags3)/ags4,0)+2.302585093*log10(1+exp(-abs((v(gate,source)-ags3)/ags4)))))}
+V_QGS qgs1 qgs2 0
+C_QGS qgs2 qgs3 1n
+R_QGS qgs3 0    10m
+F_QGS gate source V_QGS 1
+
+* Gate-drain capacitance
+C_GD gate drain {agd1}
+E_QGD qgd1 0 VALUE={1e9*(0.5*ags2*ags4*(max((v(gate,drain)-ags3)/ags4,0)+2.302585093*log10(1+exp(-abs((v(gate,drain)-ags3)/ags4))))+
++ agd2*agd4*(max((v(gate,drain)-agd3)/agd4,0)+2.302585093*log10(1+exp(-abs((v(gate,drain)-agd3)/agd4))))+
++ agd5*agd7*(max((v(gate,drain)-agd6)/agd7,0)+2.302585093*log10(1+exp(-abs((v(gate,drain)-agd6)/agd7)))))}
+V_QGD qgd1 qgd2 0
+C_QGD qgd2 qgd3 1n
+R_QGD qgd3 0    10m
+F_QGD gate drain V_QGD 1
+
+* Source-drain capacitance
+C_SD source drain {asd1}
+E_QSD qsd1 0 VALUE={1e9*(asd2*asd4*(max((v(source,drain)-asd3)/asd4,0)+2.302585093*log10(1+exp(-abs((v(source,drain)-asd3)/asd4))))+
++ asd5*asd7*(max((v(source,drain)-asd6)/asd7,0)+2.302585093*log10(1+exp(-abs((v(source,drain)-asd6)/asd7)))))}
+V_QSD qsd1 qsd2 0
+C_QSD qsd2 qsd3 1n
+R_QSD qsd3 0    10m
+F_QSD source drain V_QSD 1
+.ends EPC2090_LMG
