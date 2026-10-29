@@ -41,6 +41,19 @@ def stage_b():
             webp(os.path.join(FIG, st, w + '.png'), os.path.join(I, f'{w}_{st}.webp'))
         webp(os.path.join(FIG, f'e_bundle_y105_{st}.png'), os.path.join(I, f'e_bundle_y105_{st}.webp'))
     webp(os.path.join(os.path.dirname(HERE), 'stackup-review', 'fig_gnd_overlap.png'), os.path.join(I, 'fig_gnd_overlap.webp'), q=88, maxw=1000)
+    # return-current shares and three moments of the edge (same frame times in both stacks)
+    import json
+    moments = [('t40', 39.75), ('t100', 100.0), ('t1000', 1000.0)]
+    out = []
+    for st in ('intended', 'asbuilt'):
+        shutil.copy(os.path.join(FIG, st, 'info.json'), os.path.join(I, f'info_{st}.json'))
+        F = json.load(open(os.path.join(FIG, st, 'anim', 'frames.json')))
+        for key, tq in moments:
+            i = min(range(len(F['t_ns'])), key=lambda k: abs(F['t_ns'][k] - tq))
+            Image.open(os.path.join(FIG, st, 'anim', f'f{i:03d}.webp')).save(os.path.join(I, f'moment_{key}_{st}.webp'), quality=82, method=6)
+            if st == 'intended':
+                t = F['t_ns'][i]; out.append(dict(key=key, label=(f'{t:.2f} ns' if t < 100 else (f'{t:.0f} ns' if t < 1000 else f'{t / 1000:.2f} µs')) + ' from HI'))
+    json.dump(out, open(os.path.join(I, 'moments.json'), 'w'))
     os.makedirs(os.path.join(S, 'data'), exist_ok=True); shutil.copy(os.path.join(HERE, 'data', 'viz.json'), os.path.join(S, 'data', 'viz.json'))
 
 

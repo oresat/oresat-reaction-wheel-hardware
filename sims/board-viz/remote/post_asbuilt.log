@@ -1,0 +1,20 @@
+[    1.1 s] loaded mp/asbuilt/lane0
+[    2.1 s] loaded mp/asbuilt/lane1
+[    3.1 s] loaded mp/asbuilt/lane2
+[    3.3 s] basis f=0: port-current residual 1.15e-14
+[    3.5 s] basis f=1e+07: port-current residual 1.11e-13
+[    5.8 s] scenarios ['C_bot_dc', 'C_top_dc', 'B_bot_dc', 'BULK_R_dc', 'BULK_L_dc', 'FEED_dc', 'C_bot_10M', 'C_top_10M', 'B_bot_10M', 'BULK_R_10M', 'BULK_L_10M', 'FEED_10M']
+[   13.2 s] frames (170, 6, 2, 320, 235)
+[   14.1 s] kernel
+[   15.1 s] B BULK_L_dc
+[   16.1 s] B BULK_L_10M
+[   17.1 s] B C_bot_10M
+[   18.1 s] B FEED_10M
+[   19.1 s] B C_bot_dc
+[   20.1 s] B frame_-100ns
+[   21.2 s] B frame_39ns
+[   22.2 s] B frame_41ns
+[   23.2 s] B frame_103ns
+[   24.2 s] B frame_486ns
+[   25.3 s] B frame_2058ns
+[   28.2 s] done

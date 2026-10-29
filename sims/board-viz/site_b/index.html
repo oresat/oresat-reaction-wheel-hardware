@@ -126,7 +126,7 @@ a:focus-visible{outline:2px solid var(--intended);outline-offset:2px}
     <figure class="plate"><div class="lbl"><b class="i">Intended</b><span>|B| · 1 A · 10 MHz · z ×4</span></div><img src="img/byz_BULK_L_10M_intended.webp" alt="B-field across the band, intended: field in two thin gaps" loading="lazy"></figure>
     <figure class="plate"><div class="lbl"><b class="a">As built</b><span>|B| · 1 A · 10 MHz · z ×4</span></div><img src="img/byz_BULK_L_10M_asbuilt.webp" alt="B-field across the band, as built: field fills two thick gaps" loading="lazy"></figure>
   </div>
-  <p class="note">Cut across the band at x = 98 mm, y 90–103 mm, for 1 A from the left bulk to leg C; each image on its own scale. Field energy across this cut: 15.4 pH/mm intended, 59.0 pH/mm as built (×3.8).</p>
+  <p class="note">Cut across the band at x = 98 mm, y 90–103 mm, for 1 A from the left bulk to leg C; each image on its own scale. Field energy across this cut: 15.3 → 52.7 pH/mm in this 28-port solve, 15.4 → 59.0 pH/mm in the earlier single-port solve (×3.4–3.8; the two differ in crop and terminals).</p>
   <div class="pair">
     <figure class="plate"><div class="lbl"><b class="i">Intended</b><span>sheet current · all layers · 1 A · 10 MHz</span></div><img src="img/flow_BULK_L_10M_intended.webp" alt="Return path at 10 MHz, intended" loading="lazy"></figure>
     <figure class="plate"><div class="lbl"><b class="a">As built</b><span>sheet current · all layers · 1 A · 10 MHz</span></div><img src="img/flow_BULK_L_10M_asbuilt.webp" alt="Return path at 10 MHz, as built" loading="lazy"></figure>
@@ -150,6 +150,8 @@ a:focus-visible{outline:2px solid var(--intended);outline-offset:2px}
   </div>
   <div class="legend" id="lg-cas"></div>
   <p class="note">Current each capacitor group supplies into VBUS after the HS turn-on (10 A step), log time. As built, leg C's own banks carry more of the first nanoseconds (7.7 vs 6.5 A at 1 ns) and the far bulk joins later (0.4 vs 1.0 A at 100 ns): each leg is more isolated from its neighbours and the bulk.</p>
+  <div class="g2" id="moments"></div>
+  <p class="note">Change in sheet current since just before the edge, all layers from the top, same scale in every image (log₁₀ |ΔK| from 0.03 to 5 A/mm; warm VBUS, cool PGND, white where they overlap). Time from the HI command; the device switches at about 39 ns.</p>
 </section>
 
 <section>
@@ -267,6 +269,14 @@ function render(){
 }
 stackDiagram();
 fetch('data/viz.json').then(r=>r.json()).then(d=>{D=d;render()});
+Promise.all(['intended','asbuilt'].map(s=>fetch(`img/info_${s}.json`).then(r=>r.json()))).then(([a,b])=>{
+  const pct=(o,k)=>Math.round(100*o[k]/Object.values(o).reduce((x,y)=>x+y,0));
+  const s=(I,f)=>I[`BULK_L_${f}`].share_x98_A.PGND;
+  document.getElementById('share-note').textContent=`Top view, warm VBUS copper, cool PGND copper, white where they overlap; log₁₀ |K| from 0.005 to 0.5 A/mm. Return current across x = 98 mm at 10 MHz: intended L2 ${pct(s(a,'10M'),'L2')} % / L5 ${pct(s(a,'10M'),'L5')} %, as built L2 ${pct(s(b,'10M'),'L2')} % / L5 ${pct(s(b,'10M'),'L5')} %. The return still follows the band in both; as built it is half a millimetre further away.`;
+}).catch(()=>{});
+fetch('img/moments.json').then(r=>r.json()).then(M=>{
+  document.getElementById('moments').innerHTML=M.map(m=>['intended','asbuilt'].map(s=>`<figure class="plate"><div class="lbl"><b class="${s==='intended'?'i':'a'}">${s==='intended'?'Intended':'As built'}</b><span>${m.label}</span></div><img src="img/moment_${m.key}_${s}.webp" alt="Edge current ${m.label}, ${s}" loading="lazy" width="1200" height="881"></figure>`).join('')).join('');
+}).catch(()=>{});
 if(window.matchMedia){const mq=window.matchMedia('(prefers-color-scheme: dark)');(mq.addEventListener?mq.addEventListener('change',render):mq.addListener(render))}
 new MutationObserver(render).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
 })();
