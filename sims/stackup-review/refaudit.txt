@@ -1,0 +1,106 @@
+
+=== In2.Cu (L3) signal nets: intended neighbour L2, as built L4  [mm of trace length]
++3V3A                w0.250 ~ 52.0 mm | int: AGND 50.4, +3V3A 1.1, VOID 0.5
+                                      | blt: VBUS 26.5, AGND 11.9, GND 6.8, VOID 4.0, +3V3A 1.1, PGND 0.6
++3V3A_SWFILT         w0.250 ~  8.6 mm | int: AGND 6.9, +3V3A_SWFILT 1.1, VOID 0.6
+                                      | blt: AGND 6.9, +3V3A_SWFILT 1.1, VOID 0.6
++VREF                w0.102 ~ 43.5 mm | int: AGND 39.5, +VREF 3.7
+                                      | blt: VBUS 23.0, GND 7.9, AGND 6.8, +VREF 3.7, PGND 1.0, VOID 1.0
+/PHA_ISNS            w0.102 ~ 51.5 mm | int: AGND 49.3, /PHA_ISNS 1.9, VOID 0.3
+                                      | blt: VBUS 25.5, AGND 16.2, GND 5.4, /PHA_ISNS 1.9, VOID 1.5, PGND 0.6
+/PHA_VSNS            w0.102 ~ 48.9 mm | int: AGND 46.7, /PHA_VSNS 1.9, VOID 0.3
+                                      | blt: VBUS 25.2, AGND 13.3, GND 4.8, VOID 2.3, /PHA_VSNS 1.9, PGND 0.6, /DAC_1 0.6
+/PHB_ISNS            w0.102 ~ 48.4 mm | int: AGND 45.3, /PHB_ISNS 2.8
+                                      | blt: VBUS 24.7, AGND 11.3, GND 4.9, VOID 2.9, /PHB_ISNS 2.8, PGND 0.7, /DAC_2 0.5
+/PHB_VSNS            w0.102 ~ 43.1 mm | int: AGND 40.0, /PHB_VSNS 2.8
+                                      | blt: VBUS 24.2, AGND 7.4, GND 5.4, /PHB_VSNS 2.8, VOID 1.8, PGND 0.9, /DAC_3 0.6
+/PHC_ISNS            w0.102 ~ 42.2 mm | int: AGND 40.1, /PHC_ISNS 1.9
+                                      | blt: VBUS 25.9, AGND 6.9, GND 5.3, /PHC_ISNS 1.9, VOID 1.3, PGND 0.6
+/PHC_VSNS            w0.102 ~ 38.9 mm | int: AGND 36.8, /PHC_VSNS 1.9
+                                      | blt: VBUS 23.1, GND 7.2, AGND 4.1, /PHC_VSNS 1.9, VOID 1.6, PGND 1.0
+/Phase A/SNS+        w0.200 ~ 25.2 mm | int: PGND 22.8, AGND 1.0, /Phase A/SNS+ 1.0, VOID 0.4
+                                      | blt: PGND 18.3, VOID 4.9, AGND 1.0, /Phase A/SNS+ 1.0
+/Phase A/SNS-        w0.200 ~ 25.8 mm | int: PGND 23.5, AGND 1.0, /Phase A/SNS- 0.9, VOID 0.4
+                                      | blt: PGND 18.4, VOID 5.6, AGND 1.0, /Phase A/SNS- 0.9
+/Phase B/SNS+        w0.200 ~ 16.6 mm | int: PGND 12.8, AGND 2.4, /Phase B/SNS+ 0.9, VOID 0.4
+                                      | blt: PGND 10.5, VOID 2.7, AGND 2.4, /Phase B/SNS+ 0.9
+/Phase B/SNS-        w0.200 ~ 17.9 mm | int: PGND 13.5, AGND 3.0, /Phase B/SNS- 1.0, VOID 0.4
+                                      | blt: PGND 10.8, VOID 3.1, AGND 3.0, /Phase B/SNS- 1.0
+/Phase C/SNS+        w0.200 ~ 10.0 mm | int: PGND 7.0, AGND 1.6, /Phase C/SNS+ 0.9, VOID 0.5
+                                      | blt: PGND 6.8, AGND 1.6, /Phase C/SNS+ 0.9, VOID 0.6
+/Phase C/SNS-        w0.200 ~  9.9 mm | int: PGND 7.4, AGND 1.1, /Phase C/SNS- 1.0, VOID 0.4
+                                      | blt: PGND 6.2, VOID 1.6, AGND 1.1, /Phase C/SNS- 1.0
+AGND                 w0.102 ~1235.5 mm | int: AGND 1235.4
+                                      | blt: AGND 1097.0, VOID 67.2, VBUS 22.0, GND 8.2, /5V_FILT 8.0, /PHC_THERM 7.5, /PHB_THERM 6.0, /AUX_THERM 5.7, /PHB_VSNS 5.4, /PHA_THERM 4.8, /PHB_ISNS 2.5, PGND 1.0
+VBUS                 w0.500 ~353.2 mm | int: PGND 288.0, VOID 37.6, VBUS 23.5, AGND 2.2, GND 2.0
+                                      | blt: VBUS 304.2, VOID 45.0, AGND 2.0, GND 1.6, PGND 0.4
+
+=== In3.Cu (L4) signal nets: intended neighbour L5, as built L3  [mm of trace length]
++3V3                 w0.127 ~ 50.0 mm | int: GND 40.5, +3V3 7.4, VOID 2.0
+                                      | blt: GND 40.5, +3V3 7.4, VOID 2.0
+/5V_FILT             w0.250 ~  4.3 mm | int: AGND 3.3, /5V_FILT 0.8, VOID 0.3
+                                      | blt: AGND 3.3, /5V_FILT 0.8, VOID 0.3
+/AUX_THERM           w0.102 ~ 20.1 mm | int: GND 9.9, AGND 6.7, /AUX_THERM 2.8, VOID 0.8
+                                      | blt: GND 9.9, AGND 5.7, /AUX_THERM 2.8, VOID 1.3, +3V3A 0.3
+/DAC_1               w0.102 ~ 19.7 mm | int: GND 15.9, /DAC_1 2.8, AGND 0.5, VOID 0.5
+                                      | blt: GND 13.6, /DAC_1 2.8, VOID 2.0, /PHA_VSNS 0.6, +3V3A 0.3
+/DAC_2               w0.102 ~ 19.4 mm | int: GND 16.0, /DAC_2 2.8, VOID 0.4
+                                      | blt: GND 13.2, /DAC_2 2.8, VOID 2.0, /PHB_ISNS 0.5, +3V3A 0.3
+/DAC_3               w0.102 ~ 25.4 mm | int: GND 22.5, /DAC_3 1.8, AGND 0.5, VOID 0.5
+                                      | blt: GND 19.1, VOID 2.7, /DAC_3 1.8, /PHB_VSNS 0.6, +3V3A 0.3
+/DEBUG1              w0.102 ~  9.9 mm | int: GND 7.7, /DEBUG1 1.8
+                                      | blt: GND 7.7, /DEBUG1 1.8
+/DEBUG3              w0.102 ~  9.1 mm | int: GND 7.0, /DEBUG3 1.9
+                                      | blt: GND 7.0, /DEBUG3 1.9
+/DEBUG_UART_RX       w0.102 ~  9.8 mm | int: GND 7.7, /DEBUG_UART_RX 1.8, VOID 0.3
+                                      | blt: GND 7.7, /DEBUG_UART_RX 1.8, VOID 0.3
+/DEBUG_UART_TX       w0.102 ~  6.2 mm | int: GND 4.1, /DEBUG_UART_TX 1.8
+                                      | blt: GND 4.1, /DEBUG_UART_TX 1.8
+/PHA_HI              w0.102 ~ 13.8 mm | int: GND 11.7, /PHA_HI 1.8, VOID 0.3
+                                      | blt: GND 11.7, /PHA_HI 1.8, VOID 0.3
+/PHA_LI              w0.102 ~ 14.5 mm | int: GND 12.4, /PHA_LI 1.9
+                                      | blt: GND 12.4, /PHA_LI 1.9
+/PHA_THERM           w0.102 ~ 26.9 mm | int: GND 15.2, AGND 5.9, /PHA_THERM 4.7, VOID 1.1
+                                      | blt: GND 15.2, AGND 4.8, /PHA_THERM 4.7, VOID 1.6, +3V3A 0.5
+/PHB_HI              w0.102 ~ 19.0 mm | int: GND 16.9, /PHB_HI 1.9
+                                      | blt: GND 16.9, /PHB_HI 1.9
+/PHB_ISNS            w0.102 ~  5.6 mm | int: /PHB_ISNS 2.8, AGND 2.5
+                                      | blt: /PHB_ISNS 2.8, AGND 2.5
+/PHB_LI              w0.102 ~ 18.8 mm | int: GND 16.7, /PHB_LI 1.8
+                                      | blt: GND 16.7, /PHB_LI 1.8
+/PHB_THERM           w0.102 ~ 21.6 mm | int: GND 8.7, AGND 7.2, /PHB_THERM 4.7, VOID 1.0
+                                      | blt: GND 8.7, AGND 6.0, /PHB_THERM 4.7, VOID 1.8, +3V3A 0.4
+/PHB_VSNS            w0.102 ~  9.4 mm | int: AGND 6.2, /PHB_VSNS 2.8, VOID 0.3
+                                      | blt: AGND 5.4, /PHB_VSNS 2.8, VOID 0.8
+/PHC_HI              w0.102 ~ 30.7 mm | int: GND 28.6, /PHC_HI 1.8
+                                      | blt: GND 28.6, /PHC_HI 1.8
+/PHC_LI              w0.102 ~ 29.1 mm | int: GND 27.0, /PHC_LI 1.9
+                                      | blt: GND 27.0, /PHC_LI 1.9
+/PHC_THERM           w0.102 ~ 16.2 mm | int: AGND 8.7, GND 4.0, /PHC_THERM 2.8, VOID 0.8
+                                      | blt: AGND 7.5, GND 4.0, /PHC_THERM 2.8, VOID 1.5, +3V3A 0.4
+/SPI_MISO            w0.102 ~ 26.7 mm | int: GND 24.6, /SPI_MISO 1.9
+                                      | blt: GND 24.6, /SPI_MISO 1.9
+/SPI_MOSI            w0.102 ~ 24.4 mm | int: GND 22.3, /SPI_MOSI 1.9
+                                      | blt: GND 22.3, /SPI_MOSI 1.9
+/SPI_SCK             w0.102 ~ 30.6 mm | int: GND 28.4, /SPI_SCK 1.9
+                                      | blt: GND 28.4, /SPI_SCK 1.9
+/SPI_nCS             w0.102 ~ 22.7 mm | int: GND 20.6, /SPI_nCS 1.8
+                                      | blt: GND 20.6, /SPI_nCS 1.8
+/SYS_SWO             w0.102 ~  7.3 mm | int: GND 5.2, /SYS_SWO 1.9
+                                      | blt: GND 5.2, /SYS_SWO 1.9
+/SYS_TRACECLK        w0.102 ~  9.4 mm | int: GND 7.2, /SYS_TRACECLK 1.9
+                                      | blt: GND 7.2, /SYS_TRACECLK 1.9
+/SYS_TRACED0         w0.102 ~  9.9 mm | int: GND 5.6, /SYS_TRACED0 3.7, VOID 0.5
+                                      | blt: GND 5.6, /SYS_TRACED0 3.7, VOID 0.5
+/SYS_TRACED1         w0.102 ~  5.5 mm | int: /SYS_TRACED1 2.8, GND 2.5
+                                      | blt: /SYS_TRACED1 2.8, GND 2.5
+/SYS_TRACED2         w0.102 ~ 10.1 mm | int: GND 8.0, /SYS_TRACED2 1.8
+                                      | blt: GND 8.0, /SYS_TRACED2 1.8
+/SYS_TRACED3         w0.102 ~ 10.2 mm | int: GND 8.1, /SYS_TRACED3 1.9
+                                      | blt: GND 8.1, /SYS_TRACED3 1.9
+/nRST                w0.102 ~  9.2 mm | int: GND 7.1, /nRST 1.9
+                                      | blt: GND 7.1, /nRST 1.9
+AGND                 w0.250 ~578.2 mm | int: AGND 574.6, GND 3.1, VOID 0.5
+                                      | blt: AGND 445.8, VOID 70.6, +3V3A 11.9, +3V3A_SWFILT 6.9, /PHA_ISNS 6.6, /PHA_VSNS 5.4, /PHB_ISNS 4.6, GND 4.1, VBUS 3.9, /PHB_VSNS 3.0, /PHC_ISNS 2.8, +VREF 2.8, /Phase B/SNS- 2.4, /Phase B/SNS+ 1.9, /PHC_VSNS 1.7, /Phase C/SNS+ 1.3, /Phase C/SNS- 0.9, /Phase A/SNS- 0.8, /Phase A/SNS+ 0.8
+VBUS                 w0.500 ~519.2 mm | int: PGND 454.2, VOID 41.5, VBUS 23.5
+                                      | blt: VBUS 304.2, GND 79.7, VOID 62.3, PGND 20.4, +3V3A 13.2, /PHC_ISNS 5.3, /PHA_ISNS 5.2, /PHA_VSNS 5.1, /PHB_ISNS 5.0, /PHB_VSNS 4.9, /PHC_VSNS 4.7, +VREF 4.7, AGND 4.5

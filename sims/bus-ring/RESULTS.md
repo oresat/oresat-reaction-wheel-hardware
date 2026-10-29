@@ -150,6 +150,14 @@ Sensitivity cases at 8.4 V / 10 A:
 - **EMF:** the full EMF is a bound. How much reaches the ADC depends on where the trace/AGND loop closes.
 - Only one leg switches, with the other legs open. In a real PWM period the three legs' edges are staggered, and each
   adds its own burst.
+- **Output snubber (in both stackups):** each phase output has FB (BLM31SN500), then 3.3 nF + 12 Ω to PGND,
+  downstream of the shunt. It is not in the Xyce load. Each rising edge adds about 28 nC (3.3 nF × 8.4 V) to the bus
+  current over about 50–100 ns, against the 10 A step, a few % more bus excitation. The same charge passes through the
+  shunt. Per `../stackup-review/REVIEW.md`, that reads as an ISNS transient of about 0.2 A peak, still 10–15 mA at
+  0.5 µs. It does not depend on the stackup.
+- **EMF partial cancellation:** the INA296 REF1 pins are fed from +VREF along the same bundle. Per
+  `../stackup-review/REVIEW.md`, this cancels part of the feed-current EMF. The EMF here is an upper bound;
+  realistically it is 0.5–0.7× of it below about 2 MHz, and about 1× above 5 MHz.
 - The 2.2 µF 0402 uses the Murata model of GRT155C81C225KE13. The BOM part (ME13) has no SimSurfing model; the KE13
   has the same size, dielectric and rating, with K tolerance instead of M.
 
